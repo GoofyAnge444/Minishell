@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_tab.c                                     :+:      :+:    :+:   */
+/*   dll_new_list.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cboma-ya <cboma-ya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/04 19:52:31 by eazard            #+#    #+#             */
-/*   Updated: 2025/02/03 17:25:36 by cboma-ya         ###   ########.fr       */
+/*   Created: 2025/02/03 16:29:11 by cboma-ya          #+#    #+#             */
+/*   Updated: 2025/02/03 16:34:13 by cboma-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "dll.h"
 
-void	ft_print_tab(char *tab_name, char **tab)
+t_dll_list	*dll_new_list(void)
 {
-	size_t	i;
+	t_dll_list	*new_list;
 
-	i = 0;
-	while (tab[i])
-	{
-		ft_printf("%s[%i] = %s\n", tab_name, (int)i, tab[i]);
-		i++;
-	}
+	new_list = ft_calloc(1, sizeof(t_dll_list));
+	if (!new_list)
+		return (NULL);
+	return (new_list);
 }

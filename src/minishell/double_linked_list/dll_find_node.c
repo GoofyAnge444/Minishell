@@ -1,25 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_tab.c                                     :+:      :+:    :+:   */
+/*   dll_find_node.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cboma-ya <cboma-ya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/04 19:52:31 by eazard            #+#    #+#             */
-/*   Updated: 2025/02/03 17:25:36 by cboma-ya         ###   ########.fr       */
+/*   Created: 2025/02/03 15:56:23 by cboma-ya          #+#    #+#             */
+/*   Updated: 2025/02/03 17:25:24 by cboma-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "dll.h"
 
-void	ft_print_tab(char *tab_name, char **tab)
+t_dll_node	*dll_find_node(t_dll_list *list, void *content,
+					bool (*cmp_content)(void *, void *))
 {
-	size_t	i;
+	t_dll_node	*node;
 
-	i = 0;
-	while (tab[i])
+	if (list && list -> head)
 	{
-		ft_printf("%s[%i] = %s\n", tab_name, (int)i, tab[i]);
-		i++;
+		node = list->head;
+		while (node)
+		{
+			if (cmp_content(node->content, content))
+				return (node);
+			else
+				node = node->next;
+		}
 	}
+	return (NULL);
 }

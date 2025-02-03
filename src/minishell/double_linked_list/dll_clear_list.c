@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_tab.c                                     :+:      :+:    :+:   */
+/*   dll_clear_list.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cboma-ya <cboma-ya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/04 19:52:31 by eazard            #+#    #+#             */
-/*   Updated: 2025/02/03 17:25:36 by cboma-ya         ###   ########.fr       */
+/*   Created: 2025/02/03 15:51:23 by cboma-ya          #+#    #+#             */
+/*   Updated: 2025/02/03 17:25:17 by cboma-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "dll.h"
 
-void	ft_print_tab(char *tab_name, char **tab)
+void	dll_clear_list(t_dll_list *list, void (*free_content)(void *))
 {
-	size_t	i;
+	t_dll_node	*node;
+	t_dll_node	*next_node;
 
-	i = 0;
-	while (tab[i])
+	node = list->head;
+	while (node)
 	{
-		ft_printf("%s[%i] = %s\n", tab_name, (int)i, tab[i]);
-		i++;
+		free_content(node->content);
+		next_node = node->next;
+		free(node);
+		node = next_node;
 	}
+	free(list);
 }

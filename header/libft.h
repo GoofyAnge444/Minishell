@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
+/*   By: cboma-ya <cboma-ya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 09:56:49 by ange              #+#    #+#             */
-/*   Updated: 2024/12/20 11:07:29 by eazard           ###   ########.fr       */
+/*   Updated: 2025/02/03 17:26:16 by cboma-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,39 +60,6 @@
 # define THERE_IS_ALREADY_LINE 1
 
 typedef unsigned char		t_octet;
-typedef struct s_dl_list	t_dl_list;
-typedef struct s_dl_node	t_dl_node;
-
-struct s_dl_node
-{
-	void		*content;
-	t_dl_node	*next;
-	t_dl_node	*prev;
-	t_dl_list	*parent_list;
-};
-
-struct s_dl_list
-{
-	t_dl_node	*head;
-	t_dl_node	*tail;
-	size_t		size;
-};
-
-/*double linked list*/
-/*list*/
-t_dl_list	*dl_list_init(void);
-void		dl_list_print(t_dl_list *dl_list, void (*print_content)(void *));
-void		dl_list_print_content_head(t_dl_list *dl_list,
-				void (*print_content)(void *));
-void		dl_list_print_content_tail(t_dl_list *dl_list,
-				void (*print_content)(void *));
-void		dl_list_insert_head(t_dl_list *list, t_dl_node *node);
-void		dl_list_insert_tail(t_dl_list *list, t_dl_node *node);
-/*error*/
-void		dl_list_null_ptr_error(char *error_function, char *null_ptr);
-/*node*/
-t_dl_node	*dl_node_init(void *content);
-void		dl_node_print(t_dl_node *node, void (*print_content)(void *));
 
 /*gnl*/
 int			ft_fill_buffer(char *buffer, int fd);
@@ -110,8 +77,8 @@ void		ft_printf_put_int_fd(int n, int fd, int *char_nb);
 void		ft_printf_put_unsigned_int_fd(unsigned int n, int fd, int *char_nb);
 void		ft_printf_put_caphex_fd(unsigned int n, int fd, int *char_nb);
 void		ft_printf_put_lowhex_fd(unsigned int n, int fd, int *char_nb);
-void		ft_printf_put_hex_adress_fd(unsigned long adress, int fd
-				, int *char_nb);
+void		ft_printf_put_hex_adress_fd(unsigned long adress, int fd,
+				int *char_nb);
 int			ft_printf_fd(int fd, const char *str, ...);
 int			ft_printf(const char *str, ...);
 /*libft*/

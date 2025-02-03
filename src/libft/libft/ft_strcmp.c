@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
+/*   By: cboma-ya <cboma-ya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:16:33 by ange              #+#    #+#             */
-/*   Updated: 2024/11/04 17:55:26 by eazard           ###   ########.fr       */
+/*   Updated: 2025/02/03 17:19:01 by cboma-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,5 @@ int	ft_strcmp(const char *str1,
 	i = 0;
 	while (str1[i] && str1[i] == str2[i])
 		i++;
-	return (str1[i] - str2[i]);
+	return (!(str1[i] - str2[i]));
 }

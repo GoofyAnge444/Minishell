@@ -63,12 +63,14 @@ LIBFT_FILES = \
 		libft/ft_substr \
 		libft/ft_tolower \
 		libft/ft_toupper \
+		\
 		ft_printf/ft_printf \
 		ft_printf/ft_printf_fd \
 		ft_printf/ft_printf_putchar_fd \
 		ft_printf/ft_printf_putnbr_fd \
 		ft_printf/ft_printf_putnbr_hexa_fd \
 		ft_printf/ft_printf_putstr_fd \
+		\
 		gnl/get_next_line \
 		gnl/get_next_line_utils \
 
@@ -104,7 +106,17 @@ libft_fclean: libft_clean
 
 libft_re: libft_fclean $(LIBFT)
 
-MINISHELL_FILES = main
+MINISHELL_FILES = 	main \
+					\
+					double_linked_list/dll_clear_list \
+					double_linked_list/dll_clear_node \
+					double_linked_list/dll_find_node \
+					double_linked_list/dll_insert_tail \
+					double_linked_list/dll_len \
+					double_linked_list/dll_new_list \
+					double_linked_list/dll_new_node \
+					double_linked_list/dll_print_list \
+
 
 MINISHELL_SRCS_DIR = ./src/minishell/
 MINISHELL_SRCS = $(addprefix $(MINISHELL_SRCS_DIR), $(addsuffix .c, $(MINISHELL_FILES)))

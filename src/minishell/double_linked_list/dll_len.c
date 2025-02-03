@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_tab.c                                     :+:      :+:    :+:   */
+/*   dll_len.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cboma-ya <cboma-ya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/04 19:52:31 by eazard            #+#    #+#             */
-/*   Updated: 2025/02/03 17:25:36 by cboma-ya         ###   ########.fr       */
+/*   Created: 2025/02/03 16:34:38 by cboma-ya          #+#    #+#             */
+/*   Updated: 2025/02/03 16:41:08 by cboma-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "dll.h"
 
-void	ft_print_tab(char *tab_name, char **tab)
+size_t	dll_len(t_dll_list *list)
 {
-	size_t	i;
+	t_dll_node	*node;
+	size_t		len;
 
-	i = 0;
-	while (tab[i])
+	len = 0;
+	if (list)
 	{
-		ft_printf("%s[%i] = %s\n", tab_name, (int)i, tab[i]);
-		i++;
+		node = list -> head;
+		while (node)
+		{
+			len++;
+			node = node -> next;
+		}
 	}
+	return (len);
 }
