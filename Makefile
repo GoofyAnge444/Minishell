@@ -116,6 +116,8 @@ MINISHELL_FILES = 	main \
 					double_linked_list/dll_new_list \
 					double_linked_list/dll_new_node \
 					double_linked_list/dll_print_list \
+					\
+					lexer/env_var_to_env_content \
 
 
 MINISHELL_SRCS_DIR = ./src/minishell/
