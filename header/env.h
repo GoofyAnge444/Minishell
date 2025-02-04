@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   env.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cboma-ya <cboma-ya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/17 12:53:43 by ange              #+#    #+#             */
-/*   Updated: 2025/02/04 16:13:31 by cboma-ya         ###   ########.fr       */
+/*   Created: 2025/02/03 19:29:44 by cboma-ya          #+#    #+#             */
+/*   Updated: 2025/02/04 16:56:53 by cboma-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef ENV_H
+# define ENV_H
+# include "minishell.h"
 
-void	*ft_memset(void *memory_zone_to_set,
-	int octet_set_value, size_t number_of_octet_to_set)
+typedef struct s_env_content	t_env_content;
+typedef struct s_data			t_data;
+
+struct s_env_content
 {
-	t_octet	*memory_zone_to_set__per_octet;
-	size_t	i;
+	char	*name;
+	char	*value;
+};
 
-	memory_zone_to_set__per_octet = (t_octet *)memory_zone_to_set;
-	i = 0;
-	while (i < number_of_octet_to_set)
-	{
-		*(memory_zone_to_set__per_octet + i)
-			= (t_octet)octet_set_value;
-		i++;
-	}
-	return (memory_zone_to_set);
-}
+t_env_content	*env_var_to_env_content(char *env_var);
+void			free_env_content(t_env_content *env_content);
+void			create_linked_env(t_data *data, char *env[]);
+
+#endif

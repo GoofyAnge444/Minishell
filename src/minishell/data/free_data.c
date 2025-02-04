@@ -1,30 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   free_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cboma-ya <cboma-ya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/17 12:53:43 by ange              #+#    #+#             */
-/*   Updated: 2025/02/04 16:13:31 by cboma-ya         ###   ########.fr       */
+/*   Created: 2025/02/04 16:25:00 by cboma-ya          #+#    #+#             */
+/*   Updated: 2025/02/04 16:59:07 by cboma-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "minishell.h"
 
-void	*ft_memset(void *memory_zone_to_set,
-	int octet_set_value, size_t number_of_octet_to_set)
+void	free_data(t_data *data)
 {
-	t_octet	*memory_zone_to_set__per_octet;
-	size_t	i;
-
-	memory_zone_to_set__per_octet = (t_octet *)memory_zone_to_set;
-	i = 0;
-	while (i < number_of_octet_to_set)
+	if (data)
 	{
-		*(memory_zone_to_set__per_octet + i)
-			= (t_octet)octet_set_value;
-		i++;
+		dll_clear_list(data -> env, (void (*)(void *))(&free_env_content));
 	}
-	return (memory_zone_to_set);
 }

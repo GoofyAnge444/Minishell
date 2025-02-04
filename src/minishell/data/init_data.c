@@ -1,30 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cboma-ya <cboma-ya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/17 12:53:43 by ange              #+#    #+#             */
-/*   Updated: 2025/02/04 16:13:31 by cboma-ya         ###   ########.fr       */
+/*   Created: 2025/02/04 16:04:49 by cboma-ya          #+#    #+#             */
+/*   Updated: 2025/02/04 16:40:40 by cboma-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "minishell.h"
 
-void	*ft_memset(void *memory_zone_to_set,
-	int octet_set_value, size_t number_of_octet_to_set)
+void	init_data(t_data *data, char *env[])
 {
-	t_octet	*memory_zone_to_set__per_octet;
-	size_t	i;
-
-	memory_zone_to_set__per_octet = (t_octet *)memory_zone_to_set;
-	i = 0;
-	while (i < number_of_octet_to_set)
-	{
-		*(memory_zone_to_set__per_octet + i)
-			= (t_octet)octet_set_value;
-		i++;
-	}
-	return (memory_zone_to_set);
+	ft_memset(data, 0, sizeof(t_data));
+	create_linked_env(data, env);
 }

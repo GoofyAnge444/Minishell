@@ -6,7 +6,7 @@
 /*   By: cboma-ya <cboma-ya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:23:05 by eazard            #+#    #+#             */
-/*   Updated: 2025/02/03 20:19:04 by cboma-ya         ###   ########.fr       */
+/*   Updated: 2025/02/04 17:55:10 by cboma-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 // 	(void)env;
 // }
 
-static void	print_content(t_env_content *env_content)
+static void    print_content(t_env_content *env_content)
 {
 	ft_printf("content = %s\n", env_content -> name);
 	ft_printf("value = %s\n", env_content -> value);
@@ -27,16 +27,17 @@ static void	print_content(t_env_content *env_content)
 
 int	main(int ac, char *av[], char *env[])
 {
-	t_env_content	*env_content;
+	t_data			data;
 
 	(void)ac;
 	(void)av;
-	ft_printf("%s\n", env[0]);
-	env_content = env_var_to_env_content(env[0]);
-	print_content(env_content);
-	free(env_content -> name);
-	free(env_content -> value);
-	free(env_content);
+	init_data(&data, env);
+	while (1)
+	{
+		get_and_store_user_input(&data);
+		lexer(&data);
+		// exit_clean();
+	}
 	return (0);
 }
-// TODO : coder un free_content
+

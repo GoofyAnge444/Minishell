@@ -10,30 +10,28 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lexer.h"
+#include "env.h"
 
-t_dll_list	*cp_env_to_dll(char *env[])
+void	create_linked_env(t_data *data, char *env[])
 {
-	size_t		i;
-	char		**env_var;
-	t_dll_list	*env_dll;
-	t_dll_node	*env_node;
+	size_t			i;
+	t_dll_list		*env_dll;
+	t_dll_node		*env_node;
 
 	i = 0;
-	env_var = NULL;
 	env_dll = dll_new_list();
-	env_node = env_dll->head;
-
+	if (!env_dll)
+		exit(MALLOC);
 	while (env[i])
 	{
-		env_var = ft_split(env[i], '=');
-		ft_printf("env = %s", env[i]);
-		env_node = dll_new_node(env[i]);
-		env_node->parent_list = env_dll;
-
-		env_node->content = *env_var_to_env_node(env[i]);
-
+		env_node = dll_new_node(NULL);
+		if (!env_node)
+			exit_clean(data, MALLOC);
+		env_node->content = env_var_to_env_content(env[i]);
+		if (!env_node -> content)
+			exit_clean(data, MALLOC);
 		dll_insert_tail(env_dll, env_node);
 		i++;
 	}
+	data -> env = env_dll;
 }

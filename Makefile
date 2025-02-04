@@ -107,6 +107,8 @@ libft_fclean: libft_clean
 libft_re: libft_fclean $(LIBFT)
 
 MINISHELL_FILES = 	main \
+					init_data \
+					free_data \
 					\
 					double_linked_list/dll_clear_list \
 					double_linked_list/dll_clear_node \
@@ -117,7 +119,10 @@ MINISHELL_FILES = 	main \
 					double_linked_list/dll_new_node \
 					double_linked_list/dll_print_list \
 					\
-					lexer/env_var_to_env_content \
+					env/env_var_to_env_content \
+					env/free_env_content \
+					env/create_linked_env \
+				
 
 
 MINISHELL_SRCS_DIR = ./src/minishell/

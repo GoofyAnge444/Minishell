@@ -3,6 +3,11 @@
 		"dll.h": "c",
 		"minishell.h": "c",
 		"typeinfo": "c",
-		"type_traits": "c"
+		"type_traits": "c",
+		"lexer.h": "c",
+		"env.h": "c",
+		"libft.h": "c",
+		"data.h": "c",
+		"stdlib.h": "c"
 	}
 }
