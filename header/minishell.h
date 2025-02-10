@@ -6,7 +6,7 @@
 /*   By: cboma-ya <cboma-ya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:09:59 by eazard            #+#    #+#             */
-/*   Updated: 2025/02/04 17:40:40 by cboma-ya         ###   ########.fr       */
+/*   Updated: 2025/02/10 18:07:34 by cboma-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@
 # include "env.h"
 # include "lexer.h"
 # include "data.h"
+
+typedef struct s_lexer			t_lexer;
+typedef struct s_user_input		t_user_input;
+typedef struct s_data			t_data;
 
 void	get_and_store_user_input(t_data *data);
 

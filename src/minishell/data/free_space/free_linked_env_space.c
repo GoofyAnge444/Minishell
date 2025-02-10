@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_data.c                                        :+:      :+:    :+:   */
+/*   free_env_space.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cboma-ya <cboma-ya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/04 16:25:00 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/02/10 18:15:06 by cboma-ya         ###   ########.fr       */
+/*   Created: 2025/02/10 16:47:26 by cboma-ya          #+#    #+#             */
+/*   Updated: 2025/02/10 18:14:16 by cboma-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "data.h"
 
-void	free_data(t_data *data)
+void	free_linked_env_space(t_data *data)
 {
-	if (data)
-	{
-		free_linked_env_space(data);
-		free_user_input_space(data);
-		free_lexer_space(data);
-	}
+	dll_clear_list(data -> env, (void (*)(void *))(&free_env_content));
 }

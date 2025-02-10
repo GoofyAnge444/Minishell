@@ -6,7 +6,7 @@
 /*   By: cboma-ya <cboma-ya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 14:01:09 by eazard            #+#    #+#             */
-/*   Updated: 2025/02/03 16:58:25 by cboma-ya         ###   ########.fr       */
+/*   Updated: 2025/02/10 18:07:25 by cboma-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 
 typedef struct s_dll_node	t_dll_node;
 typedef struct s_dll_list	t_dll_list;
+typedef struct s_lexer		t_lexer;
+typedef struct s_user_input	t_user_input;
+typedef struct s_data		t_data;
 
 struct	s_dll_node
 {

@@ -107,8 +107,17 @@ libft_fclean: libft_clean
 libft_re: libft_fclean $(LIBFT)
 
 MINISHELL_FILES = 	main \
-					init_data \
-					free_data \
+					get_and_store_user_input \
+					\
+					data/create_space/create_lexer_space \
+					data/create_space/create_linked_env_space \
+					data/create_space/create_user_input_space \
+					data/free_space/free_lexer_space \
+					data/free_space/free_linked_env_space \
+					data/free_space/free_user_input_space \
+					data/fatal_error_clean_exit \
+					data/free_data \
+					data/init_data \
 					\
 					double_linked_list/dll_clear_list \
 					double_linked_list/dll_clear_node \
@@ -122,6 +131,9 @@ MINISHELL_FILES = 	main \
 					env/env_var_to_env_content \
 					env/free_env_content \
 					env/create_linked_env \
+					\
+					lexer/lexer_state_machine \
+					lexer/get_next_token_content \
 				
 
 

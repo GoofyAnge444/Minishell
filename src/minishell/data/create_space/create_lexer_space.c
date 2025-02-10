@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lexer.c                                            :+:      :+:    :+:   */
+/*   create_lexer_space.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cboma-ya <cboma-ya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/04 17:18:35 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/02/04 17:55:10 by cboma-ya         ###   ########.fr       */
+/*   Created: 2025/02/10 17:08:44 by cboma-ya          #+#    #+#             */
+/*   Updated: 2025/02/10 17:24:22 by cboma-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lexer.h"
+#include "data.h"
 
-void	lexer(t_data *data)
+void	create_lexer_space(t_data *data)
 {
-	// space;
-	// double_redirection;
-	// single_redirection;
-	// pipe;
-	// double_quote;
-	// single_quote;
-	// $;
-	// string;
+	data -> lexer = ft_calloc(1, sizeof(t_lexer));
+	if (!data -> lexer)
+		fatal_error_clean_exit(data, MALLOC_FAILURE);
 }
