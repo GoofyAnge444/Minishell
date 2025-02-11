@@ -90,7 +90,7 @@ $(LIBFT_OBJS_DIR)%.o: $(LIBFT_SRCS_DIR)%.c
 	@echo -n "$(CLEAR_LINE)$(BLUE)Compiling: $<..." ; \
 	mkdir -p $(dir $@) ; \
 	mkdir -p $(LIBFT_OBJS_DIR) ; \
-	$(CC) $(CFLAGS) -c $< -o $@ ; 
+	$(CC) $(CFLAGS) -c $< -o $@ ;
 
 libft: $(LIBFT)
 
@@ -109,15 +109,16 @@ libft_re: libft_fclean $(LIBFT)
 MINISHELL_FILES = 	main \
 					get_and_store_user_input \
 					\
+					data/create_space/init_data \
 					data/create_space/create_lexer_space \
 					data/create_space/create_linked_env_space \
 					data/create_space/create_user_input_space \
-					data/free_space/free_lexer_space \
-					data/free_space/free_linked_env_space \
-					data/free_space/free_user_input_space \
+					data/fatal_error_free/free_lexer_space \
+					data/fatal_error_free/free_linked_env_space \
+					data/fatal_error_free/free_user_input_space \
+					data/fatal_error_free/free_data \
 					data/fatal_error_clean_exit \
-					data/free_data \
-					data/init_data \
+					\
 					\
 					double_linked_list/dll_clear_list \
 					double_linked_list/dll_clear_node \
@@ -132,9 +133,29 @@ MINISHELL_FILES = 	main \
 					env/free_env_content \
 					env/create_linked_env \
 					\
+					\
 					lexer/lexer_state_machine \
+					lexer/get_next_token_and_insert_tail \
 					lexer/get_next_token_content \
-				
+					lexer/get_token_type \
+					lexer/free_token_content \
+					lexer/print_token_content \
+					\
+					lexer/character_utils/actual_character \
+					lexer/character_utils/next_character \
+					lexer/character_utils/actual_character_offset \
+					lexer/character_utils/moov_cursor_forward_of_one \
+					\
+					lexer/get_next_token_value/get_next_space_value \
+					lexer/get_next_token_value/get_next_append_value \
+					lexer/get_next_token_value/get_next_input_value \
+					lexer/get_next_token_value/get_next_heredoc_value \
+					lexer/get_next_token_value/get_next_output_value \
+					lexer/get_next_token_value/get_next_string_value \
+					lexer/get_next_token_value/get_next_db_quote_value \
+					lexer/get_next_token_value/get_next_s_quote_value \
+					lexer/get_next_token_value/get_next_pipe_value \
+					\
 
 
 MINISHELL_SRCS_DIR = ./src/minishell/

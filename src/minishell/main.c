@@ -6,7 +6,7 @@
 /*   By: cboma-ya <cboma-ya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:23:05 by eazard            #+#    #+#             */
-/*   Updated: 2025/02/10 16:20:47 by cboma-ya         ###   ########.fr       */
+/*   Updated: 2025/02/11 16:13:24 by cboma-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,11 @@
 // }
 // static void    print_content(t_env_content *env_content)
 // {
-// 	ft_printf("content = %s\n", env_content -> name);
-// 	ft_printf("value = %s\n", env_content -> value);
+	// ft_printf("content = %s\n", env_content -> name);
+	// ft_printf("value = %s\n", env_content -> value);
 // }
+
+
 
 int	main(int ac, char *av[], char *env[])
 {
@@ -35,6 +37,8 @@ int	main(int ac, char *av[], char *env[])
 	{
 		get_and_store_user_input(&data);
 		lexer_state_machine(&data);
+		dll_print_list(data.lexer->linked_token,
+			(void (*)(void *))(&print_token_content));
 		fatal_error_clean_exit(&data, MALLOC_FAILURE);
 	}
 	return (0);

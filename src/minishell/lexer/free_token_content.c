@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_lexer_space.c                                 :+:      :+:    :+:   */
+/*   free_token_content.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cboma-ya <cboma-ya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/10 16:28:41 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/02/10 18:13:29 by cboma-ya         ###   ########.fr       */
+/*   Created: 2025/02/11 16:01:22 by cboma-ya          #+#    #+#             */
+/*   Updated: 2025/02/11 16:01:55 by cboma-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "data.h"
+#include "lexer.h"
 
-static void	free_token(void *rien)
+void	free_token_content(t_token_content *token_content)
 {
-	(void)rien;
-	return ;
-}
-// FAUDRA TEG CA 
-void	free_lexer_space(t_data *data)
-{
-	if (data && data -> lexer)
+	if (token_content)
 	{
-		if (data -> lexer -> linked_token)
-		{
-			dll_clear_list(data -> lexer -> linked_token, &free_token);
-		}
-		free(data -> lexer);
+		if (token_content -> value)
+			free(token_content -> value);
+		free(token_content);
 	}
 }
