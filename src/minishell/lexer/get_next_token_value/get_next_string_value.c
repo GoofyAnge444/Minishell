@@ -14,6 +14,7 @@
 
 static bool	break_condition_string(char c)
 {
+	// ft_printf("actual char = %c\n", c);
 	return (c == '\0' || c == '\'' || c == '"'
 		|| c == '|' || c == '<' || c == '>' || ft_is_white_space(c));
 }
@@ -39,6 +40,7 @@ char	*get_next_string_value(t_data *data)
 	i = 0;
 	while (break_condition_string(actual_character(data)) == false)
 	{
+		ft_printf("C UN MIRACLE\n");
 		token_value[i] = actual_character(data);
 		moov_cursor_forward_of_one(data);
 		i++;

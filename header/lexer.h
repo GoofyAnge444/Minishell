@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cboma-ya <cboma-ya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 17:14:08 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/02/11 16:03:44 by cboma-ya         ###   ########.fr       */
+/*   Updated: 2025/02/11 17:13:27 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ void			moov_cursor_forward_of_one(t_data *data);
 t_token_type	get_token_type(t_data *data);
 void			get_next_token_and_insert_tail(t_data *data,
 					t_token_type token_type);
+void			print_token_type(t_token_type token_type);
 void			print_token_content(t_token_content *token_content);
 void			free_token_content(t_token_content *token_content);
 

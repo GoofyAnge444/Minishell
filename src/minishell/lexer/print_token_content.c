@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   print_token_content.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cboma-ya <cboma-ya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 15:55:17 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/02/11 16:15:14 by cboma-ya         ###   ########.fr       */
+/*   Updated: 2025/02/11 17:13:18 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lexer.h"
 
-static void	print_token_type(t_token_type token_type)
+void	print_token_type(t_token_type token_type)
 {
 	const char	*token_names[] = {
 		"SPACE_TK",
