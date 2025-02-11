@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_var_to_env_content.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cboma-ya <cboma-ya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 19:32:11 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/02/04 17:11:32 by cboma-ya         ###   ########.fr       */
+/*   Updated: 2025/02/11 18:23:07 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ t_env_content	*env_var_to_env_content(char *env_var)
 		return (free(env_content), NULL);
 	env_content -> value = ft_calloc(get_value_len(env_var) + 1, 1);
 	if (!env_content -> value)
-		return (free(env_content), free(env_content -> name), NULL);
+		return ( free(env_content -> name), free(env_content), NULL);
 	write_name_in_node(env_content, env_var);
 	write_value_in_node(env_content, env_var);
 	return (env_content);
