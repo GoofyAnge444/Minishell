@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 17:18:35 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/02/11 17:21:48 by eazard           ###   ########.fr       */
+/*   Updated: 2025/02/11 17:38:03 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,6 @@ static void	init_linked_token_in_data(t_data *data)
 		{
 			fatal_error_clean_exit(data, MALLOC_FAILURE);
 		}
-	}
-	else
-	{	
-		ft_printf("error\n");
-		if (data)
-			ft_printf("lexer NULL\n");
-		else
-			ft_printf("data NULL\n");
 	}
 }
 
@@ -51,10 +43,9 @@ void	lexer_state_machine(t_data *data)
 
 	init_linked_token_in_data(data);
 	init_function_tab_in_data(data -> lexer -> get_token_value);
-	while (ft_printf("WHILE actual character = %c", actual_character(data)) && actual_character(data))
+	while (actual_character(data))
 	{
 		token_type = get_token_type(data);
-		print_token_type(token_type);
 		get_next_token_and_insert_tail(data, token_type);
 	}
 }

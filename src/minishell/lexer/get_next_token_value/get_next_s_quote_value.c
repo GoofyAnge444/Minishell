@@ -21,8 +21,10 @@ static size_t	get_s_quote_token_len(t_data *data)
 {
 	size_t	i;
 
-	i = 0;
-	while (break_condition_s_quote(actual_character_offset(data, i)))
+	i = 1;
+	while (break_condition_s_quote(actual_character_offset(data, i)) == false)
+		i++;
+	if (actual_character_offset(data, i) == '\'')
 		i++;
 	return (i);
 }
@@ -34,12 +36,19 @@ static void	skip_first_s_quote(t_data *data, char *token_value, size_t *i)
 	(*i)++;
 }
 
+static void	add_last_s_quote(t_data *data, char *token_value, size_t *i)
+{
+	token_value[(*i)] = actual_character(data);
+	moov_cursor_forward_of_one(data);
+	(*i)++;
+}
+
 char	*get_next_s_quote_value(t_data *data)
 {
 	char	*token_value;
 	size_t	i;
 
-	token_value = ft_calloc(get_s_quote_token_len(data), 1);
+	token_value = ft_calloc(get_s_quote_token_len(data) + 1, 1);
 	if (!token_value)
 		fatal_error_clean_exit(data, MALLOC_FAILURE);
 	i = 0;
@@ -50,5 +59,8 @@ char	*get_next_s_quote_value(t_data *data)
 		moov_cursor_forward_of_one(data);
 		i++;
 	}
+	if (actual_character(data) == '\'')
+		add_last_s_quote(data, token_value, &i);
+	// token_value[i] = '\0';
 	return (token_value);
 }

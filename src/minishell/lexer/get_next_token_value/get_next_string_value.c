@@ -14,7 +14,6 @@
 
 static bool	break_condition_string(char c)
 {
-	// ft_printf("actual char = %c\n", c);
 	return (c == '\0' || c == '\'' || c == '"'
 		|| c == '|' || c == '<' || c == '>' || ft_is_white_space(c));
 }
@@ -24,7 +23,7 @@ static size_t	get_string_token_len(t_data *data)
 	size_t	i;
 
 	i = 0;
-	while (break_condition_string(actual_character_offset(data, i)))
+	while (break_condition_string(actual_character_offset(data, i)) == false)
 		i++;
 	return (i);
 }
@@ -34,16 +33,16 @@ char	*get_next_string_value(t_data *data)
 	char	*token_value;
 	size_t	i;
 
-	token_value = ft_calloc(get_string_token_len(data), 1);
+	token_value = ft_calloc(get_string_token_len(data) + 1, 1);
 	if (!token_value)
 		fatal_error_clean_exit(data, MALLOC_FAILURE);
 	i = 0;
 	while (break_condition_string(actual_character(data)) == false)
 	{
-		ft_printf("C UN MIRACLE\n");
 		token_value[i] = actual_character(data);
 		moov_cursor_forward_of_one(data);
 		i++;
 	}
+	// token_value[i] = '\0';
 	return (token_value);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_space_value.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cboma-ya <cboma-ya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 19:16:47 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/02/11 15:36:13 by cboma-ya         ###   ########.fr       */
+/*   Updated: 2025/02/11 18:12:26 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static size_t	get_space_token_len(t_data *data)
 	size_t	i;
 
 	i = 0;
-	while (break_condition_space(actual_character_offset(data, i)))
+	while (break_condition_space(actual_character_offset(data, i)) == false)
 		i++;
 	return (i);
 }
@@ -32,7 +32,7 @@ char	*get_next_space_value(t_data *data)
 	char	*token_value;
 	size_t	i;
 
-	token_value = ft_calloc(get_space_token_len(data), 1);
+	token_value = ft_calloc(get_space_token_len(data) + 1, 1);
 	if (!token_value)
 		fatal_error_clean_exit(data, MALLOC_FAILURE);
 	i = 0;
@@ -42,5 +42,6 @@ char	*get_next_space_value(t_data *data)
 		moov_cursor_forward_of_one(data);
 		i++;
 	}
+	// token_value[i] = '\0';
 	return (token_value);
 }
