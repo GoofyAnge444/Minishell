@@ -157,6 +157,7 @@ MINISHELL_FILES = 	main \
 					lexer/get_next_token_value/get_next_pipe_value \
 					\
 					expend/expend \
+					expend/expend_token_value \
 
 MINISHELL_SRCS_DIR = ./src/minishell/
 MINISHELL_SRCS = $(addprefix $(MINISHELL_SRCS_DIR), $(addsuffix .c, $(MINISHELL_FILES)))

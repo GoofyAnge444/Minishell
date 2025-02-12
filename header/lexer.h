@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 17:14:08 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/02/12 16:16:08 by eazard           ###   ########.fr       */
+/*   Updated: 2025/02/12 16:32:10 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,9 +85,8 @@ char			*get_next_string_value(t_data *data);
 
 /*expend*/
 void			expend(t_data *data);
-
-
-
+void			expend_token_value(t_token_content *token_content,
+					t_data *data);
 
 
 
