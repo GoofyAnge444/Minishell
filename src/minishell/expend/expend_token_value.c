@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 16:20:43 by eazard            #+#    #+#             */
-/*   Updated: 2025/02/12 17:17:15 by eazard           ###   ########.fr       */
+/*   Updated: 2025/02/12 17:40:35 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,27 @@ static void	ft_pustr(char *str)
 	write(1, "\n", 1);
 }
 
+static char	*merge_list(t_dll_list *list)
+{
+	t_dll_node	*tmp_node;
+	char		*final_str;
+	char		*tmp_str;
+
+	tmp_node = list -> head;
+	final_str = ft_strdup("");
+	if (!final_str)
+		return (NULL);
+	while (tmp_node)
+	{
+		tmp_str = ft_strjoin(final_str, (char *)(tmp_node -> content));
+		free(final_str);
+		if (!tmp_str)
+			return (NULL);
+		final_str = tmp_str;
+		tmp_node = tmp_node -> next;
+	}
+	return (final_str);
+}
 
 void	expend_token_value(t_token_content *token_content, t_data *data)
 {
@@ -105,6 +126,11 @@ void	expend_token_value(t_token_content *token_content, t_data *data)
 		begin = end;
 	}
 	dll_print_list(new_value_dll, (void (*)(void *))(&ft_pustr));
-
-	(void)new_value_str;
+	new_value_str = merge_list(new_value_dll);
+	if (!new_value_str)
+		return (dll_clear_list(new_value_dll, &free), fatal_error_clean_exit(data, MALLOC_FAILURE));
+	ft_printf("token_content new_value ->%s<-\n", new_value_str);
+	free(token_content -> value);
+	dll_clear_list(new_value_dll, &free);
+	token_content -> value = new_value_str;
 }
