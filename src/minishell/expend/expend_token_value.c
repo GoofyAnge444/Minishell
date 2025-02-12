@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 16:20:43 by eazard            #+#    #+#             */
-/*   Updated: 2025/02/12 17:43:39 by eazard           ###   ########.fr       */
+/*   Updated: 2025/02/12 18:14:11 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static char	*ft_strdup_index(char *str, size_t begin, size_t end)
 	size_t	i;
 
 	new_str = ft_calloc(end - begin + 1, 1);
-	if (!str)
+	if (!new_str)
 		return (NULL);
 	i = 0;
 	while (begin + i < end)
