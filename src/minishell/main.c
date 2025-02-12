@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:23:05 by eazard            #+#    #+#             */
-/*   Updated: 2025/02/11 17:11:39 by eazard           ###   ########.fr       */
+/*   Updated: 2025/02/12 16:16:22 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int	main(int ac, char *av[], char *env[])
 	{
 		get_and_store_user_input(&data);
 		lexer_state_machine(&data);
+		expend(&data);
 		dll_print_list(data.lexer->linked_token,
 			(void (*)(void *))(&print_token_content));
 		fatal_error_clean_exit(&data, MALLOC_FAILURE);

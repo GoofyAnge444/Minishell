@@ -8,6 +8,11 @@
 		"env.h": "c",
 		"libft.h": "c",
 		"data.h": "c",
-		"stdlib.h": "c"
+		"stdlib.h": "c",
+		"system_error": "c",
+		"array": "c",
+		"functional": "c",
+		"tuple": "c",
+		"utility": "c"
 	}
 }
