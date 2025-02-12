@@ -158,6 +158,7 @@ MINISHELL_FILES = 	main \
 					\
 					expend/expend \
 					expend/expend_token_value \
+					expend/replace_dollar_in_list \
 
 MINISHELL_SRCS_DIR = ./src/minishell/
 MINISHELL_SRCS = $(addprefix $(MINISHELL_SRCS_DIR), $(addsuffix .c, $(MINISHELL_FILES)))

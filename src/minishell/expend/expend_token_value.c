@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 16:20:43 by eazard            #+#    #+#             */
-/*   Updated: 2025/02/12 17:40:35 by eazard           ###   ########.fr       */
+/*   Updated: 2025/02/12 17:43:39 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,7 @@ void	expend_token_value(t_token_content *token_content, t_data *data)
 		dll_insert_tail(new_value_dll, tmp_node);
 		begin = end;
 	}
+	replace_dollar_in_list(new_value_dll, data);
 	dll_print_list(new_value_dll, (void (*)(void *))(&ft_pustr));
 	new_value_str = merge_list(new_value_dll);
 	if (!new_value_str)
