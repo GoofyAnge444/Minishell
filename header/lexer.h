@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 17:14:08 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/02/12 19:09:23 by eazard           ###   ########.fr       */
+/*   Updated: 2025/02/17 16:31:59 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,4 +92,8 @@ void			create_expend_list(t_token_content *token_content, t_data *data,
 					t_dll_list *expend_dll);
 char			*merge_expend_list(t_dll_list *expend_list);
 
+/*merge dq,sq and str*/
+void			merge_str_dq_sq(t_data *data);
+char			*ft_strjoin_dq_sq(char *prefix, char *suffix, t_token_type prefix_type
+					, t_token_type suffix_type);
 #endif

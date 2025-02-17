@@ -156,13 +156,15 @@ MINISHELL_FILES = 	main \
 					lexer/get_next_token_value/get_next_s_quote_value \
 					lexer/get_next_token_value/get_next_pipe_value \
 					\
+					lexer/merge_str_dq_sq/merge_str_dq_sq \
+					lexer/merge_str_dq_sq/ft_strjoin_dq_sq \
+					\
+					\
 					expend/expend \
 					expend/expend_token_value \
 					expend/replace_dollar_in_expend_list \
 					expend/create_expend_list \
 					expend/merge_expend_list \
-					\
-					merge_str_dq_sq/merge_str_dq_sq \
 					\
 
 MINISHELL_SRCS_DIR = ./src/minishell/

@@ -6,11 +6,11 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:52:06 by eazard            #+#    #+#             */
-/*   Updated: 2025/02/17 15:39:16 by eazard           ###   ########.fr       */
+/*   Updated: 2025/02/17 16:25:04 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "merge_str_dq_sq.h"
+#include "lexer.h"
 
 static bool	is_mergeable_type(t_dll_node *node)
 {
@@ -29,15 +29,16 @@ static void	merge_node_and_its_next(t_data *data, t_dll_node *node)
 {
 	t_token_content	merged_content;
 
-	ft_printf("merge_node_and_its_next IN\n");
 	merged_content.type = STRING_TK;
 	merged_content.value
 		= ft_strjoin_dq_sq(((t_token_content *)(node ->content))-> value,
-			((t_token_content *)(node -> next ->content))-> value);
-	ft_printf("%s\n", merged_content.value);
+			((t_token_content *)(node -> next ->content))-> value,
+			((t_token_content *)(node ->content))-> type,
+			((t_token_content *)(node -> next ->content))-> type);
 	if (!merged_content.value)
 		fatal_error_clean_exit(data, MALLOC_FAILURE);
 	dll_clear_node(node -> next, (void (*)(void *))(&free_token_content));
+	free(((t_token_content *)(node -> content))->value);
 	*((t_token_content *)(node -> content)) = merged_content;
 }
 
@@ -48,7 +49,6 @@ void	merge_str_dq_sq(t_data *data)
 	tmp_node = data -> lexer -> linked_token -> head;
 	while (tmp_node)
 	{
-		ft_printf("value :%i\n", is_mergeable_type(tmp_node -> next));
 		while (is_mergeable_type(tmp_node -> next))
 			merge_node_and_its_next(data, tmp_node);
 		tmp_node = tmp_node -> next;
