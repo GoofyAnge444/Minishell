@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   dll_clear_node.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cboma-ya <cboma-ya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 16:07:41 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/02/03 16:14:13 by cboma-ya         ###   ########.fr       */
+/*   Updated: 2025/02/17 15:23:47 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "dll.h"
 
-void	dll_clear_node(t_dll_node *del_node, void *free_content(void *))
+void	dll_clear_node(t_dll_node *del_node, void (*free_content)(void *))
 {
 	if (del_node->content)
 		free_content(del_node->content);

@@ -1,33 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   merge_str_dq_sq.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/04 13:09:59 by eazard            #+#    #+#             */
-/*   Updated: 2025/02/17 14:53:15 by eazard           ###   ########.fr       */
+/*   Created: 2025/02/17 14:52:33 by eazard            #+#    #+#             */
+/*   Updated: 2025/02/17 15:18:14 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
-# ifndef STDLIB_H
-#  define  STDLIB_H
-#  include <stdlib.h>
-# endif
-# define VOID (void)0
-# include "libft.h"
-# include "dll.h"
-# include "env.h"
-# include "lexer.h"
-# include "data.h"
-# include "merge_str_dq_sq.h"
+#ifndef MERGE_STR_DQ_SQ_H
+# define MERGE_STR_DQ_SQ_H
+# include "minishell.h"
 
-typedef struct s_lexer			t_lexer;
-typedef struct s_user_input		t_user_input;
-typedef struct s_data			t_data;
-
-void	get_and_store_user_input(t_data *data);
+void	merge_str_dq_sq(t_data *data);
 
 #endif
