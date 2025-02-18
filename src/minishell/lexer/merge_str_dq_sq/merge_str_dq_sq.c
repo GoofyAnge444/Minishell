@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:52:06 by eazard            #+#    #+#             */
-/*   Updated: 2025/02/17 16:25:04 by eazard           ###   ########.fr       */
+/*   Updated: 2025/02/18 18:07:18 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,14 @@ void	merge_str_dq_sq(t_data *data)
 {
 	t_dll_node	*tmp_node;
 
-	tmp_node = data -> lexer -> linked_token -> head;
-	while (tmp_node)
+	if (data->non_fatal_error_occured == false)
 	{
-		while (is_mergeable_type(tmp_node -> next))
-			merge_node_and_its_next(data, tmp_node);
-		tmp_node = tmp_node -> next;
+		tmp_node = data -> lexer -> linked_token -> head;
+		while (tmp_node)
+		{
+			while (is_mergeable_type(tmp_node -> next))
+				merge_node_and_its_next(data, tmp_node);
+			tmp_node = tmp_node -> next;
+		}
 	}
 }

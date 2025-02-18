@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 16:07:41 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/02/17 15:23:47 by eazard           ###   ########.fr       */
+/*   Updated: 2025/02/18 17:09:06 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,12 @@ void	dll_clear_node(t_dll_node *del_node, void (*free_content)(void *))
 {
 	if (del_node->content)
 		free_content(del_node->content);
-	if (!del_node->next)
+	if (dll_len(del_node -> parent_list) == 1)
+	{
+		del_node->parent_list->tail = NULL;
+		del_node->parent_list->head = NULL;
+	}
+	else if (!del_node->next)
 	{
 		del_node->prev->next = NULL;
 		del_node->parent_list->tail = del_node->prev;

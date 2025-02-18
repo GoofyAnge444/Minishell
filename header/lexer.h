@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 17:14:08 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/02/17 16:31:59 by eazard           ###   ########.fr       */
+/*   Updated: 2025/02/18 18:04:23 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,15 @@ char			actual_character_offset(t_data *data, size_t i);
 char			next_character(t_data *data);
 void			moov_cursor_forward_of_one(t_data *data);
 /*core function*/
+void			lexer(t_data *data);
 t_token_type	get_token_type(t_data *data);
 void			get_next_token_and_insert_tail(t_data *data,
 					t_token_type token_type);
 void			print_token_type(t_token_type token_type);
 void			print_token_content(t_token_content *token_content);
 void			free_token_content(t_token_content *token_content);
+void			delete_all_space_tk(t_data *data);
+
 
 
 /*get next token value*/
@@ -94,6 +97,11 @@ char			*merge_expend_list(t_dll_list *expend_list);
 
 /*merge dq,sq and str*/
 void			merge_str_dq_sq(t_data *data);
-char			*ft_strjoin_dq_sq(char *prefix, char *suffix, t_token_type prefix_type
-					, t_token_type suffix_type);
+char			*ft_strjoin_dq_sq(char *prefix, char *suffix,
+					t_token_type prefix_type, t_token_type suffix_type);
+
+/*syntax error check*/
+bool			check_unclose_quote(t_data *data);
+bool			check_double_redir(t_data *data);
+bool			check_double_pipe(t_data *data);
 #endif

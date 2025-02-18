@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 15:46:13 by eazard            #+#    #+#             */
-/*   Updated: 2025/02/12 19:04:58 by eazard           ###   ########.fr       */
+/*   Updated: 2025/02/18 18:06:11 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,16 @@ void	expend(t_data *data)
 {
 	t_dll_node	*token;
 
-	token = data -> lexer -> linked_token -> head;
-	while (token)
+	if (data ->non_fatal_error_occured == false)
 	{
-		if (is_expendable_type(((t_token_content *)token -> content)-> type) \
-	&& token_value_contain_a_dollar(token) == true)
-			expend_token_value(token -> content, data);
-		token = token -> next;
+		token = data -> lexer -> linked_token -> head;
+		while (token)
+		{
+			if (is_expendable_type(((t_token_content *)token -> content)-> type) \
+		&& token_value_contain_a_dollar(token) == true)
+				expend_token_value(token -> content, data);
+			token = token -> next;
+		}
 	}
 }
 

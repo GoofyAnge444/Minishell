@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dll_clear_list.c                                   :+:      :+:    :+:   */
+/*   free_lexer_space.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/03 15:51:23 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/02/18 17:03:39 by eazard           ###   ########.fr       */
+/*   Created: 2025/02/10 16:28:41 by cboma-ya          #+#    #+#             */
+/*   Updated: 2025/02/18 15:43:43 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "dll.h"
+#include "data.h"
 
-void	dll_clear_list(t_dll_list *list, void (*free_content)(void *))
+void	free_lexer_space(t_data *data, bool fatal)
 {
-	t_dll_node	*node;
-	t_dll_node	*next_node;
-
-	node = list->head;
-	while (node)
+	if (data && data -> lexer)
 	{
-		free_content(node->content);
-		next_node = node->next;
-		free(node);
-		node = next_node;
+		if (data -> lexer -> linked_token)
+		{
+			dll_clear_list(data -> lexer -> linked_token,
+				(void (*)(void *))(&free_token_content));
+			data -> lexer -> linked_token = NULL;
+		}
+		if (fatal)
+		{
+			free(data -> lexer);
+			(data -> lexer) = NULL;
+		}
 	}
-	free(list);
 }

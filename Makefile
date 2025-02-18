@@ -113,11 +113,14 @@ MINISHELL_FILES = 	main \
 					data/create_space/create_lexer_space \
 					data/create_space/create_linked_env_space \
 					data/create_space/create_user_input_space \
-					data/fatal_error_free/free_lexer_space \
-					data/fatal_error_free/free_linked_env_space \
-					data/fatal_error_free/free_user_input_space \
-					data/fatal_error_free/free_data \
+					\
+					data/error_free/free_lexer_space \
+					data/error_free/free_linked_env_space \
+					data/error_free/free_user_input_space \
+					data/error_free/free_data \
+					\
 					data/fatal_error_clean_exit \
+					data/non_fatal_error_clean \
 					\
 					\
 					double_linked_list/dll_clear_list \
@@ -134,12 +137,14 @@ MINISHELL_FILES = 	main \
 					env/create_linked_env \
 					\
 					\
+					lexer/lexer \
 					lexer/lexer_state_machine \
 					lexer/get_next_token_and_insert_tail \
 					lexer/get_next_token_content \
 					lexer/get_token_type \
 					lexer/free_token_content \
 					lexer/print_token_content \
+					lexer/delete_all_space_tk \
 					\
 					lexer/character_utils/actual_character \
 					lexer/character_utils/next_character \
@@ -158,6 +163,10 @@ MINISHELL_FILES = 	main \
 					\
 					lexer/merge_str_dq_sq/merge_str_dq_sq \
 					lexer/merge_str_dq_sq/ft_strjoin_dq_sq \
+					\
+					lexer/check_syntax_error/check_unclose_quote \
+					lexer/check_syntax_error/check_double_pipe \
+					lexer/check_syntax_error/check_double_redir \
 					\
 					\
 					expend/expend \

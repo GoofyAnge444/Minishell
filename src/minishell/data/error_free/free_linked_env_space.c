@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_lexer_space.c                                 :+:      :+:    :+:   */
+/*   free_linked_env_space.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cboma-ya <cboma-ya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/10 16:28:41 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/02/11 16:14:53 by cboma-ya         ###   ########.fr       */
+/*   Created: 2025/02/10 16:47:26 by cboma-ya          #+#    #+#             */
+/*   Updated: 2025/02/18 17:05:43 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "data.h"
 
-void	free_lexer_space(t_data *data)
+void	free_linked_env_space(t_data *data)
 {
-	if (data && data -> lexer)
+	if (data && data -> env)
 	{
-		if (data -> lexer -> linked_token)
-		{
-			dll_clear_list(data -> lexer -> linked_token,
-				(void (*)(void *))(&free_token_content));
-		}
-		free(data -> lexer);
+		dll_clear_list(data -> env, (void (*)(void *))(&free_env_content));
+		data -> env = NULL;
 	}
 }

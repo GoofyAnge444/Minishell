@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 17:18:35 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/02/11 17:38:03 by eazard           ###   ########.fr       */
+/*   Updated: 2025/02/18 18:05:46 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,14 @@ void	lexer_state_machine(t_data *data)
 {
 	t_token_type	token_type;
 
-	init_linked_token_in_data(data);
-	init_function_tab_in_data(data -> lexer -> get_token_value);
-	while (actual_character(data))
+	if (data ->non_fatal_error_occured == false)
 	{
-		token_type = get_token_type(data);
-		get_next_token_and_insert_tail(data, token_type);
+		init_linked_token_in_data(data);
+		init_function_tab_in_data(data -> lexer -> get_token_value);
+		while (actual_character(data))
+		{
+			token_type = get_token_type(data);
+			get_next_token_and_insert_tail(data, token_type);
+		}
 	}
 }
