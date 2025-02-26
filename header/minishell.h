@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:09:59 by eazard            #+#    #+#             */
-/*   Updated: 2025/02/17 16:20:03 by eazard           ###   ########.fr       */
+/*   Updated: 2025/02/26 17:48:53 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 # include "env.h"
 # include "lexer.h"
 # include "data.h"
+# include "binary_tree.h"
+# include "parsing.h"
 
 typedef struct s_lexer			t_lexer;
 typedef struct s_user_input		t_user_input;

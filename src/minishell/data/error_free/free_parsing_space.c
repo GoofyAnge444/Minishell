@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_linked_env_space.c                            :+:      :+:    :+:   */
+/*   free_parsing_space.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/10 16:47:26 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/02/26 18:00:04 by eazard           ###   ########.fr       */
+/*   Created: 2025/02/26 17:55:03 by eazard            #+#    #+#             */
+/*   Updated: 2025/02/26 18:46:50 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "data.h"
 
-void	free_linked_env_space(t_data *data, bool fatal)
+void	free_parsing_space(t_data *data, bool fatal)
 {
-	if (fatal && data && data -> env)
+	if (data -> parsing_commands)
 	{
-		dll_clear_list(data -> env, (void (*)(void *))(&free_env_content));
-		data -> env = NULL;
+		if (fatal)
+			dll_clear_list(data -> parsing_commands,
+				(void (*)(void *))(&free_command_content));
 	}
 }

@@ -14,6 +14,8 @@
 		"functional": "c",
 		"tuple": "c",
 		"utility": "c",
-		"merge_str_dq_sq.h": "c"
+		"merge_str_dq_sq.h": "c",
+		"binary_tree.h": "c",
+		"parsing.h": "c"
 	}
 }

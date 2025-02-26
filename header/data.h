@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 17:21:21 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/02/18 16:39:04 by eazard           ###   ########.fr       */
+/*   Updated: 2025/02/26 18:10:25 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef enum e_fatal_type_error
 typedef enum e_non_fatal_type_error
 {
 	QUOTE_CLOSE,
-	DOUBLE_REDIR,
+	REDIR_WITHOUT_STRING_FOLLOWING,
 	DOUBLE_PIPE,
 	// OPEN,
 }			t_non_fatal_type_error;
@@ -38,6 +38,7 @@ typedef enum e_non_fatal_type_error
 struct s_data
 {
 	t_lexer			*lexer;
+	t_dll_list		*parsing_commands;
 	// t_data_ex		*par;
 	// t_exec			*head;
 	// int				code_reset;
@@ -54,13 +55,15 @@ void	init_data(t_data *data, char *env[]);
 void	create_user_input_space(t_data *data);
 void	create_lexer_space(t_data *data);
 void	create_linked_env_space(t_data *data);
+void	create_parsing_space(t_data *data);
 /*exit*/
 void	fatal_error_clean_exit(t_data *data, t_fatal_type_error error);
 void	non_fatal_error_clean(t_data *data, t_non_fatal_type_error error);
 /*free*/
 void	free_data(t_data *data, bool fatal);
 void	free_lexer_space(t_data *data, bool fatal);
-void	free_linked_env_space(t_data *data);
+void	free_linked_env_space(t_data *data, bool fatal)
 void	free_user_input_space(t_data *data, bool fatal);
+void	free_parsing_space(t_data *data, bool fatal);
 
 #endif

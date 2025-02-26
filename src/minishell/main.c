@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:23:05 by eazard            #+#    #+#             */
-/*   Updated: 2025/02/18 18:04:06 by eazard           ###   ########.fr       */
+/*   Updated: 2025/02/26 15:36:56 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 // }
 // static void    print_content(t_env_content *env_content)
 // {
-	// ft_printf("content = %s\n", env_content -> name);
-	// ft_printf("value = %s\n", env_content -> value);
+// 	ft_printf("content = %s\n", env_content -> name);
+// 	ft_printf("value = %s\n", env_content -> value);
 // }
 
 
@@ -48,3 +48,15 @@ int	main(int ac, char *av[], char *env[])
 	return (0);
 }
 
+// int	main(int ac, char *av[], char *env[])
+// {
+// 	t_binary_tree	*binary_tree;
+
+// 	bypass(ac, av, env);
+// 	char *str = ft_strdup("Hello World!\n");
+// 	binary_tree = join_binary_tree(NULL, NULL, str);
+// 	if (!binary_tree)
+// 		return (1);
+// 	clear_binary_tree(binary_tree, &free);
+// 	return (0);
+// }

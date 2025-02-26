@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 17:14:08 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/02/18 18:04:23 by eazard           ###   ########.fr       */
+/*   Updated: 2025/02/26 17:36:56 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,13 @@ void			print_token_type(t_token_type token_type);
 void			print_token_content(t_token_content *token_content);
 void			free_token_content(t_token_content *token_content);
 void			delete_all_space_tk(t_data *data);
+void			rename_token(t_data *data);
+
+/*TOKEN BOOL UTILS*/
+bool			is_a_pipe_token(t_dll_node *node);
+bool			is_a_redir_token(t_dll_node *node);
+bool			is_a_quote_token(t_dll_node *node);
+bool			is_a_string_token(t_dll_node *node);
 
 
 
@@ -102,6 +109,6 @@ char			*ft_strjoin_dq_sq(char *prefix, char *suffix,
 
 /*syntax error check*/
 bool			check_unclose_quote(t_data *data);
-bool			check_double_redir(t_data *data);
-bool			check_double_pipe(t_data *data);
+bool			check_redir_followed_by_string(t_data *data);
+bool			check_each_command_has_content(t_data *data);
 #endif

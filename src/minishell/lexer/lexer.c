@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 18:03:00 by eazard            #+#    #+#             */
-/*   Updated: 2025/02/18 18:14:11 by eazard           ###   ########.fr       */
+/*   Updated: 2025/02/26 17:39:42 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,9 @@ void	lexer(t_data *data)
 		non_fatal_error_clean(data, QUOTE_CLOSE);
 	merge_str_dq_sq(data);
 	delete_all_space_tk(data);
-	if (check_double_pipe(data) == true)
+	if (check_redir_followed_by_string(data) == true)
+		non_fatal_error_clean(data, REDIR_WITHOUT_STRING_FOLLOWING);
+	if (check_each_command_has_content(data) == true)
 		non_fatal_error_clean(data, DOUBLE_PIPE);
-	if (check_double_redir(data) == true)
-		non_fatal_error_clean(data, DOUBLE_REDIR);
+	rename_token(data);
 }

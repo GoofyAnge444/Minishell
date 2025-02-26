@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_linked_env_space.c                            :+:      :+:    :+:   */
+/*   create_binary_tree.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/10 16:47:26 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/02/26 18:00:04 by eazard           ###   ########.fr       */
+/*   Created: 2025/02/20 16:29:30 by eazard            #+#    #+#             */
+/*   Updated: 2025/02/20 16:58:18 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "data.h"
+#include "binary_tree.h"
 
-void	free_linked_env_space(t_data *data, bool fatal)
+t_binary_tree	*create_binary_tree(void *content)
 {
-	if (fatal && data && data -> env)
-	{
-		dll_clear_list(data -> env, (void (*)(void *))(&free_env_content));
-		data -> env = NULL;
-	}
+	t_binary_tree	*new_binary_tree;
+
+	new_binary_tree = ft_calloc(1, sizeof(t_binary_tree));
+	if (!new_binary_tree)
+		return (NULL);
+	new_binary_tree -> content = content;
+	ft_printf("binary tree created at adress %p\n", new_binary_tree);
+	return (new_binary_tree);
 }

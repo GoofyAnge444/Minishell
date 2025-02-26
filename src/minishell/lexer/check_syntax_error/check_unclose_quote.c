@@ -6,19 +6,11 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 15:07:37 by eazard            #+#    #+#             */
-/*   Updated: 2025/02/18 18:06:57 by eazard           ###   ########.fr       */
+/*   Updated: 2025/02/26 15:33:59 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lexer.h"
-
-static bool	is_a_quote_type(t_dll_node *node)
-{
-	if (((t_token_content *)(node -> content))->type == DQ_TK ||
-		((t_token_content *)(node -> content))->type == SQ_TK)
-		return (true);
-	return (false);
-}
 
 static bool	is_unclose_quote(t_dll_node *node)
 {
@@ -39,7 +31,7 @@ static t_dll_node	*get_last_quote_node(t_data *data)
 		return (NULL);
 	while (node -> next)
 		node = node -> next;
-	if (is_a_quote_type(node))
+	if (is_a_quote_token(node))
 		return (node);
 	return (NULL);
 }

@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_linked_env_space.c                            :+:      :+:    :+:   */
+/*   join_binary_tree.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/10 16:47:26 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/02/26 18:00:04 by eazard           ###   ########.fr       */
+/*   Created: 2025/02/20 17:07:07 by eazard            #+#    #+#             */
+/*   Updated: 2025/02/20 17:10:02 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "data.h"
+#include "binary_tree.h"
 
-void	free_linked_env_space(t_data *data, bool fatal)
+t_binary_tree	*join_binary_tree(t_binary_tree *left
+			, t_binary_tree *right, void *content)
 {
-	if (fatal && data && data -> env)
-	{
-		dll_clear_list(data -> env, (void (*)(void *))(&free_env_content));
-		data -> env = NULL;
-	}
+	t_binary_tree	*root;
+
+	root = create_binary_tree(content);
+	if (!root)
+		return (NULL);
+	root -> left_child = left;
+	root -> right_child = right;
+	ft_printf("%p and %p joined in %p\n", left, right, root);
+	return (root);
 }

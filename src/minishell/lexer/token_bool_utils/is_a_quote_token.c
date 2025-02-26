@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_linked_env_space.c                            :+:      :+:    :+:   */
+/*   is_a_quote_token.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/10 16:47:26 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/02/26 18:00:04 by eazard           ###   ########.fr       */
+/*   Created: 2025/02/26 15:33:39 by eazard            #+#    #+#             */
+/*   Updated: 2025/02/26 15:33:40 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "data.h"
+#include "lexer.h"
 
-void	free_linked_env_space(t_data *data, bool fatal)
+bool	is_a_quote_token(t_dll_node *node)
 {
-	if (fatal && data && data -> env)
-	{
-		dll_clear_list(data -> env, (void (*)(void *))(&free_env_content));
-		data -> env = NULL;
-	}
+	if (((t_token_content *)(node -> content))->type == DQ_TK ||
+		((t_token_content *)(node -> content))->type == SQ_TK)
+		return (true);
+	return (false);
 }

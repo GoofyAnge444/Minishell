@@ -113,11 +113,13 @@ MINISHELL_FILES = 	main \
 					data/create_space/create_lexer_space \
 					data/create_space/create_linked_env_space \
 					data/create_space/create_user_input_space \
+					data/create_space/create_parsing_space \
 					\
 					data/error_free/free_lexer_space \
 					data/error_free/free_linked_env_space \
 					data/error_free/free_user_input_space \
 					data/error_free/free_data \
+					data/error_free/free_parsing_space \
 					\
 					data/fatal_error_clean_exit \
 					data/non_fatal_error_clean \
@@ -132,6 +134,10 @@ MINISHELL_FILES = 	main \
 					double_linked_list/dll_new_node \
 					double_linked_list/dll_print_list \
 					\
+					binary_tree/create_binary_tree \
+					binary_tree/clear_binary_tree \
+					binary_tree/join_binary_tree \
+					\
 					env/env_var_to_env_content \
 					env/free_env_content \
 					env/create_linked_env \
@@ -145,6 +151,12 @@ MINISHELL_FILES = 	main \
 					lexer/free_token_content \
 					lexer/print_token_content \
 					lexer/delete_all_space_tk \
+					lexer/rename_token \
+					\
+					lexer/token_bool_utils/is_a_pipe_token \
+					lexer/token_bool_utils/is_a_redir_token \
+					lexer/token_bool_utils/is_a_quote_token \
+					lexer/token_bool_utils/is_a_string_token \
 					\
 					lexer/character_utils/actual_character \
 					lexer/character_utils/next_character \
@@ -165,8 +177,8 @@ MINISHELL_FILES = 	main \
 					lexer/merge_str_dq_sq/ft_strjoin_dq_sq \
 					\
 					lexer/check_syntax_error/check_unclose_quote \
-					lexer/check_syntax_error/check_double_pipe \
-					lexer/check_syntax_error/check_double_redir \
+					lexer/check_syntax_error/check_each_command_has_content \
+					lexer/check_syntax_error/check_redir_followed_by_string \
 					\
 					\
 					expend/expend \
@@ -174,6 +186,9 @@ MINISHELL_FILES = 	main \
 					expend/replace_dollar_in_expend_list \
 					expend/create_expend_list \
 					expend/merge_expend_list \
+					\
+					\
+					parsing/parsing \
 					\
 
 MINISHELL_SRCS_DIR = ./src/minishell/
