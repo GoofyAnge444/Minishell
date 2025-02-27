@@ -151,12 +151,14 @@ MINISHELL_FILES = 	main \
 					lexer/free_token_content \
 					lexer/print_token_content \
 					lexer/delete_all_space_tk \
-					lexer/rename_token \
 					\
 					lexer/token_bool_utils/is_a_pipe_token \
 					lexer/token_bool_utils/is_a_redir_token \
 					lexer/token_bool_utils/is_a_quote_token \
 					lexer/token_bool_utils/is_a_string_token \
+					lexer/token_bool_utils/is_a_file_token \
+					lexer/token_bool_utils/is_a_cmd_token \
+					lexer/token_bool_utils/is_a_arg_token \
 					\
 					lexer/character_utils/actual_character \
 					lexer/character_utils/next_character \
@@ -189,6 +191,13 @@ MINISHELL_FILES = 	main \
 					\
 					\
 					parsing/parsing \
+					parsing/rename_token \
+					parsing/add_next_command_node_to_parsing \
+					parsing/free_command_content \
+					\
+					parsing/utils/get_first_token_of_command \
+					parsing/utils/get_token_value \
+					parsing/utils/print_command_content \
 					\
 
 MINISHELL_SRCS_DIR = ./src/minishell/

@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:52:06 by eazard            #+#    #+#             */
-/*   Updated: 2025/02/18 18:07:18 by eazard           ###   ########.fr       */
+/*   Updated: 2025/02/27 10:56:08 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ void	merge_str_dq_sq(t_data *data)
 		tmp_node = data -> lexer -> linked_token -> head;
 		while (tmp_node)
 		{
-			while (is_mergeable_type(tmp_node -> next))
+			while (is_mergeable_type(tmp_node)
+				&& is_mergeable_type(tmp_node -> next))
 				merge_node_and_its_next(data, tmp_node);
 			tmp_node = tmp_node -> next;
 		}

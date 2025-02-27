@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 19:55:06 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/02/11 17:52:01 by eazard           ###   ########.fr       */
+/*   Updated: 2025/02/27 10:51:59 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 char	*get_next_output_value(t_data *data)
 {
-	char	*str_dup;
+	char	*value;
 
 	moov_cursor_forward_of_one(data);
-	str_dup = ft_strdup(">");
-	if (!str_dup)
+	value = ft_strdup(">");
+	if (!value)
 		fatal_error_clean_exit(data, MALLOC_FAILURE);
-	return (str_dup);
+	return (value);
 }

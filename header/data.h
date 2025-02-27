@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 17:21:21 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/02/26 18:10:25 by eazard           ###   ########.fr       */
+/*   Updated: 2025/02/27 10:02:53 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	non_fatal_error_clean(t_data *data, t_non_fatal_type_error error);
 /*free*/
 void	free_data(t_data *data, bool fatal);
 void	free_lexer_space(t_data *data, bool fatal);
-void	free_linked_env_space(t_data *data, bool fatal)
+void	free_linked_env_space(t_data *data, bool fatal);
 void	free_user_input_space(t_data *data, bool fatal);
 void	free_parsing_space(t_data *data, bool fatal);
 

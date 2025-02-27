@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 17:14:08 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/02/26 17:36:56 by eazard           ###   ########.fr       */
+/*   Updated: 2025/02/27 12:17:31 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,15 @@
 
 typedef struct s_data			t_data;
 typedef struct s_dll_list		t_dll_list;
+typedef struct s_dll_node		t_dll_node;
 typedef struct s_user_input		t_user_input;
 typedef struct s_lexer			t_lexer;
 typedef struct s_token_content	t_token_content;
+typedef enum e_token_type		t_token_type;
 
-
-typedef enum e_token_type
+enum e_token_type
 {
 	SPACE_TK,
-	// FILE_TOKEN,
-	// DOLLAR_TOKEN,
-	// DOLLAR_FAIL,
 	STRING_TK,
 	DQ_TK,
 	SQ_TK,
@@ -35,8 +33,10 @@ typedef enum e_token_type
 	OUTPUT_TK,
 	HEREDOC_TK,
 	APPEND_TK,
-}	t_token_type;
-
+	FILE_TK,
+	CMD_TK,
+	ARG_TK
+};
 
 struct	s_token_content
 {
@@ -72,13 +72,16 @@ void			print_token_type(t_token_type token_type);
 void			print_token_content(t_token_content *token_content);
 void			free_token_content(t_token_content *token_content);
 void			delete_all_space_tk(t_data *data);
-void			rename_token(t_data *data);
 
 /*TOKEN BOOL UTILS*/
 bool			is_a_pipe_token(t_dll_node *node);
 bool			is_a_redir_token(t_dll_node *node);
 bool			is_a_quote_token(t_dll_node *node);
 bool			is_a_string_token(t_dll_node *node);
+bool			is_a_file_token(t_dll_node *node);
+bool			is_a_cmd_token(t_dll_node *node);
+bool			is_a_arg_token(t_dll_node *node);
+
 
 
 

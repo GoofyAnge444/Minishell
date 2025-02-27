@@ -6,46 +6,52 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 17:46:42 by eazard            #+#    #+#             */
-/*   Updated: 2025/02/26 18:49:50 by eazard           ###   ########.fr       */
+/*   Updated: 2025/02/27 12:35:19 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 
-void	free_command_content(t_command_content *command_content)
+static int	count_cmd_nb(t_data *data)
 {
-	if (command_content)
+	t_dll_node	*node;
+	int			cmd_count;
+
+	cmd_count = 0;
+	node = data -> lexer -> linked_token -> head;
+	while (node)
 	{
-		if (command_content -> args)
-			ft_free_tab(command_content -> args);
-		if (command_content -> name)
-			free(command_content ->name);
-		if (command_content -> redir)
-			ft_free_tab(command_content -> redir);
-		free(command_content);
+		if (is_a_cmd_token(node))
+			cmd_count++;
+		node = node -> next;
 	}
-}
-
-void	add_next_command(t_data *data, int processed_command_nb)
-{
-	t_command_content	*command_content;
-	t_dll_node			*node;
-
-	command_content = ft_calloc(1, sizeof(t_command_content));
-	if (!command_content)
-		fatal_error_clean_exit(data, MALLOC_FAILURE);
-	add_cmd_name(data, command_content, processed_command_nb);
-	add_cmd_arg(data, command_content, processed_command_nb);
-	add_cmd_redir(data, command_content, processed_command_nb);
-	node = dll_new_node((void *)command_content);
-	if (!node)
-		return (free_command_content(command_content),
-			fatal_error_clean_exit(data, MALLOC_FAILURE));
-	dll_insert_tail(data -> parsing_commands, node);
+	return (cmd_count);
 }
 
 void	parsing(t_data *data)
 {
+	int	cmd_count;
+	int	processed_cmd_index;
 
+	create_parsing_space(data);
+	cmd_count = count_cmd_nb(data);
+	ft_printf("cmd_count = %i\n", cmd_count);
+	processed_cmd_index = 0;
+	while (processed_cmd_index < cmd_count)
+	{
+		add_next_command_node_to_parsing(data, processed_cmd_index);
+		processed_cmd_index++;
+	}
 }
 
+
+/* 
+
+ꩇׁׅ݊ꪱׁׅ ꩇׁׅ݊ꪱׁׅ꯱ׁׅ֒hׁׅ֮ꫀׁׅܻᥣׁׅ֪ᥣׁׅ֪ ⋆｡‧˚ʚ🍓ɞ˚‧｡⋆ ~~>ceci est un test | suivi d'un' deuxieme < test
+cmd_count = 2
+malloc(): memory corruption (fast)
+[1]    78569 IOT instruction  ./minishell
+
+faut gerer ca ?? force a toi chef
+
+*/
