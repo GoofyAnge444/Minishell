@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 17:14:08 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/02/27 12:17:31 by eazard           ###   ########.fr       */
+/*   Updated: 2025/03/03 18:29:14 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,7 @@ char			*merge_expend_list(t_dll_list *expend_list);
 void			merge_str_dq_sq(t_data *data);
 char			*ft_strjoin_dq_sq(char *prefix, char *suffix,
 					t_token_type prefix_type, t_token_type suffix_type);
+void			convert_lonely_dq_and_sq_to_str(t_data *data);
 
 /*syntax error check*/
 bool			check_unclose_quote(t_data *data);

@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 18:03:00 by eazard            #+#    #+#             */
-/*   Updated: 2025/02/26 17:39:42 by eazard           ###   ########.fr       */
+/*   Updated: 2025/03/03 18:16:56 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	lexer(t_data *data)
 	if (check_unclose_quote(data) == true)
 		non_fatal_error_clean(data, QUOTE_CLOSE);
 	merge_str_dq_sq(data);
+	convert_lonely_dq_and_sq_to_str(data);
 	delete_all_space_tk(data);
 	if (check_redir_followed_by_string(data) == true)
 		non_fatal_error_clean(data, REDIR_WITHOUT_STRING_FOLLOWING);
