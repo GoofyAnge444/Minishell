@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 17:28:34 by eazard            #+#    #+#             */
-/*   Updated: 2025/02/27 12:03:34 by eazard           ###   ########.fr       */
+/*   Updated: 2025/03/03 17:43:29 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,19 @@ struct	s_redir
 
 void			parsing(t_data *data);
 void			free_command_content(t_command_content *command_content);
+void			free_redir_tab(t_redir **redir_tab);
 void			rename_token(t_data *data);
+size_t			count_arg_nb_in_this_command(t_dll_node *xnode);
+size_t			count_redir_nb_in_this_command(t_dll_node *node);
 void			add_next_command_node_to_parsing(t_data *data,
 					int processed_command_nb);
+void			add_cmd_name(t_data *data, t_command_content *command_content,
+					int processed_cmd_index);
+void			add_cmd_arg(t_data *data, t_command_content *command_content,
+					int processed_cmd_index);
+void			add_cmd_redir(t_data *data,
+					t_command_content *command_content,
+					int processed_cmd_index);
 
 /* UTILS*/
 char			*get_token_value(t_dll_node *node);

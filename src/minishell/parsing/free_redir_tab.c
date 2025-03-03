@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_first_token_of_command.c                       :+:      :+:    :+:   */
+/*   free_redir_tab.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/27 11:50:13 by eazard            #+#    #+#             */
-/*   Updated: 2025/03/03 15:59:18 by eazard           ###   ########.fr       */
+/*   Created: 2025/03/03 17:09:08 by eazard            #+#    #+#             */
+/*   Updated: 2025/03/03 17:15:57 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 
-t_dll_node	*get_first_token_of_command(t_data *data,
-				int processed_cmd_index)
+void	free_redir_tab(t_redir **redir_tab)
 {
-	int			i;
-	t_dll_node	*node;
+	int	i;
 
-	i = 0 	;
-	node = data -> lexer -> linked_token -> head;
-	while (i < processed_cmd_index)
+	i = 0;
+	while (redir_tab[i])
 	{
-		while (node && !is_a_pipe_token(node))
-			node = node -> next;
-		if (is_a_pipe_token(node))
-			node = node -> next;
+		if (redir_tab[i] && redir_tab[i]-> filename)
+			free(redir_tab[i]-> filename);
+		if (redir_tab[i])
+			free(redir_tab[i]);
 		i++;
 	}
-	return (node);
+	free(redir_tab);
 }

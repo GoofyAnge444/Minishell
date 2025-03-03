@@ -1,50 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   add_next_command_node_to_parsing.c                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/26 17:46:42 by eazard            #+#    #+#             */
-/*   Updated: 2025/03/03 16:33:34 by eazard           ###   ########.fr       */
+/*   Created: 2025/02/27 11:42:16 by eazard            #+#    #+#             */
+/*   Updated: 2025/03/03 17:41:22 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 
-static int	count_cmd_nb(t_data *data)
+void	add_next_command_node_to_parsing(t_data *data, int processed_cmd_index)
 {
-	t_dll_node	*node;
-	int			cmd_count;
+	t_command_content	*command_content;
+	t_dll_node			*node;
 
-	cmd_count = 0;
-	node = data -> lexer -> linked_token -> head;
-	while (node)
-	{
-		if (is_a_pipe_token(node))
-			cmd_count++;
-		node = node -> next;
-	}
-	return (cmd_count + 1);
-}
-
-void	parsing(t_data *data)
-{
-	int	cmd_count;
-	int	processed_cmd_index;
-
-	if (data -> non_fatal_error_occured == false)
-	{
-		create_parsing_space(data);
-		cmd_count = count_cmd_nb(data);
-		ft_printf("cmd_count = %i\n", cmd_count);
-		processed_cmd_index = 0;
-		while (processed_cmd_index < cmd_count)
-		{
-			add_next_command_node_to_parsing(data, processed_cmd_index);
-			processed_cmd_index++;
-		}
-	}
+	command_content = ft_calloc(1, sizeof(t_command_content));
+	if (!command_content)
+		fatal_error_clean_exit(data, MALLOC_FAILURE);
+	add_cmd_name(data, command_content, processed_cmd_index);
+	add_cmd_arg(data, command_content, processed_cmd_index);
+	add_cmd_redir(data, command_content, processed_cmd_index);
+	node = dll_new_node((void *)command_content);
+	if (!node)
+		return (free_command_content(command_content),
+			fatal_error_clean_exit(data, MALLOC_FAILURE));
+	dll_insert_tail(data -> parsing_commands, node);
 }
 
 

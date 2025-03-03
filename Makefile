@@ -192,8 +192,15 @@ MINISHELL_FILES = 	main \
 					\
 					parsing/parsing \
 					parsing/rename_token \
-					parsing/add_next_command_node_to_parsing \
 					parsing/free_command_content \
+					parsing/free_redir_tab \
+					\
+					parsing/add_next_command_node_to_parsing/add_cmd_name \
+					parsing/add_next_command_node_to_parsing/add_cmd_arg \
+					parsing/add_next_command_node_to_parsing/add_cmd_redir \
+					parsing/add_next_command_node_to_parsing/add_next_command_node_to_parsing \
+					parsing/add_next_command_node_to_parsing/count_arg_nb_in_this_command \
+					parsing/add_next_command_node_to_parsing/count_redir_nb_in_this_command \
 					\
 					parsing/utils/get_first_token_of_command \
 					parsing/utils/get_token_value \
