@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 18:17:56 by eazard            #+#    #+#             */
-/*   Updated: 2025/03/03 18:30:39 by eazard           ###   ########.fr       */
+/*   Updated: 2025/03/04 10:24:50 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,18 +36,21 @@ void	convert_lonely_dq_and_sq_to_str(t_data *data)
 	char		*new_value;
 	t_dll_node	*node;
 
-	node = data -> lexer -> linked_token -> head;
-	while (node)
+	if (data -> non_fatal_error_occured == false)
 	{
-		if (is_a_quote_token(node))
+		node = data -> lexer -> linked_token -> head;
+		while (node)
 		{
-			new_value = get_value_without_quote(node);
-			if (!new_value)
-				fatal_error_clean_exit(data, MALLOC_FAILURE);
-			free(((t_token_content *)(node -> content))-> value);
-			(((t_token_content *)(node -> content))-> value) = new_value;
-			((t_token_content *)(node -> content))-> type = STRING_TK;
+			if (is_a_quote_token(node))
+			{
+				new_value = get_value_without_quote(node);
+				if (!new_value)
+					fatal_error_clean_exit(data, MALLOC_FAILURE);
+				free(((t_token_content *)(node -> content))-> value);
+				(((t_token_content *)(node -> content))-> value) = new_value;
+				((t_token_content *)(node -> content))-> type = STRING_TK;
+			}
+			node = node -> next;
 		}
-		node = node -> next;
 	}
 }
