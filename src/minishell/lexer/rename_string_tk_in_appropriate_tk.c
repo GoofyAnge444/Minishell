@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rename_token.c                                     :+:      :+:    :+:   */
+/*   rename_string_tk_in_appropriate_tk.c               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/27 09:42:04 by eazard            #+#    #+#             */
-/*   Updated: 2025/02/27 10:58:50 by eazard           ###   ########.fr       */
+/*   Created: 2025/03/04 18:11:03 by eazard            #+#    #+#             */
+/*   Updated: 2025/03/04 18:11:11 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
+#include "lexer.h"
 
 static void	rename_str_to_file_tk(t_data *data)
 {
@@ -68,7 +68,7 @@ static void	rename_str_to_arg_tk(t_data *data)
 	}
 }
 
-void	rename_token(t_data *data)
+void	rename_string_tk_in_appropriate_tk(t_data *data)
 {
 	if (data ->non_fatal_error_occured == false)
 	{

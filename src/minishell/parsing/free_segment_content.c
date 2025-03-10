@@ -1,36 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_command_content.c                             :+:      :+:    :+:   */
+/*   free_segment_content.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 11:35:55 by eazard            #+#    #+#             */
-/*   Updated: 2025/03/03 17:08:51 by eazard           ###   ########.fr       */
+/*   Updated: 2025/03/08 19:47:15 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 
-void	free_command_content(t_command_content *command_content)
+void	free_segment_content(t_segment_content *segment_content)
 {
-	if (command_content)
+	if (segment_content)
 	{
-		if (command_content -> name)
+		if (segment_content -> cmd_name)
 		{
-			free(command_content ->name);
-			command_content ->name = NULL;
+			free(segment_content -> cmd_name);
+			segment_content -> cmd_name = NULL;
 		}
-		if (command_content -> args)
+		if (segment_content -> cmd_args)
 		{
-			ft_free_tab(command_content -> args);
-			command_content -> args = NULL;
+			ft_free_tab(segment_content -> cmd_args);
+			segment_content -> cmd_args = NULL;
 		}
-		if (command_content -> redir)
+		if (segment_content -> redir_tab)
 		{
-			free_redir_tab(command_content -> redir);
-			command_content -> redir = NULL;
+			free_redir_tab(segment_content -> redir_tab);
+			segment_content -> redir_tab = NULL;
 		}
-		free(command_content);
+		free(segment_content);
 	}
 }

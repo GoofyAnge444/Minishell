@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 16:25:00 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/02/26 18:01:02 by eazard           ###   ########.fr       */
+/*   Updated: 2025/03/10 11:42:16 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,6 @@ void	free_data(t_data *data, bool fatal)
 		free_lexer_space(data, fatal);
 		free_linked_env_space(data, fatal);
 		free_parsing_space(data, fatal);
+		// free_fatal_error_space(data, fatal);
 	}
 }

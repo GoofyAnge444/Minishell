@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 17:28:34 by eazard            #+#    #+#             */
-/*   Updated: 2025/03/03 17:43:29 by eazard           ###   ########.fr       */
+/*   Updated: 2025/03/10 11:58:53 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,22 @@
 # define PARSING_H
 # include "minishell.h"
 
-typedef struct s_command_content	t_command_content;
+typedef struct s_segment_content	t_segment_content;
 typedef struct s_redir				t_redir;
-// typedef struct s_parsing			t_parsing;
+typedef struct s_parsing			t_parsing;
 
-struct	s_command_content
+struct s_parsing
 {
-	char		**args;
-	char		*name;
-	t_redir		**redir;
+	t_dll_list	*segment_dll;
+	int			segment_count;
+	int			segment_processed;
+};
+
+struct	s_segment_content
+{
+	char		**cmd_args;
+	char		*cmd_name;
+	t_redir		**redir_tab;
 };
 
 struct	s_redir
@@ -31,31 +38,24 @@ struct	s_redir
 	char			*filename;
 };
 
-// struct s_parsing
-// {
-// 	t_dll_list	*commands;
-// };
 
 void			parsing(t_data *data);
-void			free_command_content(t_command_content *command_content);
+void			create_segment_dll(t_data *data);
+void			free_segment_content(t_segment_content *segment_content);
 void			free_redir_tab(t_redir **redir_tab);
-void			rename_token(t_data *data);
-size_t			count_arg_nb_in_this_command(t_dll_node *xnode);
-size_t			count_redir_nb_in_this_command(t_dll_node *node);
-void			add_next_command_node_to_parsing(t_data *data,
-					int processed_command_nb);
-void			add_cmd_name(t_data *data, t_command_content *command_content,
-					int processed_cmd_index);
-void			add_cmd_arg(t_data *data, t_command_content *command_content,
-					int processed_cmd_index);
-void			add_cmd_redir(t_data *data,
-					t_command_content *command_content,
-					int processed_cmd_index);
+size_t			count_cmd_arg_nb_in_this_segment(t_dll_node *node);
+size_t			count_redir_nb_in_this_segment(t_dll_node *node);
+void			add_next_segment_to_segment_dll(t_data *data);
+void			add_cmd_name_to_segment(t_data *data,
+					t_segment_content *segment_content);
+void			add_cmd_arg_to_segment(t_data *data,
+					t_segment_content *segment_content);
+void			add_redir_tab_to_segment(t_data *data,
+					t_segment_content *segment_content);
 
 /* UTILS*/
 char			*get_token_value(t_dll_node *node);
-void			print_command_content(t_command_content *content);
-t_dll_node		*get_first_token_of_command(t_data *data,
-					int processed_cmd_index);
+void			print_segment_content(t_segment_content *content);
+t_dll_node		*get_first_token_of_segment(t_data *data);
 
 #endif

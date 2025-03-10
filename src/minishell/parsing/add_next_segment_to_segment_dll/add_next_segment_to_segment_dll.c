@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   add_next_command_node_to_parsing.c                 :+:      :+:    :+:   */
+/*   add_next_segment_to_segment_dll.c                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/27 11:42:16 by eazard            #+#    #+#             */
-/*   Updated: 2025/03/03 17:41:22 by eazard           ###   ########.fr       */
+/*   Created: 2025/03/06 09:47:04 by eazard            #+#    #+#             */
+/*   Updated: 2025/03/10 12:00:52 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 
-void	add_next_command_node_to_parsing(t_data *data, int processed_cmd_index)
+void	add_next_segment_to_segment_dll(t_data *data)
 {
-	t_command_content	*command_content;
-	t_dll_node			*node;
+	t_segment_content	*segment_content;
+	t_dll_node			*segment_node;
 
-	command_content = ft_calloc(1, sizeof(t_command_content));
-	if (!command_content)
+	segment_content = ft_calloc(1, sizeof(t_segment_content));
+	if (!segment_content)
 		fatal_error_clean_exit(data, MALLOC_FAILURE);
-	add_cmd_name(data, command_content, processed_cmd_index);
-	add_cmd_arg(data, command_content, processed_cmd_index);
-	add_cmd_redir(data, command_content, processed_cmd_index);
-	node = dll_new_node((void *)command_content);
-	if (!node)
-		return (free_command_content(command_content),
+	add_cmd_name_to_segment(data, segment_content);
+	add_cmd_arg_to_segment(data, segment_content);
+	add_redir_tab_to_segment(data, segment_content);
+	segment_node = dll_new_node((void *)segment_content);
+	if (!segment_node)
+		return (free_segment_content(segment_content),
 			fatal_error_clean_exit(data, MALLOC_FAILURE));
-	dll_insert_tail(data -> parsing_commands, node);
+	dll_insert_tail(data -> parsing -> segment_dll, segment_node);
 }
 
 

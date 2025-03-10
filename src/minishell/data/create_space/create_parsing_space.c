@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/26 17:51:03 by eazard            #+#    #+#             */
-/*   Updated: 2025/02/26 18:10:42 by eazard           ###   ########.fr       */
+/*   Created: 2025/03/08 19:03:22 by eazard            #+#    #+#             */
+/*   Updated: 2025/03/10 11:53:03 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	create_parsing_space(t_data *data)
 {
-	data -> parsing_commands = dll_new_list();
-	if (!data -> parsing_commands)
+	data -> parsing = ft_calloc(1, sizeof(t_parsing));
+	if (!data -> parsing)
 		fatal_error_clean_exit(data, MALLOC_FAILURE);
 }

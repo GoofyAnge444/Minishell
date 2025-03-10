@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 17:14:08 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/03/03 18:29:14 by eazard           ###   ########.fr       */
+/*   Updated: 2025/03/04 18:11:31 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ void			print_token_type(t_token_type token_type);
 void			print_token_content(t_token_content *token_content);
 void			free_token_content(t_token_content *token_content);
 void			delete_all_space_tk(t_data *data);
+void			rename_string_tk_in_appropriate_tk(t_data *data);
 
 /*TOKEN BOOL UTILS*/
 bool			is_a_pipe_token(t_dll_node *node);

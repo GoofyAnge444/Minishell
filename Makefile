@@ -144,6 +144,7 @@ MINISHELL_FILES = 	main \
 					\
 					\
 					lexer/lexer \
+					lexer/rename_string_tk_in_appropriate_tk \
 					lexer/lexer_state_machine \
 					lexer/get_next_token_and_insert_tail \
 					lexer/get_next_token_content \
@@ -192,20 +193,20 @@ MINISHELL_FILES = 	main \
 					\
 					\
 					parsing/parsing \
-					parsing/rename_token \
-					parsing/free_command_content \
+					parsing/create_segment_dll \
+					parsing/free_segment_content \
 					parsing/free_redir_tab \
 					\
-					parsing/add_next_command_node_to_parsing/add_cmd_name \
-					parsing/add_next_command_node_to_parsing/add_cmd_arg \
-					parsing/add_next_command_node_to_parsing/add_cmd_redir \
-					parsing/add_next_command_node_to_parsing/add_next_command_node_to_parsing \
-					parsing/add_next_command_node_to_parsing/count_arg_nb_in_this_command \
-					parsing/add_next_command_node_to_parsing/count_redir_nb_in_this_command \
+					parsing/add_next_segment_to_segment_dll/add_cmd_name_to_segment \
+					parsing/add_next_segment_to_segment_dll/add_cmd_arg_to_segment \
+					parsing/add_next_segment_to_segment_dll/add_redir_tab_to_segment \
+					parsing/add_next_segment_to_segment_dll/add_next_segment_to_segment_dll \
+					parsing/add_next_segment_to_segment_dll/count_cmd_arg_nb_in_this_segment \
+					parsing/add_next_segment_to_segment_dll/count_redir_nb_in_this_segment \
 					\
-					parsing/utils/get_first_token_of_command \
+					parsing/utils/get_first_token_of_segment \
 					parsing/utils/get_token_value \
-					parsing/utils/print_command_content \
+					parsing/utils/print_segment_content \
 					\
 
 MINISHELL_SRCS_DIR = ./src/minishell/
