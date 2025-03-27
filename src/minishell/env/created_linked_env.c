@@ -1,38 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env.h                                              :+:      :+:    :+:   */
+/*   created_linked_env.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cboma-ya <cboma-ya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/03 19:29:44 by cboma-ya          #+#    #+#             */
+/*   Created: 2025/02/10 17:28:31 by cboma-ya          #+#    #+#             */
 /*   Updated: 2025/03/16 02:26:11 by cboma-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ENV_H
-# define ENV_H
-# include "minishell.h"
+#include "env.h"
 
-typedef struct s_user_input		t_user_input;
-typedef struct s_env_content	t_env_content;
-typedef struct s_lexer			t_lexer;
-typedef struct s_data			t_data;
-typedef struct s_env			t_env;
-
-struct s_env_content
+void	created_linked_env(t_data *data, char *env[])
 {
-	char	*name;
-	char	*value;
-};
+	size_t			i;
+	t_dll_node		*env_node;
 
-// struct s_env
-// {
-// 	t_dll_list	*env_dll;
-// };
-
-t_env_content	*env_var_to_env_content(char *env_var);
-void			free_env_content(t_env_content *env_content);
-void			created_linked_env(t_data *data, char **env);
-
-#endif
+	i = 0;
+	while (env[i])
+	{
+		env_node = dll_new_node(NULL);
+		if (!env_node)
+			fatal_error_clean_exit(data, MALLOC_FAILURE);
+		env_node->content = env_var_to_env_content(env[i]);
+		if (!env_node -> content)
+			fatal_error_clean_exit(data, MALLOC_FAILURE);
+		dll_insert_tail(data -> env, env_node);
+		i++;
+	}
+}

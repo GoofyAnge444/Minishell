@@ -1,5 +1,5 @@
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -I$(INCLUDES)
+CFLAGS = -Wall -Wextra -Werror -g3 -I$(INCLUDES)
 INCLUDES = ./header/
 AR = ar rcs
 RM = rm -rf
@@ -73,7 +73,7 @@ LIBFT_FILES = \
 		\
 		gnl/get_next_line \
 		gnl/get_next_line_utils \
-
+		
 LIBFT_SRCS_DIR = ./src/libft/
 LIBFT_SRCS = $(addprefix $(LIBFT_SRCS_DIR), $(addsuffix .c, $(LIBFT_FILES)))
 LIBFT_OBJS_DIR = ./obj/libft/
@@ -140,7 +140,7 @@ MINISHELL_FILES = 	main \
 					\
 					env/env_var_to_env_content \
 					env/free_env_content \
-					env/create_linked_env \
+					env/created_linked_env \
 					\
 					\
 					lexer/lexer \
@@ -208,6 +208,10 @@ MINISHELL_FILES = 	main \
 					parsing/utils/get_token_value \
 					parsing/utils/print_segment_content \
 					\
+					exec/exec \
+					exec/builtins/echo \
+					exec/builtins/pwd \
+
 
 MINISHELL_SRCS_DIR = ./src/minishell/
 MINISHELL_SRCS = $(addprefix $(MINISHELL_SRCS_DIR), $(addsuffix .c, $(MINISHELL_FILES)))

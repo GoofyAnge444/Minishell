@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
+/*   By: cboma-ya <cboma-ya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:09:59 by eazard            #+#    #+#             */
-/*   Updated: 2025/02/27 10:25:52 by eazard           ###   ########.fr       */
+/*   Updated: 2025/03/27 18:57:22 by cboma-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #  include <stdlib.h>
 # endif
 # define VOID (void)0
+# include <stdio.h>
 # include "libft.h"
 # include "dll.h"
 # include "env.h"
@@ -29,8 +30,7 @@ typedef struct s_lexer			t_lexer;
 typedef struct s_user_input		t_user_input;
 typedef struct s_data			t_data;
 
-
-
 void	get_and_store_user_input(t_data *data);
+void	exec(t_data *data, t_dll_list *lst);
 
 #endif

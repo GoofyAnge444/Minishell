@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cboma-ya <cboma-ya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/24 15:16:33 by ange              #+#    #+#             */
-/*   Updated: 2025/03/27 18:58:26 by cboma-ya         ###   ########.fr       */
+/*   Created: 2025/03/23 02:31:44 by cboma-ya          #+#    #+#             */
+/*   Updated: 2025/03/27 19:55:52 by cboma-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "minishell.h"
 
-int	ft_strcmp(const char *str1,
-	const char *str2)
+void	ft_pwd(void)
 {
-	size_t	i;
+	char	*path;
 
-	i = 0;
-	while (str1[i] && str1[i] == str2[i])
-		i++;
-	return (str1[i] - str2[i]);
+	path = getcwd(NULL, 0);
+	if (!path)
+		return ;
+	printf("%s\n", path);
+	free(path);
 }

@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cboma-ya <cboma-ya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/24 15:16:33 by ange              #+#    #+#             */
-/*   Updated: 2025/03/27 18:58:26 by cboma-ya         ###   ########.fr       */
+/*   Created: 2025/03/23 02:32:03 by cboma-ya          #+#    #+#             */
+/*   Updated: 2025/03/26 00:25:05 by cboma-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "minishell.h"
 
-int	ft_strcmp(const char *str1,
-	const char *str2)
+void	ft_cd(t_segment_content *content, t_data *data)
 {
-	size_t	i;
-
-	i = 0;
-	while (str1[i] && str1[i] == str2[i])
-		i++;
-	return (str1[i] - str2[i]);
+	if (content -> cmd_args[2])
+		ft_putstr_fd("cd: too many arguments\n",2);
+	chdir()
 }

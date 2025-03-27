@@ -1,24 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cboma-ya <cboma-ya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/24 15:16:33 by ange              #+#    #+#             */
-/*   Updated: 2025/03/27 18:58:26 by cboma-ya         ###   ########.fr       */
+/*   Created: 2025/03/23 02:34:23 by cboma-ya          #+#    #+#             */
+/*   Updated: 2025/03/23 02:34:36 by cboma-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-int	ft_strcmp(const char *str1,
-	const char *str2)
-{
-	size_t	i;
-
-	i = 0;
-	while (str1[i] && str1[i] == str2[i])
-		i++;
-	return (str1[i] - str2[i]);
-}
+#include "minishell.h"
