@@ -6,11 +6,21 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 17:43:54 by eazard            #+#    #+#             */
-/*   Updated: 2025/04/27 18:41:44 by eazard           ###   ########.fr       */
+/*   Updated: 2025/04/27 18:57:29 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "exec.h"
+
+static t_dll_node	*get_next_cmd_node(t_dll_node *segment_node)
+{
+	t_segment_content	*segment_content;
+	t_cmd_content		*cmd_content;
+	t_dll_node			*next_cmd_node;
+		
+	segment_content = (t_segment_content *)segment_node ->content;
+	cmd_content = convert_segment__in_cmd(segment_content);
+}
 
 static void	create_cmd_list(t_data *data)
 {
@@ -22,16 +32,15 @@ static void	create_cmd_list(t_data *data)
 static void	fill_cmd_list(t_data *data, t_dll_list *cmd_dll)
 {
 	t_dll_node		*parsing_segment;
-	t_dll_node		*new_cmd_dll_node;
+	t_dll_node		*next_cmd_node;
 	
 	parsing_segment = data -> parsing -> segment_dll -> head;
 	while (parsing_segment)
 	{
-		ft_printf("converting one segment...\n");
-		new_cmd_dll_node = convert_parsing_segment_in_cmd_node(parsing_segment);
-		if (!new_cmd_dll_node)
+		next_cmd_node = get_next_cmd_node(parsing_segment);
+		if (!next_cmd_node)
 			fatal_error_clean_exit(data, MALLOC_FAILURE);
-		dll_insert_tail(cmd_dll, new_cmd_dll_node);
+		dll_insert_tail(cmd_dll, next_cmd_node);
 		parsing_segment = parsing_segment -> next;
 	}
 }
