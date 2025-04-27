@@ -114,12 +114,14 @@ MINISHELL_FILES = 	main \
 					data/create_space/create_linked_env_space \
 					data/create_space/create_user_input_space \
 					data/create_space/create_parsing_space \
+					data/create_space/create_exec_space \
 					\
 					data/error_free/free_lexer_space \
 					data/error_free/free_linked_env_space \
 					data/error_free/free_user_input_space \
 					data/error_free/free_data \
 					data/error_free/free_parsing_space \
+					data/error_free/free_exec_space \
 					\
 					data/fatal_error_clean_exit \
 					data/non_fatal_error_clean \
@@ -208,6 +210,10 @@ MINISHELL_FILES = 	main \
 					parsing/utils/get_token_value \
 					parsing/utils/print_segment_content \
 					\
+					\
+					exec/exec \
+					exec/build_cmd_list \
+					exec/is_builtin \
 
 MINISHELL_SRCS_DIR = ./src/minishell/
 MINISHELL_SRCS = $(addprefix $(MINISHELL_SRCS_DIR), $(addsuffix .c, $(MINISHELL_FILES)))
@@ -216,7 +222,7 @@ MINISHELL_OBJS = $(addprefix $(MINISHELL_OBJS_DIR), $(addsuffix .o, $(MINISHELL_
 
 $(NAME): $(LIBFT) $(MINISHELL_OBJS)
 	@echo -n "$(CLEAR_LINE)$(BLUE)Linking: $@..." ; \
-	$(CC) $(CFLAGS) -o $@ $(MINISHELL_OBJS) -L./lib -lft
+	$(CC) $(CFLAGS) -o $@ $(MINISHELL_OBJS) -L./lib -lft -lreadline 
 	@echo "\n$(BOLD)$(BLUE)"
 	@echo "  ███╗   ███╗██╗███╗   ██╗██╗███████╗██╗  ██╗███████╗██╗     ██╗     "
 	@echo "  ████╗ ████║██║████╗  ██║██║██╔════╝██║  ██║██╔════╝██║     ██║     "

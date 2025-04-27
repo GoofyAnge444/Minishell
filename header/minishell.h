@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:09:59 by eazard            #+#    #+#             */
-/*   Updated: 2025/02/27 10:25:52 by eazard           ###   ########.fr       */
+/*   Updated: 2025/04/27 18:09:10 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,16 @@
 # include "data.h"
 # include "binary_tree.h"
 # include "parsing.h"
+# include "exec.h"
+# include <stdio.h>
+# include <readline/readline.h>
+# include <readline/history.h>
+# include <limits.h>
 
 typedef struct s_lexer			t_lexer;
 typedef struct s_user_input		t_user_input;
 typedef struct s_data			t_data;
-
+typedef struct s_exec			t_exec;
 
 
 void	get_and_store_user_input(t_data *data);

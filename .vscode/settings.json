@@ -17,6 +17,9 @@
 		"merge_str_dq_sq.h": "c",
 		"binary_tree.h": "c",
 		"parsing.h": "c",
-		"*.tcc": "c"
+		"*.tcc": "c",
+		"readline.h": "c",
+		"history.h": "c",
+		"exec.h": "c"
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 18:17:15 by eazard            #+#    #+#             */
-/*   Updated: 2025/02/12 19:04:48 by eazard           ###   ########.fr       */
+/*   Updated: 2025/04/23 16:16:25 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ static size_t	get_dollar_end(char *value, size_t begin)
 	size_t	end;
 
 	end = begin + 1;
+	if (value[end] == '?')
+		return (end + 1);
 	while (value[end] && is_dollar_char(value[end]))
 		end++;
 	return (end);

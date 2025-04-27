@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 16:04:49 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/03/10 11:52:27 by eazard           ###   ########.fr       */
+/*   Updated: 2025/04/27 17:52:06 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,7 @@ void	init_data(t_data *data, char *env[])
 	create_linked_env_space(data);
 	created_linked_env(data, env);
 	create_parsing_space(data);
+	create_exec_space(data);
+	data -> exit_code = 0;
 	// create_fatal_error_space(data);
 }

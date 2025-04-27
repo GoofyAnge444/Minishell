@@ -1,26 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_data.c                                        :+:      :+:    :+:   */
+/*   exec.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/04 16:25:00 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/04/27 17:54:37 by eazard           ###   ########.fr       */
+/*   Created: 2025/04/22 12:20:25 by eazard            #+#    #+#             */
+/*   Updated: 2025/04/27 18:24:07 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#ifndef EXEC_H
+# define EXEC_H
+# include "minishell.h"
 
-void	free_data(t_data *data, bool fatal)
+typedef struct s_exec			t_exec;
+typedef struct s_cmd_content	t_cmd_content;
+
+struct s_cmd_content
 {
-	if (data)
-	{
-		free_user_input_space(data, fatal);
-		free_lexer_space(data, fatal);
-		free_linked_env_space(data, fatal);
-		free_parsing_space(data, fatal);
-		free_exec_space(data, fatal);
-		rl_clear_history();
-	}
-}
+	int		infile_fd;
+	int		outfile_fd;
+	char	**cmd_args;
+	char	*cmd_name;
+	bool	skip_cmd;
+};
+
+struct s_exec
+{
+	t_dll_list	*cmd_dll;
+};
+
+bool			is_builtin(char *cmd);
+void			build_cmd_list(t_data *data);
+void			exec(t_data *data);
+
+#endif

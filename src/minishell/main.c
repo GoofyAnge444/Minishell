@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:23:05 by eazard            #+#    #+#             */
-/*   Updated: 2025/03/08 19:58:50 by eazard           ###   ########.fr       */
+/*   Updated: 2025/04/27 18:40:30 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	main(int ac, char *av[], char *env[])
 		{
 			lexer(&data);
 			parsing(&data);
-			// exec(&data);
+			exec(&data);
 		}
 		if (data.non_fatal_error_occured == false)
 		{
@@ -67,13 +67,19 @@ int	main(int ac, char *av[], char *env[])
 
 // int	main(int ac, char *av[], char *env[])
 // {
-// 	t_binary_tree	*binary_tree;
+// 	char *line;
 
 // 	bypass(ac, av, env);
-// 	char *str = ft_strdup("Hello World!\n");
-// 	binary_tree = join_binary_tree(NULL, NULL, str);
-// 	if (!binary_tree)
-// 		return (1);
-// 	clear_binary_tree(binary_tree, &free);
+// 	line = readline("enter a prompt:\n");
+// 	if (line)
+// 	{
+// 		ft_printf("line is --->%s<---\n", line);
+// 		free(line);
+// 		ft_printf("line is free\n");
+// 	}
+// 	else
+// 		ft_printf("line is NULL\n");
+// 	rl_on_new_line ();
+// 	rl_clear_history();
 // 	return (0);
 // }

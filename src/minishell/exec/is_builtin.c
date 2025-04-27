@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_data.c                                        :+:      :+:    :+:   */
+/*   is_builtin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/04 16:25:00 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/04/27 17:54:37 by eazard           ###   ########.fr       */
+/*   Created: 2025/04/22 12:19:56 by eazard            #+#    #+#             */
+/*   Updated: 2025/04/27 18:09:00 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "exec.h"
 
-void	free_data(t_data *data, bool fatal)
+bool	is_builtin(char *cmd)
 {
-	if (data)
-	{
-		free_user_input_space(data, fatal);
-		free_lexer_space(data, fatal);
-		free_linked_env_space(data, fatal);
-		free_parsing_space(data, fatal);
-		free_exec_space(data, fatal);
-		rl_clear_history();
-	}
+	if (!cmd)
+		return (false);
+	if (!ft_strncmp("echo", cmd, INT_MAX) || !ft_strncmp("cd", cmd, INT_MAX) \
+	|| !ft_strncmp("pwd", cmd, INT_MAX) || !ft_strncmp("export", cmd, INT_MAX) \
+	|| !ft_strncmp("unset", cmd, INT_MAX) || !ft_strncmp("env", cmd, INT_MAX) \
+	|| !ft_strncmp("exit", cmd, INT_MAX))
+		return (true);
+	return (false);
 }
