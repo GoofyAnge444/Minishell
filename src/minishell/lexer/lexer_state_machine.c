@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 17:18:35 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/02/27 10:56:42 by eazard           ###   ########.fr       */
+/*   Updated: 2025/04/28 16:09:58 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	init_function_tab_in_data(char *(*get_token_value[])(t_data *))
 	get_token_value[DQ_TK] = &get_next_db_quote_value;
 	get_token_value[SQ_TK] = &get_next_s_quote_value;
 	get_token_value[INPUT_TK] = &get_next_input_value;
-	get_token_value[OUTPUT_TK] = &get_next_output_value;
+	get_token_value[TRUNCATE_TK] = &get_next_output_value;
 	get_token_value[HEREDOC_TK] = &get_next_heredoc_value;
 	get_token_value[APPEND_TK] = &get_next_append_value;
 }

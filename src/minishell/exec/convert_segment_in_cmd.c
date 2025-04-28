@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 18:57:46 by eazard            #+#    #+#             */
-/*   Updated: 2025/04/28 15:12:57 by eazard           ###   ########.fr       */
+/*   Updated: 2025/04/28 15:54:36 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ t_cmd_content	*convert_segment_in_cmd(t_segment_content *segment)
 	cmd_content -> cmd_args = ft_tabdup(segment -> cmd_args);
 	if (!cmd_content -> cmd_args)
 		return (free_cmd_content(cmd_content), NULL);
-	// get infile
-	// get outfile
+	get_infinile_fd(segment, cmd_content); //TODO
+	get_outfile_fd(segment, cmd_content); //TODO
 	return (cmd_content);
 }

@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 18:25:07 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/02/11 17:23:40 by eazard           ###   ########.fr       */
+/*   Updated: 2025/04/28 16:09:58 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_token_type	get_token_type(t_data *data)
 	else if (actual_character(data) == '>')
 	{
 		if (next_character(data) != '>')
-			return (OUTPUT_TK);
+			return (TRUNCATE_TK);
 		return (APPEND_TK);
 	}
 	else if (actual_character(data) == '\'')

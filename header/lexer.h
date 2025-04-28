@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 17:14:08 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/03/04 18:11:31 by eazard           ###   ########.fr       */
+/*   Updated: 2025/04/28 16:09:58 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ enum e_token_type
 	SQ_TK,
 	PIPE_TK,
 	INPUT_TK,
-	OUTPUT_TK,
+	TRUNCATE_TK,
 	HEREDOC_TK,
 	APPEND_TK,
 	FILE_TK,

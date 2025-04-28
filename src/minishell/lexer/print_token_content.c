@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 15:55:17 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/02/27 10:39:29 by eazard           ###   ########.fr       */
+/*   Updated: 2025/04/28 16:09:58 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	print_token_type(t_token_type token_type)
 		"SQ_TK",
 		"PIPE_TK",
 		"INPUT_TK",
-		"OUTPUT_TK",
+		"TRUNCATE_TK",
 		"HEREDOC_TK",
 		"APPEND_TK",
 		"FILE_TK",
