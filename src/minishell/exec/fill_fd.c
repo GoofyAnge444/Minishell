@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 15:54:50 by eazard            #+#    #+#             */
-/*   Updated: 2025/04/28 18:35:08 by eazard           ###   ########.fr       */
+/*   Updated: 2025/04/28 18:46:42 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,8 @@ static void	fill_infile_fd(t_redir *redir, t_cmd_content *cmd)
 	if (redir->redir_type == INPUT_TK)
 		cmd->infile_fd = open(redir->filename, O_RDONLY);
 	else if (redir->redir_type == HEREDOC_TK)
-		// cmd->infile_fd = heredoc(); TOOD
-		ft_printf("heredoc\n");
-		
+		cmd->infile_fd = heredoc(redir->filename);
+		// ft_printf("heredoc\n");
 }
 
 static void	fill_outfile_fd(t_redir *redir, t_cmd_content *cmd)

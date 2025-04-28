@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 12:20:25 by eazard            #+#    #+#             */
-/*   Updated: 2025/04/28 18:34:32 by eazard           ###   ########.fr       */
+/*   Updated: 2025/04/28 18:58:55 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 typedef struct s_exec				t_exec;
 typedef struct s_cmd_content		t_cmd_content;
 typedef struct s_segment_content	t_segment_content;
+typedef struct s_redir				t_redir;
 
 struct s_cmd_content
 {
@@ -40,5 +41,6 @@ t_cmd_content	*convert_segment_in_cmd(t_segment_content *segment);
 void			print_cmd_content(t_cmd_content *cmd_content);
 void			free_cmd_content(t_cmd_content *cmd_content);
 void			fill_fd(t_redir **redir_tab, t_cmd_content *cmd);
+int				heredoc(char *delimiter);
 
 #endif

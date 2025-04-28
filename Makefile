@@ -218,6 +218,7 @@ MINISHELL_FILES = 	main \
 					exec/free_cmd_content \
 					exec/print_cmd_content \
 					exec/fill_fd \
+					exec/heredoc \
 
 MINISHELL_SRCS_DIR = ./src/minishell/
 MINISHELL_SRCS = $(addprefix $(MINISHELL_SRCS_DIR), $(addsuffix .c, $(MINISHELL_FILES)))

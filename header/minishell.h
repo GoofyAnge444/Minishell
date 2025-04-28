@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:09:59 by eazard            #+#    #+#             */
-/*   Updated: 2025/04/28 16:27:31 by eazard           ###   ########.fr       */
+/*   Updated: 2025/04/28 18:58:04 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #  include <stdlib.h>
 # endif
 # include <fcntl.h>
+# include <unistd.h>
 # define VOID (void)0
 # include "libft.h"
 # include "dll.h"
