@@ -116,12 +116,12 @@ MINISHELL_FILES = 	main \
 					data/create_space/create_parsing_space \
 					data/create_space/create_exec_space \
 					\
-					data/error_free/free_lexer_space \
-					data/error_free/free_linked_env_space \
-					data/error_free/free_user_input_space \
-					data/error_free/free_data \
-					data/error_free/free_parsing_space \
-					data/error_free/free_exec_space \
+					data/free_space/free_lexer_space \
+					data/free_space/free_linked_env_space \
+					data/free_space/free_user_input_space \
+					data/free_space/free_data \
+					data/free_space/free_parsing_space \
+					data/free_space/free_exec_space \
 					\
 					data/fatal_error_clean_exit \
 					data/non_fatal_error_clean \
@@ -214,6 +214,9 @@ MINISHELL_FILES = 	main \
 					exec/exec \
 					exec/build_cmd_list \
 					exec/is_builtin \
+					exec/convert_segment_in_cmd \
+					exec/free_cmd_content \
+					exec/print_cmd_content \
 
 MINISHELL_SRCS_DIR = ./src/minishell/
 MINISHELL_SRCS = $(addprefix $(MINISHELL_SRCS_DIR), $(addsuffix .c, $(MINISHELL_FILES)))

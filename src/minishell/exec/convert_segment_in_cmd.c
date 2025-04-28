@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 18:57:46 by eazard            #+#    #+#             */
-/*   Updated: 2025/04/27 19:10:13 by eazard           ###   ########.fr       */
+/*   Updated: 2025/04/28 15:12:57 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,27 @@ static char	**ft_tabdup(char **tab)
 	return (new_tab);
 }
 
-t_cmd_content	*convert_segment_in_cmd(t_segment_content *segment) //free_cmd_content TODO
+static void	init_cmd_content(t_cmd_content *cmd_content)
 {
-	t_cmd_content	*cmd;
+	cmd_content->infile_fd = -2;
+	cmd_content->outfile_fd = -2;
+}
 
-	cmd = ft_calloc(1, sizeof(t_cmd_content));
-	if (!cmd)
+t_cmd_content	*convert_segment_in_cmd(t_segment_content *segment)
+{
+	t_cmd_content	*cmd_content;
+
+	cmd_content = ft_calloc(1, sizeof(t_cmd_content));
+	if (!cmd_content)
 		return (NULL);
-	cmd -> cmd_name = ft_strdup(segment -> cmd_name); // TODO : check success, free if failure
-	cmd -> cmd_name = ft_tabdup(segment -> cmd_args); // TODO : check success, free if failure
+	init_cmd_content(cmd_content);
+	cmd_content -> cmd_name = ft_strdup(segment -> cmd_name);
+	if (!cmd_content -> cmd_name)
+		return (free_cmd_content(cmd_content), NULL);
+	cmd_content -> cmd_args = ft_tabdup(segment -> cmd_args);
+	if (!cmd_content -> cmd_args)
+		return (free_cmd_content(cmd_content), NULL);
 	// get infile
 	// get outfile
+	return (cmd_content);
 }

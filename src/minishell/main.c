@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:23:05 by eazard            #+#    #+#             */
-/*   Updated: 2025/04/27 18:40:30 by eazard           ###   ########.fr       */
+/*   Updated: 2025/04/28 15:07:47 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@
 // 	ft_printf("value = %s\n", env_content -> value);
 // }
 
-
 static void	print_result_for_dev(t_data *data)
 {
 	dll_print_list(data ->lexer->linked_token,
@@ -32,6 +31,8 @@ static void	print_result_for_dev(t_data *data)
 	ft_printf("\n\n\n");
 	dll_print_list(data -> parsing -> segment_dll,
 		(void (*)(void *))(&print_segment_content));
+	dll_print_list(data -> exec -> cmd_dll,
+		(void (*)(void *))(&print_cmd_content));
 }
 
 static bool	empty_input_check(t_data *data)
@@ -59,7 +60,7 @@ int	main(int ac, char *av[], char *env[])
 		if (data.non_fatal_error_occured == false)
 		{
 			print_result_for_dev(&data); // a retirer plus tard
-			free_data(&data, 0);
+			free_data(&data, false);
 		}
 	}
 	return (0);
