@@ -6,13 +6,14 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 12:20:25 by eazard            #+#    #+#             */
-/*   Updated: 2025/04/28 15:12:39 by eazard           ###   ########.fr       */
+/*   Updated: 2025/04/28 18:34:32 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef EXEC_H
 # define EXEC_H
 # include "minishell.h"
+# define BASH_POSIX_CREATED_FILE_WRITE_COPY 0644
 
 typedef struct s_exec				t_exec;
 typedef struct s_cmd_content		t_cmd_content;
@@ -38,5 +39,6 @@ void			exec(t_data *data);
 t_cmd_content	*convert_segment_in_cmd(t_segment_content *segment);
 void			print_cmd_content(t_cmd_content *cmd_content);
 void			free_cmd_content(t_cmd_content *cmd_content);
+void			fill_fd(t_redir **redir_tab, t_cmd_content *cmd);
 
 #endif

@@ -217,7 +217,7 @@ MINISHELL_FILES = 	main \
 					exec/convert_segment_in_cmd \
 					exec/free_cmd_content \
 					exec/print_cmd_content \
-					exec/get_outfile_fd_and_infile_fd \
+					exec/fill_fd \
 
 MINISHELL_SRCS_DIR = ./src/minishell/
 MINISHELL_SRCS = $(addprefix $(MINISHELL_SRCS_DIR), $(addsuffix .c, $(MINISHELL_FILES)))
