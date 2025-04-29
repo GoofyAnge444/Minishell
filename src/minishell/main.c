@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:23:05 by eazard            #+#    #+#             */
-/*   Updated: 2025/04/28 15:07:47 by eazard           ###   ########.fr       */
+/*   Updated: 2025/04/29 14:19:38 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,31 @@
 // 	ft_printf("value = %s\n", env_content -> value);
 // }
 
+static void	print_file(char *filename)
+{
+	int		fd;
+	char	*line;
+
+	ft_printf("\n\n\nn~~~%s~~~\n", filename);
+	fd = open(filename, O_RDONLY);
+	if (fd == -1)
+	{
+		ft_printf_fd(2, "%s open error\n", filename);
+		return ;
+	}
+	while (true)
+	{
+		line = get_next_line(fd);
+		if (!line)
+			break ;
+		ft_printf("%s", line);
+		free(line);
+		line = NULL;
+	}
+	close (fd);
+	ft_printf("~~~~~~~~~~~~~~~~~~\n\n", filename);
+}
+
 static void	print_result_for_dev(t_data *data)
 {
 	dll_print_list(data ->lexer->linked_token,
@@ -31,8 +56,11 @@ static void	print_result_for_dev(t_data *data)
 	ft_printf("\n\n\n");
 	dll_print_list(data -> parsing -> segment_dll,
 		(void (*)(void *))(&print_segment_content));
+	ft_printf("\n\n");
 	dll_print_list(data -> exec -> cmd_dll,
 		(void (*)(void *))(&print_cmd_content));
+	if (access(".heredoc_tmp", F_OK) == 0)
+		print_file(".heredoc_tmp");
 }
 
 static bool	empty_input_check(t_data *data)

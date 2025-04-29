@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exec.c                                             :+:      :+:    :+:   */
+/*   is_a_heredoc_token.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/27 18:00:08 by eazard            #+#    #+#             */
-/*   Updated: 2025/04/29 14:14:11 by eazard           ###   ########.fr       */
+/*   Created: 2025/04/29 14:36:45 by eazard            #+#    #+#             */
+/*   Updated: 2025/04/29 14:38:02 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "exec.h"
+#include "lexer.h"
 
-void	exec(t_data *data)
+bool	is_a_heredoc_token(t_dll_node *node)
 {
-	if (data->non_fatal_error_occured == false)
-	{
-		build_cmd_list(data);
-		// launch all of them
-		// clean data
-	}
+	if (((t_token_content *)(node -> content))->type == HEREDOC_TK)
+		return (true);
+	return (false);
 }

@@ -6,13 +6,32 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 18:42:36 by eazard            #+#    #+#             */
-/*   Updated: 2025/04/28 18:58:21 by eazard           ###   ########.fr       */
+/*   Updated: 2025/04/29 14:03:32 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "exec.h"
 
-int	heredoc(char *delimiter)
+static void	heredoc_warning_message(char *delimiter)
+{
+	ft_printf("bash: warning: here-document");
+	ft_printf(" delimited by end-of-file (wanted `%s')\n", delimiter);
+}
+
+static void	heredoc_expend_line(t_data *data, char **line)
+{
+	char	*expended_line;
+
+	data -> exec -> tmp__heredoc_line = *line;
+	expended_line = expend_value(data, *line);
+	if (!expended_line)
+		fatal_error_clean_exit(data, MALLOC_FAILURE);
+	free (*line);
+	*line = expended_line;
+	data -> exec -> tmp__heredoc_line = NULL;
+}
+
+int	heredoc(t_data *data, char *delimiter)
 {
 	int		fd;
 	char	*line;
@@ -21,20 +40,22 @@ int	heredoc(char *delimiter)
 			BASH_POSIX_CREATED_FILE_WRITE_COPY);
 	if (fd == -1)
 		return (fd);
-	line = readline(">");
-	if (!line)
-		;// TODO
-	while (line && !ft_strcmp(line, delimiter))
-	{	
+	while (true)
+	{
+		line = readline(">");
+		if (!line)
+			break ;
+		if (ft_strcmp(line, delimiter) == true)
+			break ;
+		heredoc_expend_line(data, &line);
 		write(fd, line, ft_strlen(line));
 		write(fd, "\n", 1);
 		free(line);
-		line = readline(">");
-		if (!line)
-			;//TODO
 	}
-	if (line) // PEUT ETRE ON POURRA DELETE CE CHECK
+	if (line)
 		free(line);
+	else
+		heredoc_warning_message(delimiter);
 	close(fd);
-	return (open(".heredoc_tmp", O_RDONLY)); // TODO rajouter un if (access) then unset() dans la fonction free_data
+	return (open(".heredoc_tmp", O_RDONLY));
 }

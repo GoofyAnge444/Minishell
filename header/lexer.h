@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 17:14:08 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/04/28 16:09:58 by eazard           ###   ########.fr       */
+/*   Updated: 2025/04/29 15:08:42 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,8 @@ bool			is_a_string_token(t_dll_node *node);
 bool			is_a_file_token(t_dll_node *node);
 bool			is_a_cmd_token(t_dll_node *node);
 bool			is_a_arg_token(t_dll_node *node);
-
-
+bool			is_a_heredoc_token(t_dll_node *node);
+bool			is_a_space_token(t_dll_node *node);
 
 
 /*get next token value*/
@@ -99,10 +99,9 @@ char			*get_next_string_value(t_data *data);
 
 /*expend*/
 void			expend(t_data *data);
-void			expend_token_value(t_token_content *token_content,
-					t_data *data);
+char			*expend_value(t_data *data, char *value);
 void			replace_dollar_in_expend_list(t_dll_list *list, t_data *data);
-void			create_expend_list(t_token_content *token_content, t_data *data,
+void			create_expend_list(char *value, t_data *data,
 					t_dll_list *expend_dll);
 char			*merge_expend_list(t_dll_list *expend_list);
 

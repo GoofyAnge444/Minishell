@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 17:46:42 by eazard            #+#    #+#             */
-/*   Updated: 2025/03/08 19:28:04 by eazard           ###   ########.fr       */
+/*   Updated: 2025/04/29 14:22:20 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ void	parsing(t_data *data)
 	{
 		create_segment_dll(data);
 		data -> parsing -> segment_count = count_segment(data);
-		ft_printf("segment_count = %i\n", data -> parsing -> segment_count); // a retirer
 		data -> parsing -> segment_processed = 0;
 		fill_segment_dll(data);
 	}

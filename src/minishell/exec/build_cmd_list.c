@@ -6,19 +6,19 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 17:43:54 by eazard            #+#    #+#             */
-/*   Updated: 2025/04/28 15:02:15 by eazard           ###   ########.fr       */
+/*   Updated: 2025/04/29 11:42:33 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "exec.h"
 
-static t_dll_node	*get_next_cmd_node(t_dll_node *segment_node)
+static t_dll_node	*get_next_cmd_node(t_data *data, t_dll_node *segment_node)
 {
 	t_cmd_content		*cmd_content;
 	t_dll_node			*next_cmd_node;
 
 	cmd_content
-		= convert_segment_in_cmd(
+		= convert_segment_in_cmd(data,
 			(t_segment_content *)segment_node ->content);
 	if (!cmd_content)
 		return (NULL);
@@ -43,7 +43,7 @@ static void	fill_cmd_list(t_data *data, t_dll_list *cmd_dll)
 	parsing_segment = data -> parsing -> segment_dll -> head;
 	while (parsing_segment)
 	{
-		next_cmd_node = get_next_cmd_node(parsing_segment);
+		next_cmd_node = get_next_cmd_node(data, parsing_segment);
 		if (!next_cmd_node)
 			fatal_error_clean_exit(data, MALLOC_FAILURE);
 		dll_insert_tail(cmd_dll, next_cmd_node);

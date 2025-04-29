@@ -163,6 +163,8 @@ MINISHELL_FILES = 	main \
 					lexer/token_bool_utils/is_a_file_token \
 					lexer/token_bool_utils/is_a_cmd_token \
 					lexer/token_bool_utils/is_a_arg_token \
+					lexer/token_bool_utils/is_a_heredoc_token \
+					lexer/token_bool_utils/is_a_space_token \
 					\
 					lexer/character_utils/actual_character \
 					lexer/character_utils/next_character \
@@ -188,7 +190,7 @@ MINISHELL_FILES = 	main \
 					\
 					\
 					expend/expend \
-					expend/expend_token_value \
+					expend/expend_value \
 					expend/replace_dollar_in_expend_list \
 					expend/create_expend_list \
 					expend/merge_expend_list \

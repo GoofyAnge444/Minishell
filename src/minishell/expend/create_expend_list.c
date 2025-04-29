@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 18:17:15 by eazard            #+#    #+#             */
-/*   Updated: 2025/04/23 16:16:25 by eazard           ###   ########.fr       */
+/*   Updated: 2025/04/29 13:05:26 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static size_t	get_str_end(char *value, size_t begin)
 	return (end);
 }
 
-void	create_expend_list(t_token_content *token_content, t_data *data,
+void	create_expend_list(char *token_value, t_data *data,
 	t_dll_list *expend_dll)
 {
 	char		*tmp_str;
@@ -67,13 +67,13 @@ void	create_expend_list(t_token_content *token_content, t_data *data,
 	size_t		end;
 
 	begin = 0;
-	while ((token_content -> value)[begin])
+	while ((token_value)[begin])
 	{
-		if ('$' == (token_content -> value)[begin])
-			end = get_dollar_end(token_content -> value, begin);
+		if ('$' == (token_value)[begin])
+			end = get_dollar_end(token_value, begin);
 		else
-			end = get_str_end(token_content -> value, begin);
-		tmp_str = ft_strdup_index((token_content -> value), begin, end);
+			end = get_str_end(token_value, begin);
+		tmp_str = ft_strdup_index((token_value), begin, end);
 		if (!tmp_str)
 			return (dll_clear_list(expend_dll, &free),
 				fatal_error_clean_exit(data, MALLOC_FAILURE));
