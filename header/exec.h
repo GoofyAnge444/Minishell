@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 12:20:25 by eazard            #+#    #+#             */
-/*   Updated: 2025/04/29 14:03:03 by eazard           ###   ########.fr       */
+/*   Updated: 2025/04/29 16:42:19 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,6 @@ void			print_cmd_content(t_cmd_content *cmd_content);
 void			free_cmd_content(t_cmd_content *cmd_content);
 void			fill_fd(t_data *data, t_redir **redir_tab,
 					t_cmd_content *cmd);
-int				heredoc(t_data *data, char *delimiter);
+int				heredoc(t_data *data, char *delimiter, bool expend_env_var);
 
 #endif

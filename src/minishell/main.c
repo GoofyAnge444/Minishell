@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:23:05 by eazard            #+#    #+#             */
-/*   Updated: 2025/04/29 14:19:38 by eazard           ###   ########.fr       */
+/*   Updated: 2025/04/29 17:31:35 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	print_file(char *filename)
 	int		fd;
 	char	*line;
 
-	ft_printf("\n\n\nn~~~%s~~~\n", filename);
+	ft_printf("\n\n\n~~~%s~~~\n", filename);
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
 	{

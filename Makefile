@@ -155,6 +155,7 @@ MINISHELL_FILES = 	main \
 					lexer/print_token_content \
 					lexer/delete_all_space_tk \
 					lexer/convert_lonely_dq_and_sq_to_str \
+					lexer/set_up_if_heredoc_should_expend_later \
 					\
 					lexer/token_bool_utils/is_a_pipe_token \
 					lexer/token_bool_utils/is_a_redir_token \

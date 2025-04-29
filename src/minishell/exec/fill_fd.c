@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 15:54:50 by eazard            #+#    #+#             */
-/*   Updated: 2025/04/29 14:03:21 by eazard           ###   ########.fr       */
+/*   Updated: 2025/04/29 17:22:21 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,14 @@ static void	fill_infile_fd(t_data *data, t_redir *redir, t_cmd_content *cmd)
 	if (redir->redir_type == INPUT_TK)
 		cmd->infile_fd = open(redir->filename, O_RDONLY);
 	else if (redir->redir_type == HEREDOC_TK)
-		cmd->infile_fd = heredoc(data, redir->filename);
+		cmd->infile_fd = heredoc(data, redir->filename,
+				redir -> heredoc__expend_env_var);
 }
 
 static void	fill_outfile_fd(t_redir *redir, t_cmd_content *cmd)
 {
+	if (cmd -> outfile_fd >= 0)
+		close(cmd -> outfile_fd);
 	if (redir->redir_type == TRUNCATE_TK)
 		cmd->outfile_fd
 			= open(redir->filename, O_TRUNC | O_CREAT | O_WRONLY,
@@ -47,20 +50,22 @@ void	fill_fd(t_data *data, t_redir **redir_tab, t_cmd_content *cmd)
 	size_t	i;
 
 	i = 0;
-	ft_printf("BEFORE USE OF REDIR_TAB\n");
 	while (redir_tab[i])
 	{
 		if (is_a_infile_redir(redir_tab[i]))
 		{
-			ft_printf("BEFORE USE OF CMD\n");
-			cmd->infile_fd = -2;
+			if (cmd -> infile_fd > 0)
+				close(cmd -> infile_fd);
+			cmd -> infile_fd = -2;
 			fill_infile_fd(data, redir_tab[i], cmd);
 			if (cmd->infile_fd == -1)
 				return (set_command_to_be_skiped_in_exec(cmd));
 		}
 		else
 		{
-			cmd->outfile_fd = -2;
+			if (cmd -> outfile_fd > 0)
+				close(cmd -> outfile_fd);
+			cmd -> outfile_fd = -2;
 			fill_outfile_fd(redir_tab[i], cmd);
 			if (cmd->outfile_fd == -1)
 				return (set_command_to_be_skiped_in_exec(cmd));

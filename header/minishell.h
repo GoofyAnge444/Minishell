@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:09:59 by eazard            #+#    #+#             */
-/*   Updated: 2025/04/28 18:58:04 by eazard           ###   ########.fr       */
+/*   Updated: 2025/04/29 15:29:05 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,6 @@ typedef struct s_exec			t_exec;
 
 
 void	get_and_store_user_input(t_data *data);
+char	*get_user_input(char *prompt);
 
 #endif

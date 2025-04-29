@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 17:28:34 by eazard            #+#    #+#             */
-/*   Updated: 2025/04/22 12:41:11 by eazard           ###   ########.fr       */
+/*   Updated: 2025/04/29 16:39:12 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ struct	s_redir
 {
 	int				redir_type;
 	char			*filename;
+	bool			heredoc__expend_env_var;
 };
 
 

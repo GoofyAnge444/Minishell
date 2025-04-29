@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 17:14:08 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/04/29 15:08:42 by eazard           ###   ########.fr       */
+/*   Updated: 2025/04/29 16:44:18 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ struct	s_token_content
 {
 	t_token_type	type;
 	char			*value;
+	bool			heredoc__no_expend;
 };
 
 typedef struct s_lexer
@@ -73,6 +74,7 @@ void			print_token_content(t_token_content *token_content);
 void			free_token_content(t_token_content *token_content);
 void			delete_all_space_tk(t_data *data);
 void			rename_string_tk_in_appropriate_tk(t_data *data);
+void			set_up_if_heredoc_should_expend_later(t_data *data);
 
 /*TOKEN BOOL UTILS*/
 bool			is_a_pipe_token(t_dll_node *node);

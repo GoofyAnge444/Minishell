@@ -6,15 +6,16 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 17:25:25 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/04/22 12:02:30 by eazard           ###   ########.fr       */
+/*   Updated: 2025/04/29 15:31:41 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static char	*get_user_input(void)
+char	*get_user_input(char *prompt)
 {
-	return (readline("ꩇׁׅ݊ꪱׁׅ ꩇׁׅ݊ꪱׁׅ꯱ׁׅ֒hׁׅ֮ꫀׁׅܻᥣׁׅ֪ᥣׁׅ֪ ⋆｡‧˚ʚ🍓ɞ˚‧｡⋆ ~~>"));
+	ft_printf("%s", prompt);
+	return (get_next_line(0));
 }
 
 static void	store_user_input_in_data(t_data *data, char *input)
@@ -31,7 +32,8 @@ void	get_and_store_user_input(t_data *data)
 {
 	char			*input;
 
-	input = get_user_input();
+	input = readline("ꩇׁׅ݊ꪱׁׅ ꩇׁׅ݊ꪱׁׅ꯱ׁׅ֒hׁׅ֮ꫀׁׅܻᥣׁׅ֪ᥣׁׅ֪ ⋆｡‧˚ʚ🍓ɞ˚‧｡⋆ ~~>");
+	// input = get_user_input("ꩇׁׅ݊ꪱׁׅ ꩇׁׅ݊ꪱׁׅ꯱ׁׅ֒hׁׅ֮ꫀׁׅܻᥣׁׅ֪ᥣׁׅ֪ ⋆｡‧˚ʚ🍓ɞ˚‧｡⋆ ~~>");
 	if (!input)
 	{
 		ft_printf("exit\n");
