@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 18:57:46 by eazard            #+#    #+#             */
-/*   Updated: 2025/04/29 13:32:12 by eazard           ###   ########.fr       */
+/*   Updated: 2025/04/30 18:42:41 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ static char	**ft_tabdup(char **tab)
 
 static void	init_cmd_content(t_cmd_content *cmd_content)
 {
-	cmd_content->infile_fd = -2;
-	cmd_content->outfile_fd = -2;
+	cmd_content->fd_in = -2;
+	cmd_content->fd_out = -2;
 }
 
 t_cmd_content	*convert_segment_in_cmd(t_data *data,

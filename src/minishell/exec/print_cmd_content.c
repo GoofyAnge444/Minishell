@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 15:02:32 by eazard            #+#    #+#             */
-/*   Updated: 2025/04/28 15:14:49 by eazard           ###   ########.fr       */
+/*   Updated: 2025/04/30 18:42:41 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ void	print_cmd_content(t_cmd_content *cmd_content)
 	ft_printf("\n___CMD_ARGS___\n");
 	ft_print_tab("cmd_arg", cmd_content -> cmd_args);
 	ft_printf("\n___INFILE_FD___\n");
-	ft_printf("%i\n", cmd_content -> infile_fd);
+	ft_printf("%i\n", cmd_content -> fd_in);
 	ft_printf("\n___OUTFILE_FD___\n");
-	ft_printf("%i\n", cmd_content -> outfile_fd);
+	ft_printf("%i\n", cmd_content -> fd_out);
 	ft_printf("\n___SKIP_CMD___\n");
 	if (cmd_content ->skip_cmd)
 		ft_printf("true\n");

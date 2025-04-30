@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 17:43:54 by eazard            #+#    #+#             */
-/*   Updated: 2025/04/29 11:42:33 by eazard           ###   ########.fr       */
+/*   Updated: 2025/04/30 18:24:18 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static void	create_cmd_list(t_data *data)
 		fatal_error_clean_exit(data, MALLOC_FAILURE);
 }
 
-static void	fill_cmd_list(t_data *data, t_dll_list *cmd_dll)
+static void	fill_cmd_list_with_parsed_data(t_data *data, t_dll_list *cmd_dll)
 {
 	t_dll_node		*parsing_segment;
 	t_dll_node		*next_cmd_node;
@@ -51,8 +51,11 @@ static void	fill_cmd_list(t_data *data, t_dll_list *cmd_dll)
 	}
 }
 
+
+
 void	build_cmd_list(t_data *data)
 {
 	create_cmd_list(data);
-	fill_cmd_list(data, data -> exec -> cmd_dll);
+	fill_cmd_list_with_parsed_data(data, data -> exec -> cmd_dll);
+	set_all_pipe(data, data -> exec -> cmd_dll);
 }
