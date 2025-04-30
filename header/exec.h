@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 12:20:25 by eazard            #+#    #+#             */
-/*   Updated: 2025/04/29 16:42:19 by eazard           ###   ########.fr       */
+/*   Updated: 2025/04/29 18:22:00 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ struct								s_cmd_content
 	char							**cmd_args;
 	char							*cmd_name;
 	bool							skip_cmd;
+	pid_t							pid;
 };
 
 struct								s_exec
@@ -34,6 +35,7 @@ struct								s_exec
 	t_dll_list						*cmd_dll;
 	t_cmd_content					*tmp__cmd_content;
 	char							*tmp__heredoc_line;
+	int								pipe[2];
 };
 
 bool			is_builtin(char *cmd);
