@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 17:21:21 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/04/30 18:51:32 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/01 14:29:24 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef enum e_fatal_type_error
 	PIPE_FAILURE,
 	DUP_FAILURE,
 	DUP2_FAILURE,
+	EXECVE_FAILURE,
 }			t_fatal_type_error;
 
 typedef enum e_non_fatal_type_error

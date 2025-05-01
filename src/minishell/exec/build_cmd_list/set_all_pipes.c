@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 18:21:41 by eazard            #+#    #+#             */
-/*   Updated: 2025/04/30 18:58:35 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/01 11:19:23 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,8 @@ void	set_all_pipe(t_data *data, t_dll_list *cmd_dll)
 	cmd = cmd_dll->head;
 	while (cmd)
 	{
-		if (this_command_has_no_output_set(cmd->content) || (cmd->next
+		if ((this_command_has_no_output_set(cmd->content) && cmd -> next)
+				|| (cmd->next
 				&& next_command_has_no_input_set(cmd->next->content)))
 		{
 			if (pipe(pipe_fd) == -1)

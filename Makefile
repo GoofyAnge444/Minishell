@@ -108,6 +108,7 @@ libft_re: libft_fclean $(LIBFT)
 
 MINISHELL_FILES = 	main \
 					get_and_store_user_input \
+					print_result_for_dev \
 					\
 					data/create_space/init_data \
 					data/create_space/create_lexer_space \
@@ -215,15 +216,23 @@ MINISHELL_FILES = 	main \
 					\
 					\
 					exec/exec \
-					exec/build_cmd_list \
-					exec/is_builtin \
-					exec/convert_segment_in_cmd \
-					exec/free_cmd_content \
-					exec/print_cmd_content \
-					exec/fill_fd \
-					exec/heredoc \
-					exec/exec_cmd \
-					exec/set_all_pipes \
+					\
+					exec/utils/free_cmd_content \
+					exec/utils/print_cmd_content \
+					\
+					exec/build_cmd_list/build_cmd_list \
+					exec/build_cmd_list/convert_segment_in_cmd \
+					exec/build_cmd_list/fill_fd \
+					exec/build_cmd_list/heredoc \
+					exec/build_cmd_list/set_all_pipes \
+					\
+					exec/exec_cmd/exec_cmd \
+					exec/exec_cmd/is_builtin \
+					exec/exec_cmd/child_process \
+					exec/exec_cmd/parent_process \
+					exec/exec_cmd/convert_env_dll_into_env_str_tab \
+					exec/exec_cmd/add_absolute_path_to_cmd_name \
+					exec/exec_cmd/ft_strjoin_with_separator \
 
 MINISHELL_SRCS_DIR = ./src/minishell/
 MINISHELL_SRCS = $(addprefix $(MINISHELL_SRCS_DIR), $(addsuffix .c, $(MINISHELL_FILES)))

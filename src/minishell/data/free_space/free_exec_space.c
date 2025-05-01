@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 17:55:03 by eazard            #+#    #+#             */
-/*   Updated: 2025/04/29 14:12:14 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/01 13:25:53 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,16 @@ void	exec_fatal_free_space(t_data *data)
 	{	
 		free(data -> exec ->tmp__heredoc_line);
 		data -> exec ->tmp__heredoc_line = NULL;
+	}
+	if (data -> exec -> bin_paths)
+	{	
+		ft_free_tab(data -> exec -> bin_paths);
+		data -> exec -> bin_paths = NULL;
+	}
+	if (data -> exec -> envp)
+	{	
+		ft_free_tab(data -> exec -> envp);
+		data -> exec -> envp = NULL;
 	}
 	free(data -> exec);
 	data -> exec = NULL;

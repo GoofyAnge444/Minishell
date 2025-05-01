@@ -20,6 +20,7 @@
 		"*.tcc": "c",
 		"readline.h": "c",
 		"history.h": "c",
-		"exec.h": "c"
+		"exec.h": "c",
+		"limits.h": "c"
 	}
 }
