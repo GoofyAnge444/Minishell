@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 18:00:08 by eazard            #+#    #+#             */
-/*   Updated: 2025/05/01 14:54:39 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/02 13:35:46 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,14 @@
 static void	exec_all_command(t_data *data)
 {
 	t_dll_node	*cmd;
+	t_dll_node	*segment;
 
+	segment = data -> parsing -> segment_dll -> head;
 	cmd = data -> exec -> cmd_dll -> head;
 	while (cmd)
 	{
-		exec_cmd(data, cmd);
+		exec_cmd(data, cmd, segment);
+		segment = segment -> next;
 		cmd = cmd -> next;
 	}
 }

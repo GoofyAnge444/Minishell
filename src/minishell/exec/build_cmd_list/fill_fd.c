@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 15:54:50 by eazard            #+#    #+#             */
-/*   Updated: 2025/04/30 18:42:41 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/02 13:41:16 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	fill_fd(t_data *data, t_redir **redir_tab, t_cmd_content *cmd)
 	size_t	i;
 
 	i = 0;
-	while (redir_tab[i])
+	while (redir_tab && redir_tab[i])
 	{
 		if (is_a_infile_redir(redir_tab[i]))
 		{

@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 17:43:54 by eazard            #+#    #+#             */
-/*   Updated: 2025/04/30 18:24:18 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/02 13:16:06 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,5 @@ void	build_cmd_list(t_data *data)
 {
 	create_cmd_list(data);
 	fill_cmd_list_with_parsed_data(data, data -> exec -> cmd_dll);
-	set_all_pipe(data, data -> exec -> cmd_dll);
+	// set_all_pipe(data, data -> exec -> cmd_dll);
 }

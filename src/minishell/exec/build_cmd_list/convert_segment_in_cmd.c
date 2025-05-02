@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 18:57:46 by eazard            #+#    #+#             */
-/*   Updated: 2025/04/30 18:42:41 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/02 13:15:56 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ t_cmd_content	*convert_segment_in_cmd(t_data *data,
 		if (!cmd_content -> cmd_args)
 			return (free_cmd_content(cmd_content), NULL);
 	}
-	if (segment->redir_tab)
-		fill_fd(data, segment->redir_tab, cmd_content);
+	// if (segment->redir_tab)
+		// fill_fd(data, segment->redir_tab, cmd_content);e
 	data -> exec -> tmp__cmd_content = NULL;
 	return (cmd_content);
 }

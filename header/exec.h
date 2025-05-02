@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 12:20:25 by eazard            #+#    #+#             */
-/*   Updated: 2025/05/01 14:33:15 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/02 13:34:21 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,11 @@ t_cmd_content	*convert_segment_in_cmd(t_data *data,
 void			fill_fd(t_data *data, t_redir **redir_tab,
 					t_cmd_content *cmd);
 void			set_all_pipe(t_data *data, t_dll_list *cmd_dll);
+void			set_pipe_in_a_cmd(t_data *data, t_dll_node *cmd);
 int				heredoc(t_data *data, char *delimiter, bool expend_env_var);
 
 /* exec_cmd */
-void			exec_cmd(t_data *data, t_dll_node	*cmd);
+void			exec_cmd(t_data *data, t_dll_node	*cmd, t_dll_node *segment);
 char			*ft_strjoin_with_separator(char const *prefix,
 					char const *suffix, char separtor);
 void			child_process(t_data *data, t_dll_node *cmd);
@@ -64,5 +65,6 @@ void			convert_env_dll_into_env_str_tab(t_data *data);
 void			add_absolute_path_to_cmd_name(t_data *data,
 					t_cmd_content *content);
 void			parent_process(t_data	*data, t_dll_node *cmd);
+void			close_cmd_fd(t_dll_node *cmd, bool close_next_cmd);
 
 #endif

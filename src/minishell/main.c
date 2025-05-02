@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:23:05 by eazard            #+#    #+#             */
-/*   Updated: 2025/05/01 15:24:49 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/02 13:46:53 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	main(int ac, char *av[], char *env[])
 		}
 		if (data.non_fatal_error_occured == false)
 		{
-			print_result_for_dev(&data); // a retirer plus tard
+			// print_result_for_dev(&data); // a retirer plus tard
 			free_data(&data, false);
 		}
 	}
