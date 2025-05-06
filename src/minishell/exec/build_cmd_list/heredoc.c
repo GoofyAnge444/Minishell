@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 18:42:36 by eazard            #+#    #+#             */
-/*   Updated: 2025/05/06 13:48:49 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/06 15:12:41 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	heredoc(t_data *data, char *delimiter, bool	expend_env_var)
 			break ;
 		if (expend_env_var)
 			heredoc_expend_line(data, &line);
-		ft_printf("%s\n", line);
+		ft_printf_fd(fd, "%s\n", line);
 		free(line);
 	}
 	if (line)

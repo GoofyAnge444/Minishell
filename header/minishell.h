@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:09:59 by eazard            #+#    #+#             */
-/*   Updated: 2025/05/06 13:57:33 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/06 15:07:59 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,14 @@
 # include <sys/wait.h>
 # include <signal.h>
 # include "my_signal.h"
+# include <sys/stat.h>
+
+extern int		g_last_exit_code;
 
 typedef struct s_lexer			t_lexer;
 typedef struct s_user_input		t_user_input;
 typedef struct s_data			t_data;
 typedef struct s_exec			t_exec;
-
 
 void	get_and_store_user_input(t_data *data);
 char	*get_user_input(char *prompt);

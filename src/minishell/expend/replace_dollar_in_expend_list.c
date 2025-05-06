@@ -35,7 +35,7 @@ static void	replace_dollar_in_expend_node(t_dll_node *expend_node, t_data *data)
 	char		*expended_content;
 
 	if (true == node_is_dollar_question_mark(expend_node))
-		expended_content = ft_itoa(data->exit_code);
+		expended_content = ft_itoa(g_last_exit_code);
 	else
 	{
 		env_node = dll_find_node(data ->env,

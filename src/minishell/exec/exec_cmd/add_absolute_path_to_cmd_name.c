@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 13:51:14 by eazard            #+#    #+#             */
-/*   Updated: 2025/05/01 14:54:20 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/06 14:30:58 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,6 @@ void	add_absolute_path_to_cmd_name(t_data *data, t_cmd_content *content)
 		potential_asolute_cmd_path = NULL;
 		i++;
 	}
+	ft_printf_fd(2, "minishell: %s: command not found\n", content -> cmd_name);
+	fatal_error_clean_exit(data, COMMAND_NOT_FOUND);
 }

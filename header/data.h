@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 17:21:21 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/05/01 14:29:24 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/06 14:27:24 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ typedef enum e_fatal_type_error
 	DUP_FAILURE,
 	DUP2_FAILURE,
 	EXECVE_FAILURE,
+	COMMAND_NOT_FOUND = 127,
+	NO_EXEC_PERMISSION = 126,
 }			t_fatal_type_error;
 
 typedef enum e_non_fatal_type_error
@@ -55,7 +57,7 @@ struct s_data
 	t_lexer			*lexer;
 	t_exec			*exec;
 	bool			non_fatal_error_occured;
-	int				exit_code;
+	// int				exit_code;
 	// pid_t			*pids;
 	// int				pid_count;
 };

@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 15:00:27 by eazard            #+#    #+#             */
-/*   Updated: 2025/03/10 11:41:03 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/06 14:23:37 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,5 @@ void	non_fatal_error_clean(t_data *data, t_non_fatal_type_error error)
 		ft_printf("syntax error near pipe token\n");
 	if (error == REDIR_WITHOUT_STRING_FOLLOWING)
 		ft_printf("syntax error near 'redir' token \n");
+	g_last_exit_code = 2;
 }
