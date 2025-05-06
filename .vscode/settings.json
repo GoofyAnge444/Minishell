@@ -21,6 +21,7 @@
 		"readline.h": "c",
 		"history.h": "c",
 		"exec.h": "c",
-		"limits.h": "c"
+		"limits.h": "c",
+		"cerrno": "c"
 	}
 }

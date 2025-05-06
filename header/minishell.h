@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:09:59 by eazard            #+#    #+#             */
-/*   Updated: 2025/05/06 15:07:59 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/06 16:50:27 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@
 # include <signal.h>
 # include "my_signal.h"
 # include <sys/stat.h>
+# include <errno.h>
 
 extern int		g_last_exit_code;
 
