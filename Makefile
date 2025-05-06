@@ -235,6 +235,9 @@ MINISHELL_FILES = 	main \
 					exec/exec_cmd/add_absolute_path_to_cmd_name \
 					exec/exec_cmd/ft_strjoin_with_separator \
 					exec/exec_cmd/close_cmd_fd \
+					\
+					\
+					signal/signal \
 
 MINISHELL_SRCS_DIR = ./src/minishell/
 MINISHELL_SRCS = $(addprefix $(MINISHELL_SRCS_DIR), $(addsuffix .c, $(MINISHELL_FILES)))

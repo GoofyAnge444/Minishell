@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:09:59 by eazard            #+#    #+#             */
-/*   Updated: 2025/05/01 14:56:07 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/06 13:57:33 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@
 # include <readline/history.h>
 # include <limits.h>
 # include <sys/wait.h>
+# include <signal.h>
+# include "my_signal.h"
 
 typedef struct s_lexer			t_lexer;
 typedef struct s_user_input		t_user_input;
