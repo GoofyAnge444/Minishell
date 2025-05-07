@@ -6,11 +6,11 @@
 /*   By: cboma-ya <cboma-ya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 17:56:07 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/03/18 17:56:22 by cboma-ya         ###   ########.fr       */
+/*   Updated: 2025/05/01 00:55:27 by cboma-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "exec.h"
 
 static char	*get_hd_input(void)
 {

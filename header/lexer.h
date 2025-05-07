@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
+/*   By: cboma-ya <cboma-ya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 17:14:08 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/03/04 18:11:31 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/01 01:09:18 by cboma-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,6 @@ bool			is_a_string_token(t_dll_node *node);
 bool			is_a_file_token(t_dll_node *node);
 bool			is_a_cmd_token(t_dll_node *node);
 bool			is_a_arg_token(t_dll_node *node);
-
-
-
 
 /*get next token value*/
 char			*get_next_append_value(t_data *data);

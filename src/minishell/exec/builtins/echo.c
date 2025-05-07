@@ -6,11 +6,11 @@
 /*   By: cboma-ya <cboma-ya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 17:47:46 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/03/27 19:22:39 by cboma-ya         ###   ########.fr       */
+/*   Updated: 2025/05/01 00:55:27 by cboma-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "exec.h"
 
 static int	have_n(char *str)
 {
@@ -28,18 +28,15 @@ static int	have_n(char *str)
 	return (0);
 }
 
-void	ft_echo(t_segment_content *content, t_data *data)
+void	ft_echo(t_segment_content *content)
 {
 	int	i;
-	(void)data;
+
 	i = 1;
-	//printf("echo\n");·
 	if (have_n(content->cmd_args[i]) == 0)
 	{
-		//printf("have n\n");
 		i++;
 	}
-	//printf("%s", content->cmd_args[i]);
 	while (content->cmd_args[i])
 	{
 		ft_putstr_fd(content->cmd_args[i], 1);

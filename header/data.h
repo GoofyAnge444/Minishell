@@ -6,7 +6,7 @@
 /*   By: cboma-ya <cboma-ya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 17:21:21 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/03/16 02:26:11 by cboma-ya         ###   ########.fr       */
+/*   Updated: 2025/05/07 03:51:46 by cboma-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,12 @@ typedef struct s_user_input	t_user_input;
 typedef int					t_bool;
 typedef struct s_parsing	t_parsing;
 typedef struct s_env		t_env;
+typedef struct s_export		t_export;
 
 typedef enum e_fatal_type_error
 {
-	MALLOC_FAILURE,
 	NOTHING,
+	MALLOC_FAILURE,
 }			t_fatal_type_error;
 
 typedef enum e_non_fatal_type_error
@@ -44,6 +45,7 @@ struct s_data
 	// t_exec			*head;
 	// int				code_reset;
 	t_dll_list		*env;
+	t_dll_list		*export_list;
 	t_user_input	*user_input;
 	t_parsing		*parsing;
 	t_lexer			*lexer;

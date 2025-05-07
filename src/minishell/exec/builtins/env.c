@@ -1,21 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fatal_error_clean_exit.c                           :+:      :+:    :+:   */
+/*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cboma-ya <cboma-ya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/04 17:47:51 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/05/01 02:13:21 by cboma-ya         ###   ########.fr       */
+/*   Created: 2025/04/01 23:47:21 by cboma-ya          #+#    #+#             */
+/*   Updated: 2025/05/01 00:55:27 by cboma-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "data.h"
+#include "exec.h"
 
-void	fatal_error_clean_exit(t_data *data, t_fatal_type_error error)
+static void	print_env(t_env_content *env_content)
 {
-	free_data(data, true);
-	if (error == MALLOC_FAILURE)
-		ft_printf_fd(2, "Memory allocation failed\n");
-	exit(error);
+	if (env_content && env_content->value != 0)
+		printf("%s=\"%s\"\n", env_content -> name, env_content -> value);
+	else
+		printf("%s=\n", env_content -> name);
+}
+
+void	ft_env(t_data *data)
+{
+	dll_print_list(data->env, (void (*)(void *))print_env);
 }

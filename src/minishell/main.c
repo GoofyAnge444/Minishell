@@ -6,7 +6,7 @@
 /*   By: cboma-ya <cboma-ya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:23:05 by eazard            #+#    #+#             */
-/*   Updated: 2025/03/27 19:35:07 by cboma-ya         ###   ########.fr       */
+/*   Updated: 2025/04/03 21:24:43 by cboma-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,18 @@
 // }
 
 
-/* static void	print_result_for_dev(t_data *data)
-{
-	dll_print_list(data ->lexer->linked_token,
-		(void (*)(void *))(&print_token_content));
-	ft_printf("\n\n\n");
-	dll_print_list(data -> parsing -> segment_dll,
-		(void (*)(void *))(&print_segment_content));
-} */
+// static void	print_result_for_dev(t_data *data)
+// {
+// 	dll_print_list(data ->lexer->linked_token,
+// 		(void (*)(void *))(&print_token_content));
+// 	ft_printf("\n\n\n");
+// 	dll_print_list(data -> parsing -> segment_dll,
+// 		(void (*)(void *))(&print_segment_content));
+// }
+// void	ft_test(t_segment_content *content)
+// {
+// 	ft_printf("cmd is %s\n", content->cmd_name);
+// }
 
 static bool	empty_input_check(t_data *data)
 {
@@ -57,11 +61,11 @@ int	main(int ac, char *av[], char *env[])
 			//ft_test(data.parsing->segment_dll->head->content);
 			exec(&data, data.parsing->segment_dll);
 		}
-		/* if (data.non_fatal_error_occured == false)
+		if (data.non_fatal_error_occured == false)
 		{
-			print_result_for_dev(&data); // a retirer plus tard
+			/*print_result_for_dev(&data); // a retirer plus tard*/
 			free_data(&data, 0);
-		} */
+		}
 	}
 	return (0);
 }

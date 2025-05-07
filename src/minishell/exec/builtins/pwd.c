@@ -6,11 +6,11 @@
 /*   By: cboma-ya <cboma-ya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 02:31:44 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/03/27 19:55:52 by cboma-ya         ###   ########.fr       */
+/*   Updated: 2025/05/01 00:55:27 by cboma-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "exec.h"
 
 void	ft_pwd(void)
 {
