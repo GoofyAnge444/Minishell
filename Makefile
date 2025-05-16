@@ -213,9 +213,12 @@ MINISHELL_FILES = 	main \
 					exec/exec \
 					exec/builtins/echo \
 					exec/builtins/pwd \
+					exec/builtins/cd \
 					exec/builtins/env \
 					exec/builtins/unset \
 					exec/builtins/exit \
+					exec/builtins/utils \
+					exec/builtins/utils_export \
 
 
 

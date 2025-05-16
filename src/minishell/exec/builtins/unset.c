@@ -6,7 +6,7 @@
 /*   By: cboma-ya <cboma-ya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 02:34:45 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/05/16 17:43:59 by cboma-ya         ###   ########.fr       */
+/*   Updated: 2025/05/16 18:23:21 by cboma-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,9 @@ static void	clear_export(int i, t_segment_content *content, t_data *data)
 		printf("export_list->head is NULL\n");
 	else
 		printf("export_list->head points to: %p\n", data->export_list->head);
-
-	printf("in exportclear, have data\n");
 	temp = data->export_list->head;
-	printf("temp in\n");
 	if (temp == NULL || temp == (void *)0)
-	{
-		printf("extra NULL clear\n");
 		return ;
-	}
 	while (temp)
 	{
 		printf("inboucle\n");
@@ -67,13 +61,10 @@ void	ft_unset(t_segment_content *content, t_data *data)
 	i = 1;
 	while (content->cmd_args[i])
 	{
-		printf("inboucle");
 		temp = data->env->head;
-		printf("first temp\n");
 		while (temp)
 		{
 			var = temp->content;
-			printf("in temp : name %s\n", var->name);
 			if (!ft_strcmp(var->name, content->cmd_args[i]))
 			{
 				dll_clear_node(temp, (void (*)(void *))(&free_env_content));
@@ -81,22 +72,6 @@ void	ft_unset(t_segment_content *content, t_data *data)
 			}
 				temp = temp->next;
 		}
-		// if (!data->export_list || !data->export_list->head)
-		// 	continue ;
-		// temp = data->export_list->head;
-		// printf("new temp");
-		// 	while (temp)
-		// 	{
-		// 		var = temp->content;
-		// 		printf("in temp : name %s\n", var->name);
-		// 		if (!ft_strcmp(var->name, content->cmd_args[i]))
-		// 		{	
-		// 			dll_clear_node(temp, (void (*)(void *))(&free_env_content));
-		// 		}
-		// 		else
-		// 			temp = temp->next;
-		// 	}
-		//clear_env(i, content, data);
 		if (data->export_list || data->export_list->head)
 			clear_export(i, content, data);
 		i++;

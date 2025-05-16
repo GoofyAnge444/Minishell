@@ -6,7 +6,7 @@
 /*   By: cboma-ya <cboma-ya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:09:59 by eazard            #+#    #+#             */
-/*   Updated: 2025/04/30 20:52:10 by cboma-ya         ###   ########.fr       */
+/*   Updated: 2025/05/16 18:37:22 by cboma-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,7 @@ typedef struct s_data				t_data;
 typedef struct s_segment_content	t_segment_content; //le mot input est pe plus approprié -- Jean
 
 void	get_and_store_user_input(t_data *data);
-
+char	*ft_getenv(char *name, t_data *data);
+void	set_var_in_list(t_dll_list *list, char *name,
+			char *value, t_data *data);
 #endif

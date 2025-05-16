@@ -6,7 +6,7 @@
 /*   By: cboma-ya <cboma-ya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 04:35:36 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/05/16 17:49:27 by cboma-ya         ###   ########.fr       */
+/*   Updated: 2025/05/16 18:28:36 by cboma-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # include "minishell.h"
 # include <sys/wait.h>
 
-typedef struct s_segment_content t_segment_content;
+typedef struct s_segment_content	t_segment_content;
 
 void	exec(t_data *data, t_dll_list *lst);
 void	set_var_in_list(t_dll_list *list, char *name,
@@ -27,6 +27,7 @@ void	ft_echo(t_segment_content *content);
 void	ft_exit(t_segment_content *content, t_data *data);
 void	ft_pwd(void);
 void	ft_env(t_data *data);
+void	ft_cd(t_segment_content *content, t_data *data);
 void	ft_export(t_segment_content *content, t_data *data);
 void	ft_unset(t_segment_content *content, t_data *data);
 
