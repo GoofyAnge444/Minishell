@@ -6,7 +6,7 @@
 /*   By: cboma-ya <cboma-ya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 02:34:45 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/05/01 00:55:27 by cboma-ya         ###   ########.fr       */
+/*   Updated: 2025/05/16 17:43:59 by cboma-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,91 @@
 
 /*enlever une variable et son contenant de notre env:
 pas d'erreur s'il n'y a rien a unset (ne rien renvoyer).
+ne fonctionne pas en pipe ??
 */
+
+static void	clear_export(int i, t_segment_content *content, t_data *data)
+{
+	t_dll_node		*temp;
+	t_dll_node		*next;
+	t_env_content	*var;
+
+	if (!data)
+	{
+		printf("data is NULL\n");
+		return ;
+	}
+	if (!data->export_list)
+		printf("export_list is NULL\n");
+	else if (!data->export_list->head)
+		printf("export_list->head is NULL\n");
+	else
+		printf("export_list->head points to: %p\n", data->export_list->head);
+
+	printf("in exportclear, have data\n");
+	temp = data->export_list->head;
+	printf("temp in\n");
+	if (temp == NULL || temp == (void *)0)
+	{
+		printf("extra NULL clear\n");
+		return ;
+	}
+	while (temp)
+	{
+		printf("inboucle\n");
+		next = temp->next;
+		var = temp->content;
+		if (!ft_strcmp(var->name, content->cmd_args[i]))
+		{	
+			dll_clear_node(temp, (void (*)(void *))(&free_env_content));
+			break ;
+		}
+		else
+			temp = next;
+	}
+}
 
 void	ft_unset(t_segment_content *content, t_data *data)
 {
 	int				i;
 	t_dll_node		*temp;
-	t_env_content	*env_var;
+	t_env_content	*var;
 
 	i = 1;
 	while (content->cmd_args[i])
 	{
+		printf("inboucle");
 		temp = data->env->head;
+		printf("first temp\n");
 		while (temp)
 		{
-			env_var = temp->content;
-			//printf("inside n8m %s\tvalue %s\n", env_var->name, env_var->value);
-			if (!ft_strcmp(env_var->name, content->cmd_args[i]))
-			{	
-			//	printf("supp name %s\tvalue %s\n", env_var->name, env_var->value);
+			var = temp->content;
+			printf("in temp : name %s\n", var->name);
+			if (!ft_strcmp(var->name, content->cmd_args[i]))
+			{
 				dll_clear_node(temp, (void (*)(void *))(&free_env_content));
 				break ;
 			}
-			temp = temp->next;
+				temp = temp->next;
 		}
+		// if (!data->export_list || !data->export_list->head)
+		// 	continue ;
+		// temp = data->export_list->head;
+		// printf("new temp");
+		// 	while (temp)
+		// 	{
+		// 		var = temp->content;
+		// 		printf("in temp : name %s\n", var->name);
+		// 		if (!ft_strcmp(var->name, content->cmd_args[i]))
+		// 		{	
+		// 			dll_clear_node(temp, (void (*)(void *))(&free_env_content));
+		// 		}
+		// 		else
+		// 			temp = temp->next;
+		// 	}
+		//clear_env(i, content, data);
+		if (data->export_list || data->export_list->head)
+			clear_export(i, content, data);
 		i++;
 	}
 }

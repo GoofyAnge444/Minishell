@@ -6,7 +6,7 @@
 /*   By: cboma-ya <cboma-ya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 02:34:23 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/05/01 17:25:57 by cboma-ya         ###   ########.fr       */
+/*   Updated: 2025/05/07 16:25:57 by cboma-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int	ft_isnumber(char *str)
 
 void	free_exit(t_data *data)
 {
-	free_data(data, false);
+	free_data(data, true);
 }
 
 void	ft_exit(t_segment_content *content, t_data *data)

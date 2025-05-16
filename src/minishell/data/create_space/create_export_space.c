@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_data.c                                        :+:      :+:    :+:   */
+/*   create_export_space.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cboma-ya <cboma-ya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/04 16:04:49 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/05/16 17:42:26 by cboma-ya         ###   ########.fr       */
+/*   Created: 2025/05/14 18:48:57 by cboma-ya          #+#    #+#             */
+/*   Updated: 2025/05/16 17:42:06 by cboma-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "data.h"
 
-void	init_data(t_data *data, char *env[])
+void	create_export_space(t_data *data)
 {
-	ft_memset(data, 0, sizeof(t_data));
-	create_lexer_space(data);
-	create_user_input_space(data);
-	create_linked_env_space(data);
-	created_linked_env(data, env);
-	create_export_space(data); //we try
-	create_parsing_space(data);
-	// create_fatal_error_space(data);
+	data -> export_list = dll_new_list();
+	if (!data -> export_list)
+		fatal_error_clean_exit(data, MALLOC_FAILURE);
 }

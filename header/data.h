@@ -6,7 +6,7 @@
 /*   By: cboma-ya <cboma-ya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 17:21:21 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/05/07 03:51:46 by cboma-ya         ###   ########.fr       */
+/*   Updated: 2025/05/16 17:50:34 by cboma-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,6 @@ typedef enum e_non_fatal_type_error
 	// OPEN,
 }			t_non_fatal_type_error;
 
-
-
 struct s_data
 {
 	// t_data_ex		*par;
@@ -59,6 +57,7 @@ void	init_data(t_data *data, char *env[]);
 void	create_user_input_space(t_data *data);
 void	create_lexer_space(t_data *data);
 void	create_linked_env_space(t_data *data);
+void	create_export_space(t_data *data);
 void	create_parsing_space(t_data *data);
 //void	create_fatal_error_space(t_data *data); // on taff sur ca
 /*exit*/
@@ -69,6 +68,7 @@ void	non_fatal_error_clean(t_data *data, t_non_fatal_type_error error);
 void	free_data(t_data *data, bool fatal);
 void	free_lexer_space(t_data *data, bool fatal);
 void	free_linked_env_space(t_data *data, bool fatal);
+void	free_export_space(t_data *data, bool fatal);
 void	free_user_input_space(t_data *data, bool fatal);
 void	free_parsing_space(t_data *data, bool fatal);
 /*bool utils*/

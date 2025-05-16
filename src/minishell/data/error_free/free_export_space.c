@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_data.c                                        :+:      :+:    :+:   */
+/*   free_export_space.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cboma-ya <cboma-ya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/04 16:04:49 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/05/16 17:42:26 by cboma-ya         ###   ########.fr       */
+/*   Created: 2025/05/15 17:29:34 by cboma-ya          #+#    #+#             */
+/*   Updated: 2025/05/16 17:42:10 by cboma-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "data.h"
 
-void	init_data(t_data *data, char *env[])
+void	free_export_space(t_data *data, bool fatal)
 {
-	ft_memset(data, 0, sizeof(t_data));
-	create_lexer_space(data);
-	create_user_input_space(data);
-	create_linked_env_space(data);
-	created_linked_env(data, env);
-	create_export_space(data); //we try
-	create_parsing_space(data);
-	// create_fatal_error_space(data);
+	if (fatal && data && data -> export_list)
+	{
+		dll_clear_list(data -> export_list,
+			(void (*)(void *))(&free_env_content));
+		data -> export_list = NULL;
+	}
 }

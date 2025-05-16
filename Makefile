@@ -112,11 +112,13 @@ MINISHELL_FILES = 	main \
 					data/create_space/init_data \
 					data/create_space/create_lexer_space \
 					data/create_space/create_linked_env_space \
+					data/create_space/create_export_space \
 					data/create_space/create_user_input_space \
 					data/create_space/create_parsing_space \
 					\
 					data/error_free/free_lexer_space \
 					data/error_free/free_linked_env_space \
+					data/error_free/free_export_space \
 					data/error_free/free_user_input_space \
 					data/error_free/free_data \
 					data/error_free/free_parsing_space \
@@ -214,6 +216,7 @@ MINISHELL_FILES = 	main \
 					exec/builtins/env \
 					exec/builtins/unset \
 					exec/builtins/exit \
+
 
 
 MINISHELL_SRCS_DIR = ./src/minishell/

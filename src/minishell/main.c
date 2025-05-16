@@ -6,7 +6,7 @@
 /*   By: cboma-ya <cboma-ya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:23:05 by eazard            #+#    #+#             */
-/*   Updated: 2025/04/03 21:24:43 by cboma-ya         ###   ########.fr       */
+/*   Updated: 2025/05/16 17:48:14 by cboma-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,16 +49,21 @@ int	main(int ac, char *av[], char *env[])
 
 	(void)ac;
 	(void)av;
+	// printf("bf init data");
 	init_data(&data, env);
+	// printf("after init");
 	while (1)
 	{
 		data.non_fatal_error_occured = false;
+		// printf("data false");
 		get_and_store_user_input(&data);
+		// printf("good input");
 		if (empty_input_check(&data) == false)
 		{
 			lexer(&data);
+			// printf("lexer");
 			parsing(&data);
-			//ft_test(data.parsing->segment_dll->head->content);
+			// printf("parsing");
 			exec(&data, data.parsing->segment_dll);
 		}
 		if (data.non_fatal_error_occured == false)

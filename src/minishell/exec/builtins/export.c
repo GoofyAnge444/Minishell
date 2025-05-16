@@ -6,7 +6,7 @@
 /*   By: cboma-ya <cboma-ya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 02:34:49 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/05/07 04:02:54 by cboma-ya         ###   ########.fr       */
+/*   Updated: 2025/05/16 17:43:12 by cboma-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,12 @@ static bool	valid_export(char *str)
 	return (true);
 }
 
-static void	print_export(t_env_content *content,
-		t_env_content *export_content, t_data *data)
+static void	print_export(t_data *data)
 {
 	int				i;
 	t_dll_node		*temp;
 	t_env_content	*env_var;
+	t_env_content	*export_var;
 
 	temp = data->env->head;
 	while (temp)
@@ -61,10 +61,11 @@ static void	print_export(t_env_content *content,
 	}
 	i = 0;
 	temp = data->export_list->head;
-	while ()
+	while (temp)
 	{
-		printf("export %s", data->export_content->vars[i]);
-		i++;
+		export_var = temp->content;
+		printf("export %s", export_var->name);
+		temp = temp->next;
 	}
 		/*je veux dire ici que si c'est pas dans l'env, mais que c'est
 			un export valide (HELLO sans = par ex), j'imprime ce truc.
@@ -75,26 +76,26 @@ static void	print_export(t_env_content *content,
 }
 
 static int	get_name_and_value(char *str, t_env_content *tmp_env,
-		char *tmp_export, t_data *data)
+		t_env_content *tmp_export, t_data *data)
 {
 	char	*equals;
-	char	*env_value;
-	int		i;
 
 	equals = ft_strchr(str, '=');
 	if (equals)
 	{
 		tmp_env->name = ft_substr(str, 0, equals - str);
+		if (!tmp_env->name)
+			fatal_error_clean_exit(data, MALLOC_FAILURE);
 		tmp_env->value = ft_strdup(equals + 1);
+		if (!tmp_env->value)
+			fatal_error_clean_exit(data, MALLOC_FAILURE);
 	}
 	else
 	{
-		env_value = ft_getenv(str, data);
-		if (env_value)
-			//si c'est dans l'env et défini, on sort.
-			return (0);
-		else
-			tmp_export = ft_strdup(str);
+		tmp_export->name = ft_strdup(str);
+		if (!tmp_export->name)
+			fatal_error_clean_exit(data, MALLOC_FAILURE);
+		tmp_export->value = NULL;
 	}
 	return (0);
 }
@@ -103,31 +104,39 @@ void	ft_export(t_segment_content *content, t_data *data)
 {
 	int				i;
 	char			*str;
-	char			*tmp_export;
+	t_env_content	*tmp_export;
 	t_env_content	*tmp_env;
 
 	str = content->cmd_args;
 	i = 1;
 	if (!str[1])
-		print_export(data->env->head->content, data->export_list->head->content, data);
+		print_export(data);
 	else
 	{
 		while (str[i])
 		{
-			get_name_and_value(str[i], tmp_env, tmp_export, data);
-			if (valid_export(str) == false)
-				msg_invalid_export(str[i]);
-			// else 
-			// {
-
-			// }
-			else if (ft_strchr(str[i], '=') || !ft_getenv(tmp_env->name, data))
+			if (valid_export(str) == true)
 			{
-				ft_set_env_var(tmp_env->name, tmp_env->value, data);
+				get_name_and_value(str[i], tmp_env, tmp_export, data);
+			/*si : y a un egal et il est pas dans l'env -> on fout tout dans env
+				- si il est dans l'export : on l'y supprime apres son ajout dans env.
+			  si : y a un egal et il est dans l'env -> on remplace var dans env
+			  si : y a pas de egal et il est dans env -> on fait rien.
+			  si : y a pas de egal et il est pas dans env ->
+			  	 -si il est dans export -> on fait rien.
+				 -si il est pas dans export -> on l'y ajoute.*/	
+				if (ft_strchr(str[i], '='))
+					set_var_in_list(data->env, tmp_env->name,
+						tmp_env->value, data);
+				else if (!ft_getenv(tmp_env->name, data))
+					set_var_in_list(data->export_list, tmp_export->name,
+						NULL, data);
+				free_env_content(tmp_env);
+				free_env_content(tmp_export);
 			}
-			free(tmp_env->name);
-			free(tmp_env->value);
-			free(tmp_export);
+			else
+				msg_invalid_export(str[i]);
+
 			i++;
 		}
 	}
