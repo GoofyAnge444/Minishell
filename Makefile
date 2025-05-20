@@ -221,7 +221,6 @@ MINISHELL_FILES = 	main \
 					exec/builtins/utils_export \
 
 
-
 MINISHELL_SRCS_DIR = ./src/minishell/
 MINISHELL_SRCS = $(addprefix $(MINISHELL_SRCS_DIR), $(addsuffix .c, $(MINISHELL_FILES)))
 MINISHELL_OBJS_DIR = ./obj/minishell/

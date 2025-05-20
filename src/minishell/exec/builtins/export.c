@@ -6,7 +6,7 @@
 /*   By: cboma-ya <cboma-ya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 02:34:49 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/05/16 17:43:12 by cboma-ya         ###   ########.fr       */
+/*   Updated: 2025/05/19 21:47:09 by cboma-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,15 @@ static void	print_export(t_data *data)
 		temp = temp->next;
 	}
 	i = 0;
-	temp = data->export_list->head;
-	while (temp)
+	if (data->export_list || data->export_list->head)
 	{
-		export_var = temp->content;
-		printf("export %s", export_var->name);
-		temp = temp->next;
+		temp = data->export_list->head;
+		while (temp)
+		{
+			export_var = temp->content;
+			printf("export %s", export_var->name);
+			temp = temp->next;
+		}
 	}
 		/*je veux dire ici que si c'est pas dans l'env, mais que c'est
 			un export valide (HELLO sans = par ex), j'imprime ce truc.
@@ -136,7 +139,6 @@ void	ft_export(t_segment_content *content, t_data *data)
 			}
 			else
 				msg_invalid_export(str[i]);
-
 			i++;
 		}
 	}

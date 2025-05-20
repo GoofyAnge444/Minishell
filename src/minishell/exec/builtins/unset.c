@@ -6,7 +6,7 @@
 /*   By: cboma-ya <cboma-ya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 02:34:45 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/05/16 18:23:21 by cboma-ya         ###   ########.fr       */
+/*   Updated: 2025/05/20 15:38:10 by cboma-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,9 @@ static void	clear_export(int i, t_segment_content *content, t_data *data)
 	t_dll_node		*next;
 	t_env_content	*var;
 
-	if (!data)
-	{
-		printf("data is NULL\n");
+	if (!data || !data->export_list || !data->export_list->head)
 		return ;
-	}
-	if (!data->export_list)
-		printf("export_list is NULL\n");
-	else if (!data->export_list->head)
-		printf("export_list->head is NULL\n");
-	else
-		printf("export_list->head points to: %p\n", data->export_list->head);
+	printf("export_list->head points to: %p\n", data->export_list->head);
 	temp = data->export_list->head;
 	if (temp == NULL || temp == (void *)0)
 		return ;

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utlis_export.c                                     :+:      :+:    :+:   */
+/*   utils_export.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cboma-ya <cboma-ya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 01:03:50 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/05/16 18:42:53 by cboma-ya         ###   ########.fr       */
+/*   Updated: 2025/05/20 15:51:34 by cboma-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "exec.h"
 
-static void	verif_in_export(t_env_content *in_env, t_data *data)
+static void	verif_in_export(char *in_env, t_data *data)
 {
 	t_dll_node		*temp;
 	t_env_content	*var;
@@ -21,7 +21,7 @@ static void	verif_in_export(t_env_content *in_env, t_data *data)
 	while (temp)
 	{
 		var = temp->content;
-		if (!ft_strcmp(var->name, in_env->name))
+		if (!ft_strcmp(var->name, in_env))
 		{
 			dll_clear_node(temp, (void (*)(void *))(&free_env_content));
 			break ;
@@ -57,11 +57,10 @@ static void	ft_new_content(t_env_content *tmp, char *name,
 		tmp->value = NULL;
 }
 
-void	ft_replace_value(t_env_content *tmp, char *name,
-	char *new_value, t_data *data)
+static void	ft_replace_value(t_env_content *tmp, char *new_value, t_data *data)
 {
 	free(tmp->value);
-	if (new_value != NULL && new_value[0] != '\0')
+	if (new_value != NULL)
 	{
 		tmp->value = ft_strdup(new_value);
 		if (!tmp->value)
@@ -82,11 +81,7 @@ void	set_var_in_list(t_dll_list *list, char *name,
 {
 	t_dll_node		*node;
 	t_env_content	*tmp;
-	t_env_content	*export_content;
-
-
-	printf("[set_var_in_list] list=%p | name=%s | value=%s\n",
-		list, name, value ? value : "NULL");
+	//t_env_content	*export_content;
 
 	if (list == data->export_list)
 		printf("⚠️ INSERTION DANS EXPORT_LIST ⚠️\n");
@@ -96,24 +91,19 @@ void	set_var_in_list(t_dll_list *list, char *name,
 	{
 		tmp = node->content;
 		if (!ft_strcmp(tmp->name, name)) // Si la variable existe déjà (même nom), on met à jour sa valeur
-			ft_replace_value(tmp, name, new_value, data);
+			ft_replace_value(tmp, new_value, data);
 		node = node->next;
 	}
 	ft_new_content(tmp, name, new_value, data);
 	//export_content = data->export_list->head;
-	/*
-	- si il est dans l'export : on l'y supprime apres son ajout dans env.
-  si : y a pas de egal et il est pas dans env ->
-  	 -si il est dans export -> on fait rien.
-	 -si il est pas dans export -> on l'y ajoute.*/	
-	verif(tmp, data->export_list, data->env, data);
+	//verif(tmp, data->export_list, data->env, data);
 	dll_insert_tail(list, dll_new_node(tmp)); // On insère la nouvelle variable à la fin de la liste
+	free_env_content(tmp);
 }
 
 // static void	verif(t_env_content *tmp, t_dll_list *export,
 // 	t_dll_list *env, t_data *data)
 // {
-	
 // }
 
 t_env_content	*create_env_content(const char *name,

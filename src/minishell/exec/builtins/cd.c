@@ -6,7 +6,7 @@
 /*   By: cboma-ya <cboma-ya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 02:32:03 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/05/16 18:33:43 by cboma-ya         ###   ########.fr       */
+/*   Updated: 2025/05/20 15:59:37 by cboma-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,16 @@ static void	update_pwd(t_data *data, char *old_pwd, char *new_pwd)
 	free(new_pwd);
 }
 
+size_t	ft_tablen(char **tab)
+{
+	size_t	i;
+
+	i = 0;
+	while (tab && tab[i])
+		i++;
+	return (i);
+}
+
 void	ft_cd(t_segment_content *content, t_data *data)
 {
 	int		ret;
@@ -27,7 +37,7 @@ void	ft_cd(t_segment_content *content, t_data *data)
 	char	*old_pwd;
 	char	*new_pwd;
 
-	if (content -> cmd_args[2])
+	if (ft_tablen(content -> cmd_args) > 2)
 		ft_putstr_fd("mimishell: cd: too many arguments\n", 2);
 	if (!content->cmd_args[1])
 	{
@@ -45,6 +55,6 @@ void	ft_cd(t_segment_content *content, t_data *data)
 		return (perror("mimishell: cd"));
 	new_pwd = getcwd(NULL, 0);
 	if (!new_pwd)
-		return (fatal_error_clean_exit(data, MALLOC_FAILURE));
+		return (free(old_pwd), fatal_error_clean_exit(data, MALLOC_FAILURE));
 	update_pwd(data, old_pwd, new_pwd);
 }
