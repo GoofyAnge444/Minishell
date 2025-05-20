@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_export.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cboma-ya <cboma-ya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 01:03:50 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/05/20 15:51:34 by cboma-ya         ###   ########.fr       */
+/*   Updated: 2025/05/20 16:27:46 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ static void	ft_replace_value(t_env_content *tmp, char *new_value, t_data *data)
 	}
 	else
 		tmp->value = NULL;
-	return ;
 }
 
 /*fonction generale pour env et export en fonction de la list envoyé.*/
@@ -91,14 +90,14 @@ void	set_var_in_list(t_dll_list *list, char *name,
 	{
 		tmp = node->content;
 		if (!ft_strcmp(tmp->name, name)) // Si la variable existe déjà (même nom), on met à jour sa valeur
-			ft_replace_value(tmp, new_value, data);
+			return (ft_replace_value(tmp, new_value, data), (void)0);
 		node = node->next;
 	}
 	ft_new_content(tmp, name, new_value, data);
 	//export_content = data->export_list->head;
-	//verif(tmp, data->export_list, data->env, data);
+	// verif(tmp, data->export_list, data->env, data);
 	dll_insert_tail(list, dll_new_node(tmp)); // On insère la nouvelle variable à la fin de la liste
-	free_env_content(tmp);
+	// free_env_content(tmp);
 }
 
 // static void	verif(t_env_content *tmp, t_dll_list *export,
