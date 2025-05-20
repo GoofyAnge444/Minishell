@@ -6,7 +6,7 @@
 /*   By: cboma-ya <cboma-ya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 02:34:49 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/05/19 21:47:09 by cboma-ya         ###   ########.fr       */
+/*   Updated: 2025/05/20 18:01:35 by cboma-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ expend les dollars comme d'hab;
 static void	msg_invalid_export(char *str)
 {
 	ft_printf_fd(2, "export: '%s': not a valid identifier\n", str);
-	return (1);
 }
 
 static bool	valid_export(char *str)
@@ -49,6 +48,8 @@ static void	print_export(t_data *data)
 	t_env_content	*env_var;
 	t_env_content	*export_var;
 
+	env_var = ft_calloc(1, sizeof(t_env_content));
+	export_var = ft_calloc(1, sizeof(t_env_content));
 	temp = data->env->head;
 	while (temp)
 	{
@@ -88,10 +89,17 @@ static int	get_name_and_value(char *str, t_env_content *tmp_env,
 	{
 		tmp_env->name = ft_substr(str, 0, equals - str);
 		if (!tmp_env->name)
+		{
+			free(tmp_env);
 			fatal_error_clean_exit(data, MALLOC_FAILURE);
+		}
 		tmp_env->value = ft_strdup(equals + 1);
 		if (!tmp_env->value)
+		{
+			free(tmp_env->name);
+			free(tmp_env);
 			fatal_error_clean_exit(data, MALLOC_FAILURE);
+		}
 	}
 	else
 	{
@@ -106,29 +114,24 @@ static int	get_name_and_value(char *str, t_env_content *tmp_env,
 void	ft_export(t_segment_content *content, t_data *data)
 {
 	int				i;
-	char			*str;
+	char			**tab;
 	t_env_content	*tmp_export;
 	t_env_content	*tmp_env;
 
-	str = content->cmd_args;
+	tmp_env = ft_calloc(1, sizeof(t_env_content));
+	tmp_export = ft_calloc(1, sizeof(t_env_content));
+	tab = content->cmd_args;
 	i = 1;
-	if (!str[1])
+	if (!tab[1])
 		print_export(data);
 	else
 	{
-		while (str[i])
+		while (tab[i])
 		{
-			if (valid_export(str) == true)
+			if (valid_export(tab[i]) == true)
 			{
-				get_name_and_value(str[i], tmp_env, tmp_export, data);
-			/*si : y a un egal et il est pas dans l'env -> on fout tout dans env
-				- si il est dans l'export : on l'y supprime apres son ajout dans env.
-			  si : y a un egal et il est dans l'env -> on remplace var dans env
-			  si : y a pas de egal et il est dans env -> on fait rien.
-			  si : y a pas de egal et il est pas dans env ->
-			  	 -si il est dans export -> on fait rien.
-				 -si il est pas dans export -> on l'y ajoute.*/	
-				if (ft_strchr(str[i], '='))
+				get_name_and_value(tab[i], tmp_env, tmp_export, data);	
+				if (ft_strchr(tab[i], '='))
 					set_var_in_list(data->env, tmp_env->name,
 						tmp_env->value, data);
 				else if (!ft_getenv(tmp_env->name, data))
@@ -138,7 +141,7 @@ void	ft_export(t_segment_content *content, t_data *data)
 				free_env_content(tmp_export);
 			}
 			else
-				msg_invalid_export(str[i]);
+				msg_invalid_export(tab[i]);
 			i++;
 		}
 	}

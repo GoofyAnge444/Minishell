@@ -6,7 +6,7 @@
 /*   By: cboma-ya <cboma-ya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 06:30:40 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/05/16 18:32:12 by cboma-ya         ###   ########.fr       */
+/*   Updated: 2025/05/20 17:22:37 by cboma-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,11 @@ int	exec_builtin(t_segment_content *content, t_data *data)
 		return (ft_unset(content, data), 0);
 	else if (!ft_strcmp(content->cmd_name, "cd"))
 		return (ft_cd(content, data), 0);
-	/*else if (!ft_strcmp(content->cmd_name, "exit"))
-		return (ft_exit(content), 0);
 	else if (!ft_strcmp(content->cmd_name, "export"))
 		return (ft_export(content, data), 0);
+	/*else if (!ft_strcmp(content->cmd_name, "exit"))
+		return (ft_exit(content), 0);
+	;
 		ne fonctionnent pas en pipe ?? 
 	*/
 	return (1);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_export.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
+/*   By: cboma-ya <cboma-ya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 01:03:50 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/05/20 16:27:46 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/20 17:54:24 by cboma-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 static void	verif_in_export(char *in_env, t_data *data)
 {
 	t_dll_node		*temp;
-	t_env_content	*var;
+	t_env_content	*in_exp;
 
 	temp = data->export_list->head;
 	while (temp)
 	{
-		var = temp->content;
-		if (!ft_strcmp(var->name, in_env))
+		in_exp = temp->content;
+		if (!ft_strcmp(in_exp->name, in_env))
 		{
 			dll_clear_node(temp, (void (*)(void *))(&free_env_content));
 			break ;
@@ -42,7 +42,7 @@ static void	ft_new_content(t_env_content *tmp, char *name,
 		free(tmp);
 		fatal_error_clean_exit(data, MALLOC_FAILURE);
 	}
-	if (value != NULL && value[0] != '\0')
+	if (value != NULL)
 	{
 		tmp->value = ft_strdup(value);
 		if (!tmp->value)
@@ -51,7 +51,7 @@ static void	ft_new_content(t_env_content *tmp, char *name,
 			free(tmp);
 			fatal_error_clean_exit(data, MALLOC_FAILURE);
 		}
-		verif_in_export(tmp->name, data);
+		verif_in_export(tmp->name, data); //on vérifie dans export si la nouvelle variable y existe, puis on supprime.
 	}
 	else
 		tmp->value = NULL;
@@ -99,54 +99,3 @@ void	set_var_in_list(t_dll_list *list, char *name,
 	dll_insert_tail(list, dll_new_node(tmp)); // On insère la nouvelle variable à la fin de la liste
 	// free_env_content(tmp);
 }
-
-// static void	verif(t_env_content *tmp, t_dll_list *export,
-// 	t_dll_list *env, t_data *data)
-// {
-// }
-
-t_env_content	*create_env_content(const char *name,
-		const char *value, t_data *data)
-{
-	t_env_content	*env;
-
-	env = ft_calloc(1, sizeof(t_env_content));
-	if (!env)
-		fatal_error_clean_exit(data, MALLOC_FAILURE);
-	env->name = ft_strdup(name);
-	if (!env->name)
-		return (free(env), fatal_error_clean_exit(data, MALLOC_FAILURE), NULL);
-	if (value)
-		env->value = ft_strdup(value);
-	else
-		env->value = NULL;
-	return (env);
-}
-
-// void	ft_set_export(t_data *data, char *name)
-// {
-// 	t_dll_node		*temp;
-// 	t_env_content	*env;
-
-// 	temp = data->env->head;
-// 	while (temp)
-// 	{
-// 		env = temp->content;
-// 		if (!ft_strcmp(env->name, name))
-// 			return ;// Déjà dans env → rien à faire
-// 		temp = temp->next;
-// 	}
-
-// 	temp = data->export_list->head;
-// 	while (temp)
-// 	{
-// 		env = temp->content;
-// 		if (!ft_strcmp(env->name, name))
-// 			return ; // Déjà dans export → rien à faire
-// 		temp = temp->next;
-// 	}
-// 	env = create_env_content(name, NULL, data);
-// 	if (!env)
-// 		fatal_error_clean_exit(data, MALLOC_FAILURE);
-// 	dll_insert_tail(data->export_list, dll_new_node(env));
-// }
