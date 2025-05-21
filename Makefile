@@ -116,6 +116,7 @@ MINISHELL_FILES = 	main \
 					data/create_space/create_user_input_space \
 					data/create_space/create_parsing_space \
 					data/create_space/create_exec_space \
+					data/create_space/create_export_space \
 					\
 					data/free_space/free_lexer_space \
 					data/free_space/free_linked_env_space \
@@ -123,6 +124,7 @@ MINISHELL_FILES = 	main \
 					data/free_space/free_data \
 					data/free_space/free_parsing_space \
 					data/free_space/free_exec_space \
+					data/free_space/free_export_space \
 					\
 					data/fatal_error_clean_exit \
 					data/non_fatal_error_clean \
@@ -235,6 +237,18 @@ MINISHELL_FILES = 	main \
 					exec/exec_cmd/add_absolute_path_to_cmd_name \
 					exec/exec_cmd/ft_strjoin_with_separator \
 					exec/exec_cmd/close_cmd_fd \
+					exec/exec_cmd/launch_builtin \
+					exec/exec_cmd/launch_non_builtin \
+					\
+					exec/builtins/echo \
+					exec/builtins/pwd \
+					exec/builtins/cd \
+					exec/builtins/env \
+					exec/builtins/export \
+					exec/builtins/unset \
+					exec/builtins/exit \
+					exec/builtins/utils \
+					exec/builtins/utils_export \
 					\
 					\
 					signal/signal \

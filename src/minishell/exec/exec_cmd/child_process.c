@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 13:41:19 by eazard            #+#    #+#             */
-/*   Updated: 2025/05/06 15:57:02 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/21 18:17:36 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	permission_denied_error(t_data *data, char *cmd_name)
 	fatal_error_clean_exit(data, NO_EXEC_PERMISSION);
 }
 
-static void	check_and_search_for_abs_path(t_data *data, t_cmd_content *content)
+void	check_and_search_for_abs_path(t_data *data, t_cmd_content *content)
 {
 	struct stat	path_stat;
 
@@ -69,9 +69,15 @@ void	child_process(t_data *data, t_dll_node *cmd)
 				STDOUT_FILENO))
 			fatal_error_clean_exit(data, DUP2_FAILURE);
 		close_cmd_fd(cmd, true);
-		check_and_search_for_abs_path(data, content);
-		if (-1 == execve(content -> cmd_name, content -> cmd_args,
-				data -> exec -> envp))
-			fatal_error_clean_exit(data, EXECVE_FAILURE);
+		if (is_builtin(content->cmd_name))
+		{
+			if (-1 == launch_builtin(content, data))
+				fatal_error_clean_exit(data, LAUNCH_BUILTIN_FAILURE);
+		}
+		else
+		{
+			if (-1 == launch_non_builtin(content, data))
+				fatal_error_clean_exit(data, EXECVE_FAILURE);
+		}
 	}
 }

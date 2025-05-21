@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 17:21:21 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/05/06 14:27:24 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/21 18:25:17 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef enum e_fatal_type_error
 	DUP_FAILURE,
 	DUP2_FAILURE,
 	EXECVE_FAILURE,
+	LAUNCH_BUILTIN_FAILURE,
 	COMMAND_NOT_FOUND = 127,
 	NO_EXEC_PERMISSION = 126,
 }			t_fatal_type_error;
@@ -52,6 +53,7 @@ struct s_data
 	// t_exec			*head;
 	// int				code_reset;
 	t_dll_list		*env;
+	t_dll_list		*export_list;
 	t_user_input	*user_input;
 	t_parsing		*parsing;
 	t_lexer			*lexer;
@@ -70,6 +72,7 @@ void	create_linked_env_space(t_data *data);
 void	create_parsing_space(t_data *data);
 void	create_fatal_error_space(t_data *data); // on taff sur ca
 void	create_exec_space(t_data *data);
+void	create_export_space(t_data *data);
 /*exit*/
 void	fatal_error_clean_exit(t_data *data, t_fatal_type_error error);
 void	non_fatal_error_clean(t_data *data, t_non_fatal_type_error error);
@@ -81,6 +84,7 @@ void	free_lexer_space(t_data *data, bool fatal);
 void	free_linked_env_space(t_data *data, bool fatal);
 void	free_user_input_space(t_data *data, bool fatal);
 void	free_parsing_space(t_data *data, bool fatal);
+void	free_export_space(t_data *data, bool fatal);
 /*bool utils*/
 bool	non_fatal_error_ocured(t_data *data);
 

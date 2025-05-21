@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 12:20:25 by eazard            #+#    #+#             */
-/*   Updated: 2025/05/06 13:54:32 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/21 18:21:05 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,22 @@ void			add_absolute_path_to_cmd_name(t_data *data,
 					t_cmd_content *content);
 void			parent_process(t_data	*data, t_dll_node *cmd);
 void			close_cmd_fd(t_dll_node *cmd, bool close_next_cmd);
+int				launch_non_builtin(t_cmd_content *content, t_data *data);
+int				launch_builtin(t_cmd_content *content, t_data *data);
+void			check_and_search_for_abs_path(t_data *data, t_cmd_content *content);
+
+/*builtins*/
+void			set_var_in_list(t_dll_list *list, char *name,
+					char *value, t_data *data);
+// void			ft_set_env(t_env_content *tmp_env, t_data *data);
+// void			ft_set_env_var(const char *name, const char *value, t_data *data);
+char			*ft_getenv(char *name, t_data *data);
+void			ft_echo(t_cmd_content *content);
+void			ft_exit(t_cmd_content *content, t_data *data);
+void			ft_pwd(void);
+void			ft_env(t_data *data);
+void			ft_cd(t_cmd_content *content, t_data *data);
+void			ft_export(t_cmd_content *content, t_data *data);
+void			ft_unset(t_cmd_content *content, t_data *data);
 
 #endif
