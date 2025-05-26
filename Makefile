@@ -219,7 +219,6 @@ MINISHELL_FILES = 	main \
 					exec/builtins/unset \
 					exec/builtins/exit \
 					exec/builtins/utils \
-					exec/builtins/utils_export \
 
 
 MINISHELL_SRCS_DIR = ./src/minishell/
