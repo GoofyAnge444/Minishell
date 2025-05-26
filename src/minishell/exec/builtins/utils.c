@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_e.c                                          :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cboma-ya <cboma-ya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 18:40:41 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/05/26 18:41:07 by cboma-ya         ###   ########.fr       */
+/*   Updated: 2025/05/26 20:29:35 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*ft_getenv(char *name, t_data *data)
 	while (temp)
 	{
 		env_var = temp->content;
-		if (!ft_strcmp(env_var->name, name))
+		if (ft_strcmp(env_var->name, name))
 			return (env_var->value);
 		temp = temp->next;
 	}

@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 02:32:03 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/05/26 19:52:24 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/26 20:31:33 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,6 @@ static void	update_pwd(t_data *data, char *old_pwd, char *new_pwd)
 	free(new_pwd);
 }
 
-size_t	ft_tablen(char **tab)
-{
-	size_t	i;
-
-	i = 0;
-	while (tab && tab[i])
-		i++;
-	return (i);
-}
-
 void	ft_cd(t_cmd_content *content, t_data *data)
 {
 	int		ret;
@@ -38,7 +28,7 @@ void	ft_cd(t_cmd_content *content, t_data *data)
 	char	*new_pwd;
 
 	if (ft_tablen(content -> cmd_args) > 2)
-		ft_putstr_fd("mimishell: cd: too many arguments\n", 2);
+		return ((void)ft_putstr_fd("mimishell: cd: too many arguments\n", 2));
 	if (!content->cmd_args[1])
 	{
 		path = ft_getenv("HOME", data);
@@ -52,7 +42,7 @@ void	ft_cd(t_cmd_content *content, t_data *data)
 		return (fatal_error_clean_exit(data, MALLOC_FAILURE));
 	ret = chdir(path);
 	if (ret == -1)
-		return (perror("mimishell: cd"));
+		return (free(old_pwd), perror("mimishell: cd"));
 	new_pwd = getcwd(NULL, 0);
 	if (!new_pwd)
 		return (free(old_pwd), fatal_error_clean_exit(data, MALLOC_FAILURE));

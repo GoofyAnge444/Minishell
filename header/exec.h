@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 12:20:25 by eazard            #+#    #+#             */
-/*   Updated: 2025/05/26 19:53:36 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/26 20:09:10 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ typedef struct s_exec				t_exec;
 typedef struct s_cmd_content		t_cmd_content;
 typedef struct s_segment_content	t_segment_content;
 typedef struct s_redir				t_redir;
+typedef struct s_env_content		t_env_content;
 
 struct								s_cmd_content
 {
