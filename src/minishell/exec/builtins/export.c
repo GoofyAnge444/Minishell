@@ -6,7 +6,7 @@
 /*   By: cboma-ya <cboma-ya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 02:34:49 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/05/26 19:17:52 by cboma-ya         ###   ########.fr       */
+/*   Updated: 2025/05/26 19:35:28 by cboma-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,6 @@ static void	print_export(t_data *data)
 			temp = temp->next;
 		}
 	}
-}
-
-void	freeing_experience(t_env_content *tmp_env, t_data *data)
-{
-	free_env_content(tmp_env);
-	fatal_error_clean_exit(data, MALLOC_FAILURE);
 }
 
 static int	get_name_and_value(char *str, t_env_content *tmp_env,

@@ -6,7 +6,7 @@
 /*   By: cboma-ya <cboma-ya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 17:20:44 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/05/26 19:32:21 by cboma-ya         ###   ########.fr       */
+/*   Updated: 2025/05/26 19:38:30 by cboma-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,4 +93,11 @@ void	set_var_in_list(t_dll_list *list, char *name,
 	}
 	tmp = ft_new_content(name, new_value, data);
 	dll_insert_tail(list, dll_new_node(tmp)); // On insère la nouvelle variable à la fin de la liste
+}
+
+/*pcq on a des limites de lignes, création de cette merveille*/
+void	freeing_experience(t_env_content *tmp_env, t_data *data)
+{
+	free_env_content(tmp_env);
+	fatal_error_clean_exit(data, MALLOC_FAILURE);
 }
