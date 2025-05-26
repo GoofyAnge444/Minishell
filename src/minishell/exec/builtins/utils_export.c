@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cboma-ya <cboma-ya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/01 01:03:50 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/05/20 17:54:24 by cboma-ya         ###   ########.fr       */
+/*   Created: 2025/04/15 17:20:44 by cboma-ya          #+#    #+#             */
+/*   Updated: 2025/05/26 19:38:30 by cboma-ya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,10 @@ static void	verif_in_export(char *in_env, t_data *data)
 	}
 }
 
-static void	ft_new_content(t_env_content *tmp, char *name,
-	char *value, t_data *data)
+static t_env_content	*ft_new_content(char *name, char *value, t_data *data)
 {
+	t_env_content	*tmp;
+
 	tmp = ft_calloc(1, sizeof(t_env_content)); // Si la variable n'existe pas dans la liste, on la crée et on l'ajoute
 	if (!tmp)
 		fatal_error_clean_exit(data, MALLOC_FAILURE);
@@ -55,6 +56,7 @@ static void	ft_new_content(t_env_content *tmp, char *name,
 	}
 	else
 		tmp->value = NULL;
+	return (tmp);
 }
 
 static void	ft_replace_value(t_env_content *tmp, char *new_value, t_data *data)
@@ -80,11 +82,7 @@ void	set_var_in_list(t_dll_list *list, char *name,
 {
 	t_dll_node		*node;
 	t_env_content	*tmp;
-	//t_env_content	*export_content;
 
-	if (list == data->export_list)
-		printf("⚠️ INSERTION DANS EXPORT_LIST ⚠️\n");
-	///a supprimer
 	node = list->head;
 	while (node)
 	{
@@ -93,9 +91,13 @@ void	set_var_in_list(t_dll_list *list, char *name,
 			return (ft_replace_value(tmp, new_value, data), (void)0);
 		node = node->next;
 	}
-	ft_new_content(tmp, name, new_value, data);
-	//export_content = data->export_list->head;
-	// verif(tmp, data->export_list, data->env, data);
+	tmp = ft_new_content(name, new_value, data);
 	dll_insert_tail(list, dll_new_node(tmp)); // On insère la nouvelle variable à la fin de la liste
-	// free_env_content(tmp);
+}
+
+/*pcq on a des limites de lignes, création de cette merveille*/
+void	freeing_experience(t_env_content *tmp_env, t_data *data)
+{
+	free_env_content(tmp_env);
+	fatal_error_clean_exit(data, MALLOC_FAILURE);
 }

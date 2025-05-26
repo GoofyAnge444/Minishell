@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 12:22:21 by eazard            #+#    #+#             */
-/*   Updated: 2025/05/06 14:02:40 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/26 19:54:12 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,16 @@ void	set_signals_interactive(void)
 	act.sa_handler = &signal_reset_prompt;
 	sigaction(SIGINT, &act, NULL);
 }
+
+// void	set_signals_interactive_heredoc(t_data *data)
+// {
+// 	t_sigaction	act;
+
+// 	ignore_sigquit();
+// 	ft_memset(&act, 0, sizeof(act));
+// 	act.sa_handler = &non_fatal_error_clean;
+// 	sigaction(SIGINT, &act, NULL);
+// }
 
 void	set_signals_noninteractive(void)
 {

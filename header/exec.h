@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 12:20:25 by eazard            #+#    #+#             */
-/*   Updated: 2025/05/21 18:21:05 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/26 19:53:36 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ struct								s_cmd_content
 	char							**cmd_args;
 	char							*cmd_name;
 	bool							skip_cmd;
+	bool							exec_cmd_in_parent_process;
 	pid_t							pid;
 };
 
@@ -83,5 +84,8 @@ void			ft_env(t_data *data);
 void			ft_cd(t_cmd_content *content, t_data *data);
 void			ft_export(t_cmd_content *content, t_data *data);
 void			ft_unset(t_cmd_content *content, t_data *data);
-
+void			set_builtin_cmd_to_be_exec_in_parent_process(t_data *data,
+					t_dll_list *cmd_dll);
+void			set_builtin_cmd_to_skip(t_data *data, t_dll_list *cmd_dll);
+void			freeing_experience(t_env_content *tmp_env, t_data *data);
 #endif

@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fatal_error_clean_exit.c                           :+:      :+:    :+:   */
+/*   ft_tablen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/04 17:47:51 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/05/26 19:07:48 by eazard           ###   ########.fr       */
+/*   Created: 2025/05/26 17:20:49 by eazard            #+#    #+#             */
+/*   Updated: 2025/05/26 17:21:34 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "data.h"
+#include "libft.h"
 
-void	fatal_error_clean_exit(t_data *data, t_fatal_type_error error)
+size_t	ft_tablen(char **tab)
 {
-	free_data(data, true);
-	exit(error);
+	size_t	i;
+
+	i = 0;
+	while (tab[i])
+	{
+		i++;
+	}
+	return (i);
 }

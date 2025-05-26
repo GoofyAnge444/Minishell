@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 18:05:54 by eazard            #+#    #+#             */
-/*   Updated: 2025/05/06 15:58:36 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/26 19:13:52 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,13 @@
 requirement :
 	- all pipe are set up : TODO
 */
-
+void	launch_builtin_in_parent_process(t_data *data, t_dll_node *cmd)
+{
+	if (launch_builtin(cmd->content, data) == -1)
+		fatal_error_clean_exit(data, LAUNCH_BUILTIN_FAILURE);
+	else
+		close_cmd_fd(cmd, false);
+}
 
 
 void	exec_cmd(t_data *data, t_dll_node *cmd, t_dll_node *segment)
@@ -27,8 +33,11 @@ void	exec_cmd(t_data *data, t_dll_node *cmd, t_dll_node *segment)
 	segment_content = segment -> content;
 	fill_fd(data, segment_content->redir_tab, cmd -> content);
 	set_pipe_in_a_cmd(data, cmd);
+	if (is_builtin(cmd_content ->cmd_name)
+		&& cmd_content->exec_cmd_in_parent_process == true)
+		return (launch_builtin_in_parent_process(data, cmd));
 	if (!data -> exec -> envp)
-			convert_env_dll_into_env_str_tab(data);
+		convert_env_dll_into_env_str_tab(data);
 	if (cmd_content -> cmd_name)
 	{
 		cmd_content -> pid = fork();

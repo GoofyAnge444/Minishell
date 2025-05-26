@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 18:07:21 by eazard            #+#    #+#             */
-/*   Updated: 2025/05/21 18:33:48 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/26 19:03:47 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,5 @@ int	launch_builtin(t_cmd_content *content, t_data *data)
 	;
 		ne fonctionnent pas en pipe ?? 
 	*/
-	free_data(data, true);
-	exit(0);
+	return (0);
 }

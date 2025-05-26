@@ -61,6 +61,7 @@ LIBFT_FILES = \
 		libft/ft_strrchr \
 		libft/ft_strtrim \
 		libft/ft_substr \
+		libft/ft_tablen \
 		libft/ft_tolower \
 		libft/ft_toupper \
 		\
@@ -228,6 +229,8 @@ MINISHELL_FILES = 	main \
 					exec/build_cmd_list/heredoc \
 					exec/build_cmd_list/set_all_pipes \
 					exec/build_cmd_list/set_pipe_in_a_cmd \
+					exec/build_cmd_list/set_builtin_cmd_to_be_exec_in_parent_process \
+					exec/build_cmd_list/set_builtin_cmd_to_skip \
 					\
 					exec/exec_cmd/exec_cmd \
 					exec/exec_cmd/is_builtin \

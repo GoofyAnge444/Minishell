@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 18:00:08 by eazard            #+#    #+#             */
-/*   Updated: 2025/05/21 18:04:17 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/26 19:24:31 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ static void	exec_all_command(t_data *data)
 	cmd = data -> exec -> cmd_dll -> head;
 	while (cmd)
 	{
-		exec_cmd(data, cmd, segment);
+		if (((t_cmd_content *)cmd -> content)->skip_cmd == false)
+			exec_cmd(data, cmd, segment);
 		segment = segment -> next;
 		cmd = cmd -> next;
 	}
@@ -34,46 +35,52 @@ static pid_t	wait_cmd(t_data *data, t_dll_node *cmd,
 
 	(void)data;
 	content = cmd -> content;
-	return(waitpid(content -> pid, status, 0));
+	return (waitpid(content -> pid, status, 0));
 }
 
-static void	update_last_exit_code(int status, bool *updated)
-{
-	if (WIFEXITED(status))
-	// {
-		g_last_exit_code = WEXITSTATUS(status);
-		// ft_printf("WEXITSTATUS = %i\n", WEXITSTATUS(status));
-	// }
-	else if (WIFSIGNALED(status))
-	// {
-		g_last_exit_code = 128 + WTERMSIG(status);
-		// ft_printf("WTERMSIG = %i\n", WTERMSIG(status));
-	// }
-	*updated = true;
-}
+// static void	update_last_exit_code(int status, bool *updated)
+// {
+// 	if (WIFEXITED(status))
+// 	// {
+// 		g_last_exit_code = WEXITSTATUS(status);
+// 		// ft_printf("WEXITSTATUS = %i\n", WEXITSTATUS(status));
+// 	// }
+// 	else if (WIFSIGNALED(status))
+// 	// {
+// 		g_last_exit_code = 128 + WTERMSIG(status);
+// 		// ft_printf("WTERMSIG = %i\n", WTERMSIG(status));
+// 	// }
+// 	*updated = true;
+// }
 
 static void	wait_all_command(t_data *data)
 {
-	t_dll_node	*cmd;
-	int			status;
-	pid_t		waited_pid;
-	bool		updated;
+	t_dll_node		*cmd;
+	int				status;
+	pid_t			waited_pid;
+	t_cmd_content	*content;
+	// bool		updated;
 
-	updated = false;
+	// updated = false;
 	cmd = data -> exec -> cmd_dll -> head;
 	while (cmd)
 	{
-		waited_pid = wait_cmd(data, cmd, &status);
-		while (-1 == waited_pid && errno == EINTR)
-		// {
-			// ft_printf("wainting_pid...\n");
+		content = cmd -> content;
+		if (content -> exec_cmd_in_parent_process == false
+			&& content ->skip_cmd == false)
+		{
 			waited_pid = wait_cmd(data, cmd, &status);
-		// }
+			while (-1 == waited_pid && errno == EINTR)
+			// {
+				// ft_printf("wainting_pid...\n");
+				waited_pid = wait_cmd(data, cmd, &status);
+		}
+			// }
 		cmd = cmd -> next;
 		// if (waited_pid
 		// 	== ((t_cmd_content *)data->exec->cmd_dll->tail->content)->pid)
 	}
-	update_last_exit_code(status, &updated);
+	// update_last_exit_code(status, &updated);
 
 	// if (false == updated)
 	// {

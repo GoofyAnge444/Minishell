@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 02:34:45 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/05/21 18:21:25 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/26 19:52:20 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,11 @@ static void	clear_export(int i, t_cmd_content *content, t_data *data)
 
 	if (!data || !data->export_list || !data->export_list->head)
 		return ;
-	printf("export_list->head points to: %p\n", data->export_list->head);
 	temp = data->export_list->head;
 	if (temp == NULL || temp == (void *)0)
 		return ;
 	while (temp)
 	{
-		printf("inboucle\n");
 		next = temp->next;
 		var = temp->content;
 		if (!ft_strcmp(var->name, content->cmd_args[i]))

@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 13:41:19 by eazard            #+#    #+#             */
-/*   Updated: 2025/05/21 18:17:36 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/26 19:03:11 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,11 @@ void	child_process(t_data *data, t_dll_node *cmd)
 		{
 			if (-1 == launch_builtin(content, data))
 				fatal_error_clean_exit(data, LAUNCH_BUILTIN_FAILURE);
+			else
+			{
+				free_data(data, true);
+				exit(0);
+			}
 		}
 		else
 		{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cboma-ya <cboma-ya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 09:56:49 by ange              #+#    #+#             */
-/*   Updated: 2025/02/03 17:26:16 by cboma-ya         ###   ########.fr       */
+/*   Updated: 2025/05/26 17:21:52 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ int			ft_isalnum(int integer_to_check);
 int			ft_isascii(int integer_to_check);
 int			ft_isprint(int integer_to_check);
 int			ft_is_white_space(int c);
+size_t		ft_tablen(char **tab);
 size_t		ft_strlen(const char *string_to_get_len);
 void		*ft_memset(void *memory_zone_to_set,
 				int octet_set_value, size_t number_of_octet_to_set);

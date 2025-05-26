@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 18:42:36 by eazard            #+#    #+#             */
-/*   Updated: 2025/05/06 15:12:41 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/26 19:51:11 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,15 @@ int	heredoc(t_data *data, char *delimiter, bool	expend_env_var)
 {
 	int		fd;
 	char	*line;
-
+	//rajouter un fork, si jamais le child est kill, on recupere son status de sortie, si il a ete kill, on le met dans une variable dans la data
+	// si jamais l'open dans le heredoc fail, on exit en mode failure error tt ca.
 	fd = open(".heredoc_tmp", O_TRUNC | O_WRONLY | O_CREAT,
 			BASH_POSIX_CREATED_FILE_WRITE_COPY);
 	if (fd == -1)
 		return (fd);
 	while (true)
 	{
-		set_signals_interactive();
+		set_signals_interactive(); // TODO : declanche une non fatale error!
 		line = readline(">");
 		set_signals_noninteractive();
 		// line = get_user_input(">");
@@ -58,5 +59,5 @@ int	heredoc(t_data *data, char *delimiter, bool	expend_env_var)
 	else
 		heredoc_warning_message(delimiter);
 	close(fd);
-	return (open(".heredoc_tmp", O_RDONLY));
+	return (0);
 }
