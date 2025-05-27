@@ -6,12 +6,15 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 18:40:41 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/05/26 20:29:35 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/27 18:34:34 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "exec.h"
 
+/*
+cherche la node qui a pour nom "name" dans l'env
+*/
 char	*ft_getenv(char *name, t_data *data)
 {
 	t_dll_node		*temp;

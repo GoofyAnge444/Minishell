@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 18:00:08 by eazard            #+#    #+#             */
-/*   Updated: 2025/05/27 15:39:05 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/27 18:03:56 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static void	wait_all_command(t_data *data)
 	while (cmd)
 	{
 		content = cmd -> content;
-		if (content -> exec_cmd_in_parent_process == false
+		if (content->cmd_name && content -> exec_cmd_in_parent_process == false
 			&& content ->skip_cmd == false)
 		{
 			waited_pid = wait_cmd(data, cmd, &status);
@@ -71,13 +71,14 @@ static void	wait_all_command(t_data *data)
 			// {
 				// ft_printf("wainting_pid...\n");
 				waited_pid = wait_cmd(data, cmd, &status);
-		}
+			update_last_exit_code(data, status);
 			// }
+		}
 		cmd = cmd -> next;
 		// if (waited_pid
 		// 	== ((t_cmd_content *)data->exec->cmd_dll->tail->content)->pid)
 	}
-	update_last_exit_code(data, status); //if smt TODO
+	 //if smt TODO
 
 	// if (false == updated)
 	// {

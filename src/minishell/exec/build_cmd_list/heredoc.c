@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 18:42:36 by eazard            #+#    #+#             */
-/*   Updated: 2025/05/27 17:34:21 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/27 18:48:26 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ int heredoc(t_data *data, char *delimiter, bool	expend_env_var)
 		{
 			if (line)
 				free(line);
+			ft_printf("QFUHQWUHFWQJF\n");
 			restore_stdin();        // Indique une nouvelle ligne
 			return (non_fatal_error_clean(data, HEREDOC_SIGNAL_INTERUPTION),
 				-2);

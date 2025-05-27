@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 18:05:54 by eazard            #+#    #+#             */
-/*   Updated: 2025/05/27 15:48:18 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/27 18:03:15 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,11 @@ void	exec_cmd(t_data *data, t_dll_node *cmd, t_dll_node *segment)
 			parent_process(data, cmd);
 	}
 	else
+	{
+		if (cmd_content ->fd_in == -1 || cmd_content->fd_out == -1)
+			data -> last_exit_code = 1;
+		else
+			data -> last_exit_code = 0;
 		close_cmd_fd(cmd, false);
+	}
 }

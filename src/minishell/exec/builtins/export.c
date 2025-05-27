@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 02:34:49 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/05/26 20:07:30 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/27 18:35:35 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,18 @@ static void	export_in_list(char **tab, t_data *data, int i)
 	t_env_content	*tmp_env;
 
 	tmp_env = ft_calloc(1, sizeof(t_env_content));
+	if (!tmp_env)
+	{
+		set_last_exit_code(data, 1);
+		fatal_error_clean_exit(data, MALLOC_FAILURE);
+	}
 	tmp_export = ft_calloc(1, sizeof(t_env_content));
+	if (!tmp_export)
+	{
+		set_last_exit_code(data, 1);
+		free(tmp_env);
+		fatal_error_clean_exit(data, MALLOC_FAILURE);
+	}
 	get_name_and_value(tab[i], tmp_env, tmp_export, data);
 	if (ft_strchr(tab[i], '='))
 		set_var_in_list(data->env, tmp_env->name,
@@ -122,8 +133,11 @@ void	ft_export(t_cmd_content *content, t_data *data)
 			if (valid_export(tab[i]) == true)
 				export_in_list(tab, data, i);
 			else
+			{
+				set_last_exit_code(data, 1);
 				ft_printf_fd(2,
 					"mimishell: export: '%s': not a valid identifier\n", tab[i]);
+			}
 			i++;
 		}
 	}

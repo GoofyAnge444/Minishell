@@ -253,6 +253,7 @@ MINISHELL_FILES = 	main \
 					exec/builtins/exit \
 					exec/builtins/utils \
 					exec/builtins/utils_export \
+					exec/builtins/set_last_exit_code \
 					\
 					\
 					signal/ignore_sigquit \

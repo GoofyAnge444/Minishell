@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 12:20:25 by eazard            #+#    #+#             */
-/*   Updated: 2025/05/27 15:47:51 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/27 18:27:37 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ int				launch_builtin(t_cmd_content *content, t_data *data);
 void			check_and_search_for_abs_path(t_data *data, t_cmd_content *content);
 
 /*builtins*/
+void			set_last_exit_code(t_data *data, int last_exit_code);
 void			set_var_in_list(t_dll_list *list, char *name,
 					char *value, t_data *data);
 // void			ft_set_env(t_env_content *tmp_env, t_data *data);

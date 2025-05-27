@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 15:54:50 by eazard            #+#    #+#             */
-/*   Updated: 2025/05/27 15:47:41 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/27 18:12:11 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,20 @@ static inline void	set_command_to_be_skiped_in_exec(t_cmd_content *cmd)
 static void	fill_infile_fd(t_redir *redir, t_cmd_content *cmd)
 {
 	if (redir->redir_type == INPUT_TK)
+	{
 		cmd->fd_in = open(redir->filename, O_RDONLY);
+		if (-1 == cmd->fd_in)
+		{
+			ft_printf("mishell : ");
+			perror(redir->filename);
+		}
+	}
 	else if (redir->redir_type == HEREDOC_TK)
+	{
 		cmd->fd_in = open(".heredoc_tmp", O_RDONLY);
+		if (-1 == cmd->fd_in)
+			perror("mishell : ");
+	}
 }
 
 static void	fill_outfile_fd(t_redir *redir, t_cmd_content *cmd)
@@ -35,13 +46,21 @@ static void	fill_outfile_fd(t_redir *redir, t_cmd_content *cmd)
 	if (cmd -> fd_out >= 0)
 		close(cmd -> fd_out);
 	if (redir->redir_type == TRUNCATE_TK)
+	{
 		cmd->fd_out
 			= open(redir->filename, O_TRUNC | O_CREAT | O_WRONLY,
 				BASH_POSIX_CREATED_FILE_WRITE_COPY);
+		if (!cmd->fd_out)
+			perror("mishell : ");
+	}
 	else if (redir->redir_type == APPEND_TK)
+	{
 		cmd->fd_out
 			= open(redir->filename, O_APPEND | O_CREAT | O_WRONLY,
 				BASH_POSIX_CREATED_FILE_WRITE_COPY);
+		if (!cmd->fd_out)
+			perror("mishell : ");
+	}
 }
 
 void	fill_fd(t_redir **redir_tab, t_cmd_content *cmd)

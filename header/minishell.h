@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:09:59 by eazard            #+#    #+#             */
-/*   Updated: 2025/05/27 14:37:26 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/27 18:18:45 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,9 @@
 # include "my_signal.h"
 # include <sys/stat.h>
 # include <errno.h>
+
+# define NPRINT "\001"
+# define RPRINT	"\002"
 
 extern int		g_signal;
 

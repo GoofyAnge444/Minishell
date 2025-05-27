@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 02:32:03 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/05/26 20:31:33 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/27 18:27:18 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,23 +28,24 @@ void	ft_cd(t_cmd_content *content, t_data *data)
 	char	*new_pwd;
 
 	if (ft_tablen(content -> cmd_args) > 2)
-		return ((void)ft_putstr_fd("mimishell: cd: too many arguments\n", 2));
+		return (set_last_exit_code(data, 1), (void)ft_putstr_fd("mimishell: cd: too many arguments\n", 2));
 	if (!content->cmd_args[1])
 	{
 		path = ft_getenv("HOME", data);
 		if (!path)
-			return (ft_putstr_fd("mimishell: cd: HOME not set\n", 2));
+			return (set_last_exit_code(data, 1), ft_putstr_fd("mimishell: cd: HOME not set\n", 2));
 	}
 	else
 		path = content->cmd_args[1];
 	old_pwd = getcwd(NULL, 0);
 	if (!old_pwd)
-		return (fatal_error_clean_exit(data, MALLOC_FAILURE));
+		return (set_last_exit_code(data, 1), fatal_error_clean_exit(data, MALLOC_FAILURE));
 	ret = chdir(path);
 	if (ret == -1)
-		return (free(old_pwd), perror("mimishell: cd"));
+		return (set_last_exit_code(data, 1), free(old_pwd), perror("mimishell: cd"));
 	new_pwd = getcwd(NULL, 0);
 	if (!new_pwd)
-		return (free(old_pwd), fatal_error_clean_exit(data, MALLOC_FAILURE));
+		return (free(old_pwd), set_last_exit_code(data, 1), fatal_error_clean_exit(data, MALLOC_FAILURE));
 	update_pwd(data, old_pwd, new_pwd);
+	set_last_exit_code(data, 0); 
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_export.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cboma-ya <cboma-ya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 17:20:44 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/05/26 19:38:30 by cboma-ya         ###   ########.fr       */
+/*   Updated: 2025/05/27 18:36:59 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	verif_in_export(char *in_env, t_data *data)
 	while (temp)
 	{
 		in_exp = temp->content;
-		if (!ft_strcmp(in_exp->name, in_env))
+		if (ft_strcmp(in_exp->name, in_env))
 		{
 			dll_clear_node(temp, (void (*)(void *))(&free_env_content));
 			break ;
@@ -87,7 +87,7 @@ void	set_var_in_list(t_dll_list *list, char *name,
 	while (node)
 	{
 		tmp = node->content;
-		if (!ft_strcmp(tmp->name, name)) // Si la variable existe déjà (même nom), on met à jour sa valeur
+		if (ft_strcmp(tmp->name, name)) // Si la variable existe déjà (même nom), on met à jour sa valeur
 			return (ft_replace_value(tmp, new_value, data), (void)0);
 		node = node->next;
 	}

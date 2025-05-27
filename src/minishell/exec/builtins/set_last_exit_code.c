@@ -1,28 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_data.c                                        :+:      :+:    :+:   */
+/*   set_last_exit_code.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/04 16:25:00 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/05/27 18:41:21 by eazard           ###   ########.fr       */
+/*   Created: 2025/05/27 18:27:01 by eazard            #+#    #+#             */
+/*   Updated: 2025/05/27 18:27:24 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "exec.h"
 
-void	free_data(t_data *data, bool fatal)
+void	set_last_exit_code(t_data *data, int last_exit_code)
 {
-	if (data)
-	{
-		free_user_input_space(data, fatal);
-		free_lexer_space(data, fatal);
-		free_linked_env_space(data, fatal);
-		free_parsing_space(data, fatal);
-		free_exec_space(data, fatal);
-		free_export_space(data, fatal);
-		if (fatal)
-			rl_clear_history();
-	}
+	data -> last_exit_code = last_exit_code;
 }

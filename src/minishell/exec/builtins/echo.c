@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 17:47:46 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/05/26 19:52:20 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/27 18:28:52 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,9 @@ static int	have_n(char *str)
 	}
 	return (0);
 }
-
+/*
+executed in a child process
+*/
 void	ft_echo(t_cmd_content *content)
 {
 	int	i;

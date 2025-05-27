@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 02:34:45 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/05/26 19:52:20 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/27 18:38:06 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	clear_export(int i, t_cmd_content *content, t_data *data)
 	{
 		next = temp->next;
 		var = temp->content;
-		if (!ft_strcmp(var->name, content->cmd_args[i]))
+		if (ft_strcmp(var->name, content->cmd_args[i]))
 		{	
 			dll_clear_node(temp, (void (*)(void *))(&free_env_content));
 			break ;
@@ -40,6 +40,7 @@ static void	clear_export(int i, t_cmd_content *content, t_data *data)
 		else
 			temp = next;
 	}
+	set_last_exit_code(data, 0);
 }
 
 void	ft_unset(t_cmd_content *content, t_data *data)
@@ -55,7 +56,7 @@ void	ft_unset(t_cmd_content *content, t_data *data)
 		while (temp)
 		{
 			var = temp->content;
-			if (!ft_strcmp(var->name, content->cmd_args[i]))
+			if (ft_strcmp(var->name, content->cmd_args[i]))
 			{
 				dll_clear_node(temp, (void (*)(void *))(&free_env_content));
 				break ;
