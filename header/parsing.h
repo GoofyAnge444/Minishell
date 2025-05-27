@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 17:28:34 by eazard            #+#    #+#             */
-/*   Updated: 2025/05/26 19:52:43 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/27 15:39:31 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void			add_cmd_arg_to_segment(t_data *data,
 					t_segment_content *segment_content);
 void			add_redir_tab_to_segment(t_data *data,
 					t_segment_content *segment_content);
+void			go_throught_cmd_dll_and_process_heredoc(t_data *data);
 
 /* UTILS*/
 char			*get_token_value(t_dll_node *node);

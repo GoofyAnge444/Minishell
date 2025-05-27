@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 12:20:25 by eazard            #+#    #+#             */
-/*   Updated: 2025/05/26 20:09:10 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/27 15:47:51 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ bool			is_builtin(char *cmd);
 void			exec(t_data *data);
 t_cmd_content	*convert_segment_in_cmd(t_data *data,
 					t_segment_content *segment);
-void			fill_fd(t_data *data, t_redir **redir_tab,
+void			fill_fd(t_redir **redir_tab,
 					t_cmd_content *cmd);
 void			set_all_pipe(t_data *data, t_dll_list *cmd_dll);
 void			set_pipe_in_a_cmd(t_data *data, t_dll_node *cmd);

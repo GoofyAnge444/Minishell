@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 17:21:21 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/05/21 18:25:17 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/27 16:42:50 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,20 @@ typedef enum e_non_fatal_type_error
 	QUOTE_CLOSE,
 	REDIR_WITHOUT_STRING_FOLLOWING,
 	DOUBLE_PIPE,
+	HEREDOC_SIGNAL_INTERUPTION,
 	// OPEN,
 }			t_non_fatal_type_error;
+
+typedef enum e_my_sygnals
+{
+	NO_SIG_TO_CATCH = 0,
+	SIGINT_INTERACTIVE,
+	SIGINT_NON_INTERACTIVE,
+	SIGINT_HEREDOC,
+	SIGQUIT_INTERACTIVE,
+	SIGQUIT_NON_INTERACTIVE,
+	SIGQUIT_HEREDOC,
+}			t_my_sygnals;
 
 
 
@@ -59,6 +71,8 @@ struct s_data
 	t_lexer			*lexer;
 	t_exec			*exec;
 	bool			non_fatal_error_occured;
+	int				last_exit_code;
+	int				last_non_fatal_error;
 	// int				exit_code;
 	// pid_t			*pids;
 	// int				pid_count;

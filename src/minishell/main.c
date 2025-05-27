@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:23:05 by eazard            #+#    #+#             */
-/*   Updated: 2025/05/26 20:30:46 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/27 14:41:25 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 // 	ft_printf("value = %s\n", env_content -> value);
 // }
 
-int g_last_exit_code = 0;
+int g_signal = NO_SIG_TO_CATCH;
 
 static bool	empty_input_check(t_data *data)
 {

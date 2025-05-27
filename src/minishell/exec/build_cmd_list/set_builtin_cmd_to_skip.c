@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 16:50:09 by eazard            #+#    #+#             */
-/*   Updated: 2025/05/26 18:14:35 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/27 15:52:39 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,18 @@ cette fonction est execute SEULEMENT SI il y a + de une cmd dans la command list
 */
 static bool	cmd_should_be_skip(t_cmd_content *content)
 {
-	if (true == ft_strcmp(content->cmd_name, "cd"))
-		return (true);
-	else if (true == ft_strcmp(content->cmd_name, "export")
-		&& ft_tablen(content->cmd_args) > 1)
-		return (true);
-	else if (true == ft_strcmp(content->cmd_name, "unset"))
-		return (true);
-	else if (true == ft_strcmp(content->cmd_name, "exit"))
-		return (true);
+	if (content -> cmd_name)
+	{
+		if (true == ft_strcmp(content->cmd_name, "cd"))
+			return (true);
+		else if (true == ft_strcmp(content->cmd_name, "export")
+			&& ft_tablen(content->cmd_args) > 1)
+			return (true);
+		else if (true == ft_strcmp(content->cmd_name, "unset"))
+			return (true);
+		else if (true == ft_strcmp(content->cmd_name, "exit"))
+			return (true);
+	}
 	return (false);
 }
 

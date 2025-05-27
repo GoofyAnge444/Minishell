@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 18:00:08 by eazard            #+#    #+#             */
-/*   Updated: 2025/05/26 19:24:31 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/27 15:39:05 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,20 +38,19 @@ static pid_t	wait_cmd(t_data *data, t_dll_node *cmd,
 	return (waitpid(content -> pid, status, 0));
 }
 
-// static void	update_last_exit_code(int status, bool *updated)
-// {
-// 	if (WIFEXITED(status))
-// 	// {
-// 		g_last_exit_code = WEXITSTATUS(status);
-// 		// ft_printf("WEXITSTATUS = %i\n", WEXITSTATUS(status));
-// 	// }
-// 	else if (WIFSIGNALED(status))
-// 	// {
-// 		g_last_exit_code = 128 + WTERMSIG(status);
-// 		// ft_printf("WTERMSIG = %i\n", WTERMSIG(status));
-// 	// }
-// 	*updated = true;
-// }
+static void	update_last_exit_code(t_data *data, int status)
+{
+	if (WIFEXITED(status))
+	// {
+		data -> last_exit_code = WEXITSTATUS(status);
+		// ft_printf("WEXITSTATUS = %i\n", WEXITSTATUS(status));
+	// }
+	else if (WIFSIGNALED(status))
+	// {
+		data -> last_exit_code = 128 + WTERMSIG(status);
+		// ft_printf("WTERMSIG = %i\n", WTERMSIG(status));
+	// }
+}
 
 static void	wait_all_command(t_data *data)
 {
@@ -59,9 +58,7 @@ static void	wait_all_command(t_data *data)
 	int				status;
 	pid_t			waited_pid;
 	t_cmd_content	*content;
-	// bool		updated;
 
-	// updated = false;
 	cmd = data -> exec -> cmd_dll -> head;
 	while (cmd)
 	{
@@ -80,12 +77,12 @@ static void	wait_all_command(t_data *data)
 		// if (waited_pid
 		// 	== ((t_cmd_content *)data->exec->cmd_dll->tail->content)->pid)
 	}
-	// update_last_exit_code(status, &updated);
+	update_last_exit_code(data, status); //if smt TODO
 
 	// if (false == updated)
 	// {
 	// 	ft_printf("waited pid = %i\n", waited_pid);
-	// 	g_last_exit_code = 1;
+	// 	data -> last_exit_code = 1;
 	// 	printf("forcing update_last_exit_code to 1\n");
 	// }
 }
@@ -95,6 +92,8 @@ void	exec(t_data *data)
 	if (data->non_fatal_error_occured == false)
 	{
 		build_cmd_list(data);
+		if (data -> non_fatal_error_occured == true)
+			return ;
 		exec_all_command(data);
 		wait_all_command(data);
 		// clean data

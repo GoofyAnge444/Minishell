@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 17:43:54 by eazard            #+#    #+#             */
-/*   Updated: 2025/05/26 18:11:48 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/27 15:51:40 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,11 @@ void	build_cmd_list(t_data *data)
 {
 	create_cmd_list(data);
 	fill_cmd_list_with_parsed_data(data, data -> exec -> cmd_dll);
-	set_builtin_cmd_to_skip(data, data -> exec -> cmd_dll); //TODO
+	set_builtin_cmd_to_skip(data, data -> exec -> cmd_dll);
 	set_builtin_cmd_to_be_exec_in_parent_process(data,
-		data -> exec -> cmd_dll); //TODO
+		data -> exec -> cmd_dll);
+	go_throught_cmd_dll_and_process_heredoc(data);
+	if (data -> non_fatal_error_occured)
+		return ;
 	// set_all_pipe(data, data -> exec -> cmd_dll);
 }

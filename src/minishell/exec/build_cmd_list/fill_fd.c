@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 15:54:50 by eazard            #+#    #+#             */
-/*   Updated: 2025/05/26 19:43:53 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/27 15:47:41 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,12 @@ static inline void	set_command_to_be_skiped_in_exec(t_cmd_content *cmd)
 	cmd->skip_cmd = true;
 }
 
-static void	fill_infile_fd(t_data *data, t_redir *redir, t_cmd_content *cmd)
+static void	fill_infile_fd(t_redir *redir, t_cmd_content *cmd)
 {
 	if (redir->redir_type == INPUT_TK)
 		cmd->fd_in = open(redir->filename, O_RDONLY);
 	else if (redir->redir_type == HEREDOC_TK)
-		cmd->fd_in = heredoc(data, redir->filename,
-				redir -> heredoc__expend_env_var);
+		cmd->fd_in = open(".heredoc_tmp", O_RDONLY);
 }
 
 static void	fill_outfile_fd(t_redir *redir, t_cmd_content *cmd)
@@ -45,7 +44,7 @@ static void	fill_outfile_fd(t_redir *redir, t_cmd_content *cmd)
 				BASH_POSIX_CREATED_FILE_WRITE_COPY);
 }
 
-void	fill_fd(t_data *data, t_redir **redir_tab, t_cmd_content *cmd)
+void	fill_fd(t_redir **redir_tab, t_cmd_content *cmd)
 {
 	size_t	i;
 
@@ -57,7 +56,7 @@ void	fill_fd(t_data *data, t_redir **redir_tab, t_cmd_content *cmd)
 			if (cmd -> fd_in > 0)
 				close(cmd -> fd_in);
 			cmd -> fd_in = -2;
-			fill_infile_fd(data, redir_tab[i], cmd);
+			fill_infile_fd(redir_tab[i], cmd);
 			if (cmd->fd_in == -1)
 				return (set_command_to_be_skiped_in_exec(cmd));
 		}

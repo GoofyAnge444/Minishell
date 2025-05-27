@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:09:59 by eazard            #+#    #+#             */
-/*   Updated: 2025/05/06 16:50:27 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/27 14:37:26 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@
 # include <sys/stat.h>
 # include <errno.h>
 
-extern int		g_last_exit_code;
+extern int		g_signal;
 
 typedef struct s_lexer			t_lexer;
 typedef struct s_user_input		t_user_input;

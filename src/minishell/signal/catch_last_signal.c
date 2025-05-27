@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   my_signal.h                                        :+:      :+:    :+:   */
+/*   catch_last_signal.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/06 13:53:55 by eazard            #+#    #+#             */
-/*   Updated: 2025/05/27 15:00:31 by eazard           ###   ########.fr       */
+/*   Created: 2025/05/27 14:42:23 by eazard            #+#    #+#             */
+/*   Updated: 2025/05/27 14:42:50 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MY_SIGNAL_H
-# define MY_SIGNAL_H
-# include "minishell.h"
+#include "my_signal.h"
 
-typedef struct sigaction	t_sigaction;
+int	catch_last_signal(void)
+{
+	int	last_signal;
 
-void			set_signals_noninteractive(void);
-void			set_signals_interactive(void);
-void			set_signals_heredoc(void);
-int				catch_last_signal(void);
-void			ignore_sigquit(void);
-
-#endif
+	last_signal = g_signal;
+	g_signal = NO_SIG_TO_CATCH;
+	return (last_signal);
+}

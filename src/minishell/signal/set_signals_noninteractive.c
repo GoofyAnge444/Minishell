@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   my_signal.h                                        :+:      :+:    :+:   */
+/*   set_signals_noninteractive.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/06 13:53:55 by eazard            #+#    #+#             */
-/*   Updated: 2025/05/27 15:00:31 by eazard           ###   ########.fr       */
+/*   Created: 2025/05/27 14:54:59 by eazard            #+#    #+#             */
+/*   Updated: 2025/05/27 14:56:36 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MY_SIGNAL_H
-# define MY_SIGNAL_H
-# include "minishell.h"
+#include "my_signal.h"
 
-typedef struct sigaction	t_sigaction;
+static void	signal_print_newline(int signal)
+{
+	if (SIGQUIT == signal)
+		ft_printf("Quit\n");
+	rl_on_new_line();
+}
 
-void			set_signals_noninteractive(void);
-void			set_signals_interactive(void);
-void			set_signals_heredoc(void);
-int				catch_last_signal(void);
-void			ignore_sigquit(void);
+void	set_signals_noninteractive(void)
+{
+	t_sigaction	act;
 
-#endif
+	ft_memset(&act, 0, sizeof(act));
+	act.sa_handler = &signal_print_newline;
+	sigaction(SIGINT, &act, NULL);
+	sigaction(SIGQUIT, &act, NULL);
+}

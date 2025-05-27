@@ -26,7 +26,7 @@ DOIT ON EXECUTER CES COMMANDES DANS LE PROCESS PARENT ?
 */
 static bool	cmd_should_be_exec_in_parent_process(t_cmd_content	*content)
 {
-	if (false == content -> skip_cmd)
+	if (content -> cmd_name && false == content -> skip_cmd)
 	{
 		if (true == ft_strcmp(content->cmd_name, "cd"))
 			content -> exec_cmd_in_parent_process = true;

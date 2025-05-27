@@ -231,6 +231,7 @@ MINISHELL_FILES = 	main \
 					exec/build_cmd_list/set_pipe_in_a_cmd \
 					exec/build_cmd_list/set_builtin_cmd_to_be_exec_in_parent_process \
 					exec/build_cmd_list/set_builtin_cmd_to_skip \
+					exec/build_cmd_list/go_throught_cmd_dll_and_process_heredoc \
 					\
 					exec/exec_cmd/exec_cmd \
 					exec/exec_cmd/is_builtin \
@@ -254,7 +255,11 @@ MINISHELL_FILES = 	main \
 					exec/builtins/utils_export \
 					\
 					\
-					signal/signal \
+					signal/ignore_sigquit \
+					signal/catch_last_signal \
+					signal/set_signals_heredoc \
+					signal/set_signals_interactive \
+					signal/set_signals_noninteractive \
 
 MINISHELL_SRCS_DIR = ./src/minishell/
 MINISHELL_SRCS = $(addprefix $(MINISHELL_SRCS_DIR), $(addsuffix .c, $(MINISHELL_FILES)))

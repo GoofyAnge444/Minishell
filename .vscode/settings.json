@@ -22,6 +22,11 @@
 		"history.h": "c",
 		"exec.h": "c",
 		"limits.h": "c",
-		"cerrno": "c"
+		"cerrno": "c",
+		"errno.h": "c",
+		"stat.h": "c",
+		"my_signal.h": "c",
+		"signal.h": "c",
+		"wait.h": "c"
 	}
 }

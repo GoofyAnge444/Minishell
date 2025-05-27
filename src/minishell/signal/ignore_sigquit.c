@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   my_signal.h                                        :+:      :+:    :+:   */
+/*   ignore_sigquit.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/06 13:53:55 by eazard            #+#    #+#             */
-/*   Updated: 2025/05/27 15:00:31 by eazard           ###   ########.fr       */
+/*   Created: 2025/05/06 12:22:21 by eazard            #+#    #+#             */
+/*   Updated: 2025/05/27 14:55:54 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MY_SIGNAL_H
-# define MY_SIGNAL_H
-# include "minishell.h"
+#include "my_signal.h"
 
-typedef struct sigaction	t_sigaction;
+ void	ignore_sigquit(void)
+{
+	struct sigaction	act;
 
-void			set_signals_noninteractive(void);
-void			set_signals_interactive(void);
-void			set_signals_heredoc(void);
-int				catch_last_signal(void);
-void			ignore_sigquit(void);
-
-#endif
+	ft_memset(&act, 0, sizeof(act));
+	act.sa_handler = SIG_IGN;
+	sigaction(SIGQUIT, &act, NULL);
+}

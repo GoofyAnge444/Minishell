@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 14:55:38 by eazard            #+#    #+#             */
-/*   Updated: 2025/05/26 20:11:08 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/27 14:33:12 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,5 @@ void	print_result_for_dev(t_data *data)
 	if (access(".heredoc_tmp", F_OK) == 0)
 		print_file(".heredoc_tmp");
 	(void)data;
-	ft_printf("last exit code : %i\n", g_last_exit_code);
+	ft_printf("last exit code : %i\n", data -> last_exit_code);
 }

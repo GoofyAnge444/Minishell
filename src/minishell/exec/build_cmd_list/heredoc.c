@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 18:42:36 by eazard            #+#    #+#             */
-/*   Updated: 2025/05/26 19:51:11 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/27 17:34:21 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,20 @@ static void	heredoc_expend_line(t_data *data, char **line)
 	data -> exec -> tmp__heredoc_line = NULL;
 }
 
-int	heredoc(t_data *data, char *delimiter, bool	expend_env_var)
+static void	restore_stdin(void)
+{
+	int	tty_fd;
+
+	tty_fd = open ("/dev/tty", O_RDONLY);
+
+	if (-1 != tty_fd)
+	{
+		dup2(tty_fd, STDIN_FILENO);
+		close(tty_fd);
+	}
+}
+
+int heredoc(t_data *data, char *delimiter, bool	expend_env_var)
 {
 	int		fd;
 	char	*line;
@@ -43,10 +56,19 @@ int	heredoc(t_data *data, char *delimiter, bool	expend_env_var)
 		return (fd);
 	while (true)
 	{
-		set_signals_interactive(); // TODO : declanche une non fatale error!
+		line = NULL;
+		rl_catch_signals = 0;
+		set_signals_heredoc(); // TODO : declanche une non fatale error!
 		line = readline(">");
 		set_signals_noninteractive();
-		// line = get_user_input(">");
+		if (SIGINT_HEREDOC == catch_last_signal())
+		{
+			if (line)
+				free(line);
+			restore_stdin();        // Indique une nouvelle ligne
+			return (non_fatal_error_clean(data, HEREDOC_SIGNAL_INTERUPTION),
+				-2);
+		}
 		if (!line || ft_strcmp(line, delimiter) == true)
 			break ;
 		if (expend_env_var)
