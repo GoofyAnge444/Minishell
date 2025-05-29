@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 18:07:21 by eazard            #+#    #+#             */
-/*   Updated: 2025/05/27 18:29:16 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/29 17:12:46 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,9 @@ int	launch_builtin(t_cmd_content *content, t_data *data)
 		ft_cd(content, data);
 	else if (ft_strcmp(content->cmd_name, "export"))
 		ft_export(content, data);
+	else if (ft_strcmp(content->cmd_name, "exit"))
+		ft_exit((content), data);
 	else
 		return (-1);
-	/*else if (ft_strcmp(content->cmd_name, "exit"))
-		ft_exit(content), 0);
-	;
-		ne fonctionnent pas en pipe ?? 
-	*/
 	return (0);
 }

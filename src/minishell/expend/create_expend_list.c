@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 18:17:15 by eazard            #+#    #+#             */
-/*   Updated: 2025/04/29 13:05:26 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/29 16:38:48 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static char	*ft_strdup_index(char *str, size_t begin, size_t end)
 
 static bool	is_dollar_char(char c)
 {
-	if (ft_isalnum(c))
+	if (ft_isalnum(c) || c == '_')
 		return (true);
 	return (false);
 }
@@ -57,7 +57,9 @@ static size_t	get_str_end(char *value, size_t begin)
 		end++;
 	return (end);
 }
-
+/*
+expend_list est une dll avec pour value un char*
+*/
 void	create_expend_list(char *token_value, t_data *data,
 	t_dll_list *expend_dll)
 {

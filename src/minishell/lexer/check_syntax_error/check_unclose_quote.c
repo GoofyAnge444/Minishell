@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 15:07:37 by eazard            #+#    #+#             */
-/*   Updated: 2025/02/26 15:33:59 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/29 15:31:25 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static bool	is_unclose_quote(t_dll_node *node)
 	char	*value;
 
 	value = ((t_token_content *)(node -> content))->value;
-	if (value[0] != value[ft_strlen(value) - 1])
+	if (ft_strlen(value) <= 1 || value[0] != value[ft_strlen(value) - 1])
 		return (true);
 	return (false);
 }
