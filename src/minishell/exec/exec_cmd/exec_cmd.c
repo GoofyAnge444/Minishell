@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 18:05:54 by eazard            #+#    #+#             */
-/*   Updated: 2025/05/27 18:03:15 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/29 17:39:32 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	exec_cmd(t_data *data, t_dll_node *cmd, t_dll_node *segment)
 		return (launch_builtin_in_parent_process(data, cmd));
 	if (!data -> exec -> envp)
 		convert_env_dll_into_env_str_tab(data);
-	if (cmd_content -> cmd_name)
+	if (cmd_content -> cmd_name && cmd_content -> skip_cmd == false)
 	{
 		cmd_content -> pid = fork();
 		if (cmd_content -> pid == -1)

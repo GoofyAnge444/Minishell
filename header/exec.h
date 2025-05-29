@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 12:20:25 by eazard            #+#    #+#             */
-/*   Updated: 2025/05/27 18:27:37 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/29 17:55:04 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,13 @@ struct								s_exec
 /* utils */
 void			free_cmd_content(t_cmd_content *cmd_content);
 void			print_cmd_content(t_cmd_content *cmd_content);
+
+/* open */
+void			infile_open(t_redir *redir, t_cmd_content *cmd);
+void			heredoc_open(t_redir *redir, t_cmd_content *cmd);
+void			append_open(t_redir *redir, t_cmd_content *cmd);
+void			truncate_open(t_redir *redir, t_cmd_content *cmd);
+
 
 /* build_cmd_list */
 void			build_cmd_list(t_data *data);

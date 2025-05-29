@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 17:25:25 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/05/27 18:20:26 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/29 17:21:59 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ void	get_and_store_user_input(t_data *data)
 	if (!input)
 	{
 		ft_printf("exit\n");
-		fatal_error_clean_exit(data, NOTHING);
+		free_data(data, true);
+		exit(data->last_exit_code);
 	}
 	add_history(input);
 	store_user_input_in_data(data, input);

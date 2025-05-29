@@ -233,6 +233,11 @@ MINISHELL_FILES = 	main \
 					exec/build_cmd_list/set_builtin_cmd_to_skip \
 					exec/build_cmd_list/go_throught_cmd_dll_and_process_heredoc \
 					\
+					exec/build_cmd_list/open/append_open \
+					exec/build_cmd_list/open/heredoc_open \
+					exec/build_cmd_list/open/infile_open \
+					exec/build_cmd_list/open/truncate_open \
+					\
 					exec/exec_cmd/exec_cmd \
 					exec/exec_cmd/is_builtin \
 					exec/exec_cmd/child_process \

@@ -27,7 +27,7 @@
 ✗ FAIL: cd - changement de répertoire
   cmd:  cd /tmp/minishell_test && pwd
   Attendu: /tmp/minishell_test (exit: 0)
-  Obtenu:  mimishell: cd: too many arguments (exit: 0)
+  Obtenu:  mishell: cd: too many arguments (exit: 0)
 ✗ FAIL: exit - code de sortie 42
   cmd:  
   Attendu: 42
@@ -108,7 +108,7 @@ World (exit: 0)
 ✗ FAIL: cd vers répertoire inexistant
   cmd:  cd /nonexistent_directory
   Attendu: bash: line 1: cd: /nonexistent_directory: No such file or directory (exit: 1)
-  Obtenu:  mimishell: cd: No such file or directory (exit: 0)
+  Obtenu:  mishell: cd: No such file or directory (exit: 0)
 ✗ FAIL: Commande inexistante
   cmd:  /nonexistent_command
   Attendu: bash: line 1: /nonexistent_command: No such file or directory (exit: 127)

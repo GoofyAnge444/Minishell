@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 02:34:49 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/05/27 18:35:35 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/29 17:57:45 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,7 +136,7 @@ void	ft_export(t_cmd_content *content, t_data *data)
 			{
 				set_last_exit_code(data, 1);
 				ft_printf_fd(2,
-					"mimishell: export: '%s': not a valid identifier\n", tab[i]);
+					"mishell: export: '%s': not a valid identifier\n", tab[i]);
 			}
 			i++;
 		}

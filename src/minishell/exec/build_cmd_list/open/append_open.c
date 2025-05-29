@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env.c                                              :+:      :+:    :+:   */
+/*   append_open.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/01 23:47:21 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/05/29 18:14:55 by eazard           ###   ########.fr       */
+/*   Created: 2025/05/29 17:46:08 by eazard            #+#    #+#             */
+/*   Updated: 2025/05/29 18:07:00 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "exec.h"
 
-static void	print_env(t_env_content *env_content)
+void	append_open(t_redir *redir, t_cmd_content *cmd)
 {
-	if (env_content && env_content->value != 0)
-		printf("%s=%s\n", env_content -> name, env_content -> value);
-	else
-		printf("%s=\n", env_content -> name);
-}
-
-void	ft_env(t_data *data)
-{
-	dll_print_list(data->env, (void (*)(void *))print_env);
+// 	if (-1 == access(redir->filename, W_OK))
+// 	{
+// 		ft_printf_fd(2, "acces_fail\n");
+// 		ft_printf_fd(2, "mishell : ");
+// 		perror(redir->filename);
+// 	}
+	cmd->fd_out
+		= open(redir->filename, O_APPEND | O_CREAT | O_WRONLY,
+			BASH_POSIX_CREATED_FILE_WRITE_COPY);
+	if (-1 == cmd->fd_out)
+	{
+		ft_printf_fd(2, "mishell : ");
+		perror(redir->filename);
+	}
 }

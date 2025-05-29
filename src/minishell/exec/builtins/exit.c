@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 02:34:23 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/05/29 17:13:47 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/29 17:58:03 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,13 @@ static void	exit_with_arg(t_data *data, char **str)
 	if (!ft_isnumber(str[1]))
 	{
 		ft_printf_fd(2,
-			"exit\nmimishell: exit: %s: numeric argument required\n",
+			"exit\nmishell: exit: %s: numeric argument required\n",
 			str[1]);
 		exit(2);
 	}
 	if (str[2])
 		ft_printf_fd(2,
-			"exit\nmimishell: exit: too many arguments");
+			"exit\nmishell: exit: too many arguments");
 	else
 	{
 		code = ft_atoi(str[1]); //TODO ft_atoll
