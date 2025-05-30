@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 18:03:00 by eazard            #+#    #+#             */
-/*   Updated: 2025/05/29 16:40:39 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/30 13:15:53 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,6 @@
 void	lexer(t_data *data)
 {
 	lexer_state_machine(data);
-	// dll_print_list(data ->lexer->linked_token,
-	// 	(void (*)(void *))(&print_token_content));
-	// ft_printf("\n\n\n");
 	expend(data);
 	if (check_unclose_quote(data) == true)
 		non_fatal_error_clean(data, QUOTE_CLOSE);

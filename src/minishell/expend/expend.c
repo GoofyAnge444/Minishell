@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 15:46:13 by eazard            #+#    #+#             */
-/*   Updated: 2025/05/29 16:39:13 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/30 13:18:25 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,3 @@ void	expend(t_data *data)
 		}
 	}
 }
-
-// TEST : ceci est un $test "$bizzare" '$voyons voir ce qui se produit'
-// TEST : "$TEST$TEST$TEST $ $ $TEST"

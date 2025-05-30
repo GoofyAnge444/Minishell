@@ -12,21 +12,6 @@
 
 #include "lexer.h"
 
-// static void	ft_pustr(char *str)
-// {
-// 	size_t	i;
-
-// 	i = 0;
-// 	write(1, "->", 2);
-// 	while (str[i])
-// 	{
-// 		write (1, &str[i], 1);
-// 		i++;
-// 	}
-// 	write(1, "<-", 2);
-// 	write(1, "\n", 1);
-// }
-
 char	*expend_value( t_data *data, char *value)
 {
 	t_dll_list	*expend_dll;

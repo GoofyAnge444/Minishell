@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 17:25:25 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/05/29 17:21:59 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/30 13:14:17 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,8 @@ void	get_and_store_user_input(t_data *data)
 	char			*input;
 
 	set_signals_interactive();
-	// rl_clear_history();
-	// rl_on_new_line();
-	// rl_replace_line("", 0);
 	input = readline("mishell$ ");
-	// input = readline("minishell-1.0$ ");
 	set_signals_noninteractive();
-	//input = get_user_input(NPRINT "ꩇׁׅ݊ꪱׁׅ ꩇׁׅ݊ꪱׁׅ꯱ׁׅ֒hׁׅ֮ꫀׁׅܻᥣׁׅ֪ᥣׁׅ֪ ⋆｡‧˚ʚ🍓ɞ˚‧｡⋆ ~~>" RPRINT);
 	if (!input)
 	{
 		ft_printf("exit\n");
@@ -50,5 +45,3 @@ void	get_and_store_user_input(t_data *data)
 	store_user_input_in_data(data, input);
 	init_cursor_at_zero(data);
 }
-
-// if user_input != 0 && !*user_input,  add_history(data)

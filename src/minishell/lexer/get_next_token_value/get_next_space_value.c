@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 19:16:47 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/02/11 18:12:26 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/30 13:17:00 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,5 @@ char	*get_next_space_value(t_data *data)
 		moov_cursor_forward_of_one(data);
 		i++;
 	}
-	// token_value[i] = '\0';
 	return (token_value);
 }

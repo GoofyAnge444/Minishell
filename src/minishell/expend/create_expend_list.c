@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 18:17:15 by eazard            #+#    #+#             */
-/*   Updated: 2025/05/29 16:38:48 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/30 13:18:38 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ static size_t	get_str_end(char *value, size_t begin)
 		end++;
 	return (end);
 }
+
 /*
 expend_list est une dll avec pour value un char*
 */

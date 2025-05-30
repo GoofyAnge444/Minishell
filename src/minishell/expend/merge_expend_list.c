@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 18:36:51 by eazard            #+#    #+#             */
-/*   Updated: 2025/02/12 19:07:54 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/30 13:18:18 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*merge_expend_list(t_dll_list *expend_list)
 
 	tmp_node = expend_list -> head;
 	final_str = ft_strdup("");
-	if (!final_str) 
+	if (!final_str)
 		return (NULL);
 	while (tmp_node)
 	{

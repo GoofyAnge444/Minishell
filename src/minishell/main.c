@@ -6,25 +6,13 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:23:05 by eazard            #+#    #+#             */
-/*   Updated: 2025/05/30 13:13:09 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/30 13:13:52 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-// static void	bypass(int ac, char *av[], char *env[])
-// {
-// 	(void)ac;
-// 	(void)av;
-// 	(void)env;
-// }
-// static void    print_content(t_env_content *env_content)
-// {
-// 	ft_printf("content = %s\n", env_content -> name);
-// 	ft_printf("value = %s\n", env_content -> value);
-// }
-
-int g_signal = NO_SIG_TO_CATCH;
+int	g_signal = NO_SIG_TO_CATCH;
 
 static bool	empty_input_check(t_data *data)
 {
@@ -50,7 +38,6 @@ int	main(int ac, char *av[], char *env[])
 		}
 		if (data.non_fatal_error_occured == false)
 		{
-			// print_result_for_dev(&data); // a retirer plus tard
 			free_data(&data, false);
 		}
 	}

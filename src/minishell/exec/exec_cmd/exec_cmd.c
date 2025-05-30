@@ -6,15 +6,12 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 18:05:54 by eazard            #+#    #+#             */
-/*   Updated: 2025/05/29 17:39:32 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/30 13:24:33 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "exec.h"
-/*
-requirement :
-	- all pipe are set up : TODO
-*/
+
 void	launch_builtin_in_parent_process(t_data *data, t_dll_node *cmd)
 {
 	if (launch_builtin(cmd->content, data) == -1)
@@ -23,6 +20,33 @@ void	launch_builtin_in_parent_process(t_data *data, t_dll_node *cmd)
 		close_cmd_fd(cmd, false);
 }
 
+
+static void	fork_and_redirect_process_in_its_routine(t_data *data,
+				t_dll_node *cmd)
+{
+	t_cmd_content	*cmd_content;
+
+	cmd_content = cmd -> content;
+	cmd_content -> pid = fork();
+	if (cmd_content -> pid == -1)
+		fatal_error_clean_exit(data, FORK_FAILURE);
+	else if (cmd_content -> pid == 0)
+		child_process(data, cmd);
+	else
+		parent_process(data, cmd);
+}
+
+static void	no_launching_command_routine(t_data *data, t_dll_node *cmd)
+{
+	t_cmd_content	*cmd_content;
+
+	cmd_content = cmd -> content;
+	if (cmd_content ->fd_in == -1 || cmd_content->fd_out == -1)
+		data -> last_exit_code = 1;
+	else
+		data -> last_exit_code = 0;
+	close_cmd_fd(cmd, false);
+}
 
 void	exec_cmd(t_data *data, t_dll_node *cmd, t_dll_node *segment)
 {
@@ -41,21 +65,7 @@ void	exec_cmd(t_data *data, t_dll_node *cmd, t_dll_node *segment)
 	if (!data -> exec -> envp)
 		convert_env_dll_into_env_str_tab(data);
 	if (cmd_content -> cmd_name && cmd_content -> skip_cmd == false)
-	{
-		cmd_content -> pid = fork();
-		if (cmd_content -> pid == -1)
-			fatal_error_clean_exit(data, FORK_FAILURE);
-		else if (cmd_content -> pid == 0)
-			child_process(data, cmd);
-		else
-			parent_process(data, cmd);
-	}
+		fork_and_redirect_process_in_its_routine(data, cmd);
 	else
-	{
-		if (cmd_content ->fd_in == -1 || cmd_content->fd_out == -1)
-			data -> last_exit_code = 1;
-		else
-			data -> last_exit_code = 0;
-		close_cmd_fd(cmd, false);
-	}
+		no_launching_command_routine(data, cmd);
 }

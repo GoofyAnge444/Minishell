@@ -61,6 +61,5 @@ char	*get_next_s_quote_value(t_data *data)
 	}
 	if (actual_character(data) == '\'')
 		add_last_s_quote(data, token_value, &i);
-	// token_value[i] = '\0';
 	return (token_value);
 }

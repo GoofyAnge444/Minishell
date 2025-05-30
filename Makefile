@@ -248,6 +248,7 @@ MINISHELL_FILES = 	main \
 					exec/exec_cmd/close_cmd_fd \
 					exec/exec_cmd/launch_builtin \
 					exec/exec_cmd/launch_non_builtin \
+					exec/exec_cmd/check_and_search_for_abs_path \
 					\
 					exec/builtins/echo \
 					exec/builtins/pwd \

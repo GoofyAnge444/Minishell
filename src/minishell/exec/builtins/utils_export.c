@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 17:20:44 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/05/27 18:36:59 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/30 14:19:36 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,15 +87,17 @@ void	set_var_in_list(t_dll_list *list, char *name,
 	while (node)
 	{
 		tmp = node->content;
-		if (ft_strcmp(tmp->name, name)) // Si la variable existe déjà (même nom), on met à jour sa valeur
+		if (ft_strcmp(tmp->name, name))
 			return (ft_replace_value(tmp, new_value, data), (void)0);
 		node = node->next;
 	}
 	tmp = ft_new_content(name, new_value, data);
-	dll_insert_tail(list, dll_new_node(tmp)); // On insère la nouvelle variable à la fin de la liste
+	dll_insert_tail(list, dll_new_node(tmp));
 }
 
-/*pcq on a des limites de lignes, création de cette merveille*/
+/*
+pcq on a des limites de lignes, création de cette merveille
+*/
 void	freeing_experience(t_env_content *tmp_env, t_data *data)
 {
 	free_env_content(tmp_env);

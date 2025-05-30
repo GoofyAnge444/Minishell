@@ -43,6 +43,5 @@ char	*get_next_string_value(t_data *data)
 		moov_cursor_forward_of_one(data);
 		i++;
 	}
-	// token_value[i] = '\0';
 	return (token_value);
 }

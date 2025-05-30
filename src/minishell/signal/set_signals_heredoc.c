@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 14:56:51 by eazard            #+#    #+#             */
-/*   Updated: 2025/05/27 17:35:43 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/30 13:14:50 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,13 @@ static void	simulate_eof(void)
 	}
 }
 
-static void interupt_readline(int signal)
+static void	interupt_readline(int signal)
 {
 	if (signal == SIGINT)
 	{
 		g_signal = SIGINT_HEREDOC;
-		
-		// Indique à readline qu'il doit s'arrêter et retourner
 		write(STDOUT_FILENO, "^C", 2);
-		simulate_eof(); 
+		simulate_eof();
 	}
 }
 
