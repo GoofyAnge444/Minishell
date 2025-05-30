@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 15:54:50 by eazard            #+#    #+#             */
-/*   Updated: 2025/05/29 17:54:12 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/30 17:07:55 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,18 +39,7 @@ static void	fill_outfile_fd(t_redir *redir, t_cmd_content *cmd)
 	if (cmd -> fd_out >= 0)
 		close(cmd -> fd_out);
 	if (redir->redir_type == TRUNCATE_TK)
-	{
-		if (-1 == access(redir->filename, W_OK))
-		{
-			ft_printf("mishell : ");
-			perror(redir->filename);
-		}
-		cmd->fd_out
-			= open(redir->filename, O_TRUNC | O_CREAT | O_WRONLY,
-				BASH_POSIX_CREATED_FILE_WRITE_COPY);
-		if (!cmd->fd_out)
-			perror("mishell : ");
-	}
+		truncate_open(redir, cmd);
 	else if (redir->redir_type == APPEND_TK)
 		append_open(redir, cmd);
 }

@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 17:21:21 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/05/30 14:52:49 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/30 17:11:27 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef enum e_fatal_type_error
 	LAUNCH_BUILTIN_FAILURE,
 	COMMAND_NOT_FOUND = 127,
 	NO_EXEC_PERMISSION = 126,
+	IS_A_DIRECTORY = 126,
 }			t_fatal_type_error;
 
 typedef enum e_non_fatal_type_error
@@ -82,7 +83,7 @@ void	create_user_input_space(t_data *data);
 void	create_lexer_space(t_data *data);
 void	create_linked_env_space(t_data *data);
 void	create_parsing_space(t_data *data);
-void	create_fatal_error_space(t_data *data); // on taff sur ca
+void	create_fatal_error_space(t_data *data);
 void	create_exec_space(t_data *data);
 void	create_export_space(t_data *data);
 /*exit*/

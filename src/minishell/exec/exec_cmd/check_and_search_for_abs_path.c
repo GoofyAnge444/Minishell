@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 14:05:46 by eazard            #+#    #+#             */
-/*   Updated: 2025/05/30 16:29:54 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/30 17:11:10 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,17 +37,18 @@ void	check_and_search_for_abs_path(t_data *data, t_cmd_content *content)
 
 	if (cmd_name_start_with_relativ_path(content -> cmd_name))
 	{
-		if (-1 == access(content->cmd_name, F_OK))
-		{
-			ft_printf_fd(2, "minishell: %s: No such file or directory\n",
-				content -> cmd_name);
-			fatal_error_clean_exit(data, COMMAND_NOT_FOUND);
-		}
 		dir = opendir(content->cmd_name);
 		if (dir)
 		{
 			closedir(dir);
 			ft_printf_fd(2, "minishell: %s: Is a directory\n",
+				content -> cmd_name);
+			fatal_error_clean_exit(data, IS_A_DIRECTORY);
+		}
+		if (-1 == access(content->cmd_name, F_OK))
+		{
+			ft_printf("here\n");
+			ft_printf_fd(2, "minishell: %s: No such file or directory\n",
 				content -> cmd_name);
 			fatal_error_clean_exit(data, COMMAND_NOT_FOUND);
 		}
