@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:23:05 by eazard            #+#    #+#             */
-/*   Updated: 2025/05/30 16:10:58 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/30 16:53:34 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,28 +38,8 @@ int	main(int ac, char *av[], char *env[])
 		}
 		if (data.non_fatal_error_occured == false)
 		{
-			print_result_for_dev(&data);
 			free_data(&data, false);
 		}
 	}
 	return (0);
 }
-
-// int	main(int ac, char *av[], char *env[])
-// {
-// 	char *line;
-
-// 	bypass(ac, av, env);
-// 	line = readline("enter a prompt:\n");
-// 	if (line)
-// 	{
-// 		ft_printf("line is --->%s<---\n", line);
-// 		free(line);
-// 		ft_printf("line is free\n");
-// 	}
-// 	else
-// 		ft_printf("line is NULL\n");
-// 	rl_on_new_line ();
-// 	rl_clear_history();
-// 	return (0);
-// }

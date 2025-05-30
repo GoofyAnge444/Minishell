@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_signals_interactive_heredoc.c                  :+:      :+:    :+:   */
+/*   set_signals_interactive.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 14:52:38 by eazard            #+#    #+#             */
-/*   Updated: 2025/05/27 14:59:43 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/30 16:50:28 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	set_signals_interactive(void)
 {
 	t_sigaction	act;
 
+	g_signal = SIGINT_INTERACTIVE;
 	ignore_sigquit();
 	ft_memset(&act, 0, sizeof(act));
 	act.sa_handler = &signal_reset_prompt;

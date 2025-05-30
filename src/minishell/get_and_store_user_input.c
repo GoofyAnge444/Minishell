@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 17:25:25 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/05/30 13:14:17 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/30 16:50:09 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,10 @@ void	get_and_store_user_input(t_data *data)
 	set_signals_interactive();
 	input = readline("mishell$ ");
 	set_signals_noninteractive();
+	if (catch_last_signal() == SIGINT_INTERACTIVE)
+	{
+		data -> last_exit_code = SIGINT + 128;
+	}
 	if (!input)
 	{
 		ft_printf("exit\n");
