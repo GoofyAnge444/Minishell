@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 14:05:46 by eazard            #+#    #+#             */
-/*   Updated: 2025/05/30 17:11:10 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/30 17:25:45 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static inline bool	cmd_name_start_with_relativ_path(char *cmd_name)
 
 static void	permission_denied_error(t_data *data, char *cmd_name)
 {
-	ft_printf_fd(2, "minishell: %s: Permission denied\n",
+	ft_printf_fd(2, "mishell: %s: Permission denied\n",
 		cmd_name);
 	fatal_error_clean_exit(data, NO_EXEC_PERMISSION);
 }
@@ -41,14 +41,14 @@ void	check_and_search_for_abs_path(t_data *data, t_cmd_content *content)
 		if (dir)
 		{
 			closedir(dir);
-			ft_printf_fd(2, "minishell: %s: Is a directory\n",
+			ft_printf_fd(2, "mishell: %s: Is a directory\n",
 				content -> cmd_name);
 			fatal_error_clean_exit(data, IS_A_DIRECTORY);
 		}
 		if (-1 == access(content->cmd_name, F_OK))
 		{
 			ft_printf("here\n");
-			ft_printf_fd(2, "minishell: %s: No such file or directory\n",
+			ft_printf_fd(2, "mishell: %s: No such file or directory\n",
 				content -> cmd_name);
 			fatal_error_clean_exit(data, COMMAND_NOT_FOUND);
 		}
