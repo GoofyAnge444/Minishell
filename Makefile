@@ -61,6 +61,7 @@ LIBFT_FILES = \
 		libft/ft_strrchr \
 		libft/ft_strtrim \
 		libft/ft_substr \
+		libft/ft_tablen \
 		libft/ft_tolower \
 		libft/ft_toupper \
 		\
@@ -90,7 +91,7 @@ $(LIBFT_OBJS_DIR)%.o: $(LIBFT_SRCS_DIR)%.c
 	@echo -n "$(CLEAR_LINE)$(BLUE)Compiling: $<..." ; \
 	mkdir -p $(dir $@) ; \
 	mkdir -p $(LIBFT_OBJS_DIR) ; \
-	$(CC) $(CFLAGS) -c $< -o $@ ; 
+	$(CC) $(CFLAGS) -c $< -o $@ ;
 
 libft: $(LIBFT)
 
@@ -107,6 +108,28 @@ libft_fclean: libft_clean
 libft_re: libft_fclean $(LIBFT)
 
 MINISHELL_FILES = 	main \
+					get_and_store_user_input \
+					print_result_for_dev \
+					\
+					data/create_space/init_data \
+					data/create_space/create_lexer_space \
+					data/create_space/create_linked_env_space \
+					data/create_space/create_user_input_space \
+					data/create_space/create_parsing_space \
+					data/create_space/create_exec_space \
+					data/create_space/create_export_space \
+					\
+					data/free_space/free_lexer_space \
+					data/free_space/free_linked_env_space \
+					data/free_space/free_user_input_space \
+					data/free_space/free_data \
+					data/free_space/free_parsing_space \
+					data/free_space/free_exec_space \
+					data/free_space/free_export_space \
+					\
+					data/fatal_error_clean_exit \
+					data/non_fatal_error_clean \
+					\
 					\
 					double_linked_list/dll_clear_list \
 					double_linked_list/dll_clear_node \
@@ -116,7 +139,131 @@ MINISHELL_FILES = 	main \
 					double_linked_list/dll_new_list \
 					double_linked_list/dll_new_node \
 					double_linked_list/dll_print_list \
-
+					\
+					\
+					env/env_var_to_env_content \
+					env/free_env_content \
+					env/create_linked_env \
+					\
+					\
+					lexer/lexer \
+					lexer/rename_string_tk_in_appropriate_tk \
+					lexer/lexer_state_machine \
+					lexer/get_next_token_and_insert_tail \
+					lexer/get_next_token_content \
+					lexer/get_token_type \
+					lexer/free_token_content \
+					lexer/print_token_content \
+					lexer/delete_all_space_tk \
+					lexer/convert_lonely_dq_and_sq_to_str \
+					lexer/set_up_if_heredoc_should_expend_later \
+					\
+					lexer/token_bool_utils/is_a_pipe_token \
+					lexer/token_bool_utils/is_a_redir_token \
+					lexer/token_bool_utils/is_a_quote_token \
+					lexer/token_bool_utils/is_a_string_token \
+					lexer/token_bool_utils/is_a_file_token \
+					lexer/token_bool_utils/is_a_cmd_token \
+					lexer/token_bool_utils/is_a_arg_token \
+					lexer/token_bool_utils/is_a_heredoc_token \
+					lexer/token_bool_utils/is_a_space_token \
+					\
+					lexer/character_utils/actual_character \
+					lexer/character_utils/next_character \
+					lexer/character_utils/actual_character_offset \
+					lexer/character_utils/moov_cursor_forward_of_one \
+					\
+					lexer/get_next_token_value/get_next_space_value \
+					lexer/get_next_token_value/get_next_append_value \
+					lexer/get_next_token_value/get_next_input_value \
+					lexer/get_next_token_value/get_next_heredoc_value \
+					lexer/get_next_token_value/get_next_output_value \
+					lexer/get_next_token_value/get_next_string_value \
+					lexer/get_next_token_value/get_next_db_quote_value \
+					lexer/get_next_token_value/get_next_s_quote_value \
+					lexer/get_next_token_value/get_next_pipe_value \
+					\
+					lexer/merge_str_dq_sq/merge_str_dq_sq \
+					lexer/merge_str_dq_sq/ft_strjoin_dq_sq \
+					\
+					lexer/check_syntax_error/check_unclose_quote \
+					lexer/check_syntax_error/check_each_command_has_content \
+					lexer/check_syntax_error/check_redir_followed_by_string \
+					\
+					\
+					expend/expend \
+					expend/expend_value \
+					expend/replace_dollar_in_expend_list \
+					expend/create_expend_list \
+					expend/merge_expend_list \
+					\
+					\
+					parsing/parsing \
+					parsing/create_segment_dll \
+					parsing/free_segment_content \
+					parsing/free_redir_tab \
+					\
+					parsing/add_next_segment_to_segment_dll/add_cmd_name_to_segment \
+					parsing/add_next_segment_to_segment_dll/add_cmd_arg_to_segment \
+					parsing/add_next_segment_to_segment_dll/add_redir_tab_to_segment \
+					parsing/add_next_segment_to_segment_dll/add_next_segment_to_segment_dll \
+					parsing/add_next_segment_to_segment_dll/count_cmd_arg_nb_in_this_segment \
+					parsing/add_next_segment_to_segment_dll/count_redir_nb_in_this_segment \
+					\
+					parsing/utils/get_first_token_of_segment \
+					parsing/utils/get_token_value \
+					parsing/utils/print_segment_content \
+					\
+					\
+					exec/exec \
+					\
+					exec/utils/free_cmd_content \
+					exec/utils/print_cmd_content \
+					\
+					exec/build_cmd_list/build_cmd_list \
+					exec/build_cmd_list/convert_segment_in_cmd \
+					exec/build_cmd_list/fill_fd \
+					exec/build_cmd_list/heredoc \
+					exec/build_cmd_list/set_all_pipes \
+					exec/build_cmd_list/set_pipe_in_a_cmd \
+					exec/build_cmd_list/set_builtin_cmd_to_be_exec_in_parent_process \
+					exec/build_cmd_list/set_builtin_cmd_to_skip \
+					exec/build_cmd_list/go_throught_cmd_dll_and_process_heredoc \
+					\
+					exec/build_cmd_list/open/append_open \
+					exec/build_cmd_list/open/heredoc_open \
+					exec/build_cmd_list/open/infile_open \
+					exec/build_cmd_list/open/truncate_open \
+					\
+					exec/exec_cmd/exec_cmd \
+					exec/exec_cmd/is_builtin \
+					exec/exec_cmd/child_process \
+					exec/exec_cmd/parent_process \
+					exec/exec_cmd/convert_env_dll_into_env_str_tab \
+					exec/exec_cmd/add_absolute_path_to_cmd_name \
+					exec/exec_cmd/ft_strjoin_with_separator \
+					exec/exec_cmd/close_cmd_fd \
+					exec/exec_cmd/launch_builtin \
+					exec/exec_cmd/launch_non_builtin \
+					exec/exec_cmd/check_and_search_for_abs_path \
+					\
+					exec/builtins/echo \
+					exec/builtins/pwd \
+					exec/builtins/cd \
+					exec/builtins/env \
+					exec/builtins/export \
+					exec/builtins/unset \
+					exec/builtins/exit \
+					exec/builtins/utils \
+					exec/builtins/utils_export \
+					exec/builtins/set_last_exit_code \
+					\
+					\
+					signal/ignore_sigquit \
+					signal/catch_last_signal \
+					signal/set_signals_heredoc \
+					signal/set_signals_interactive \
+					signal/set_signals_noninteractive \
 
 MINISHELL_SRCS_DIR = ./src/minishell/
 MINISHELL_SRCS = $(addprefix $(MINISHELL_SRCS_DIR), $(addsuffix .c, $(MINISHELL_FILES)))
@@ -125,7 +272,7 @@ MINISHELL_OBJS = $(addprefix $(MINISHELL_OBJS_DIR), $(addsuffix .o, $(MINISHELL_
 
 $(NAME): $(LIBFT) $(MINISHELL_OBJS)
 	@echo -n "$(CLEAR_LINE)$(BLUE)Linking: $@..." ; \
-	$(CC) $(CFLAGS) -o $@ $(MINISHELL_OBJS) -L./lib -lft
+	$(CC) $(CFLAGS) -o $@ $(MINISHELL_OBJS) -L./lib -lft -lreadline 
 	@echo "\n$(BOLD)$(BLUE)"
 	@echo "  ███╗   ███╗██╗███╗   ██╗██╗███████╗██╗  ██╗███████╗██╗     ██╗     "
 	@echo "  ████╗ ████║██║████╗  ██║██║██╔════╝██║  ██║██╔════╝██║     ██║     "

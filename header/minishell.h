@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cboma-ya <cboma-ya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:09:59 by eazard            #+#    #+#             */
-/*   Updated: 2025/02/03 17:26:02 by cboma-ya         ###   ########.fr       */
+/*   Updated: 2025/05/30 16:28:41 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,38 @@
 #  define  STDLIB_H
 #  include <stdlib.h>
 # endif
+# include <fcntl.h>
+# include <unistd.h>
+# define VOID (void)0
 # include "libft.h"
 # include "dll.h"
+# include "env.h"
+# include "lexer.h"
+# include "data.h"
+# include "parsing.h"
+# include "exec.h"
+# include <stdio.h>
+# include <readline/readline.h>
+# include <readline/history.h>
+# include <limits.h>
+# include <sys/wait.h>
+# include <signal.h>
+# include "my_signal.h"
+# include <sys/stat.h>
+# include <errno.h>
+# include <sys/types.h>
+# include <dirent.h>
+# define NPRINT "\001"
+# define RPRINT	"\002"
+
+extern int						g_signal;
+typedef struct s_lexer			t_lexer;
+typedef struct s_user_input		t_user_input;
+typedef struct s_data			t_data;
+typedef struct s_exec			t_exec;
+
+void	get_and_store_user_input(t_data *data);
+char	*get_user_input(char *prompt);
+void	print_result_for_dev(t_data *data);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cboma-ya <cboma-ya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 09:56:49 by ange              #+#    #+#             */
-/*   Updated: 2025/02/03 17:26:16 by cboma-ya         ###   ########.fr       */
+/*   Updated: 2025/05/30 16:26:38 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,6 @@
 # ifndef STDLIB_H
 #  define STDLIB_H
 #  include <stdlib.h>
-# endif
-# ifndef UNISTD_H
-#  define UNISTD_H
-#  include <unistd.h>
 # endif
 # ifndef STDBOOL_H
 #  define STDBOOL_H
@@ -88,6 +84,7 @@ int			ft_isalnum(int integer_to_check);
 int			ft_isascii(int integer_to_check);
 int			ft_isprint(int integer_to_check);
 int			ft_is_white_space(int c);
+size_t		ft_tablen(char **tab);
 size_t		ft_strlen(const char *string_to_get_len);
 void		*ft_memset(void *memory_zone_to_set,
 				int octet_set_value, size_t number_of_octet_to_set);
@@ -117,6 +114,7 @@ void		*ft_memchr(const void *memory_to_check,
 void		*ft_memrchr(const void *memory_to_check,
 				int octet_to_look_for, size_t number_of_octet_to_check);
 int			ft_atoi(const char *string);
+long long	ft_atoll(const char *string);
 void		*ft_calloc(size_t elementCount, size_t elementSize);
 char		*ft_strdup(const char *source);
 char		*ft_strtrim(char const *source, char const *pattern);

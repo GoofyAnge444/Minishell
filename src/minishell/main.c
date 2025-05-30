@@ -3,25 +3,63 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cboma-ya <cboma-ya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:23:05 by eazard            #+#    #+#             */
-/*   Updated: 2025/02/03 17:31:23 by cboma-ya         ###   ########.fr       */
+/*   Updated: 2025/05/30 16:10:58 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static void	bypass(int ac, char *av[], char *env[])
+int	g_signal = NO_SIG_TO_CATCH;
+
+static bool	empty_input_check(t_data *data)
 {
-	(void)ac;
-	(void)av;
-	(void)env;
+	return (data -> user_input->input[0] == '\0');
 }
 
 int	main(int ac, char *av[], char *env[])
 {
-	bypass(ac, av, env);
-	ft_printf("Hello World!\n");
+	t_data			data;
+
+	(void)ac;
+	(void)av;
+	init_data(&data, env);
+	while (1)
+	{
+		data.non_fatal_error_occured = false;
+		get_and_store_user_input(&data);
+		if (empty_input_check(&data) == false)
+		{
+			lexer(&data);
+			parsing(&data);
+			exec(&data);
+		}
+		if (data.non_fatal_error_occured == false)
+		{
+			print_result_for_dev(&data);
+			free_data(&data, false);
+		}
+	}
 	return (0);
 }
+
+// int	main(int ac, char *av[], char *env[])
+// {
+// 	char *line;
+
+// 	bypass(ac, av, env);
+// 	line = readline("enter a prompt:\n");
+// 	if (line)
+// 	{
+// 		ft_printf("line is --->%s<---\n", line);
+// 		free(line);
+// 		ft_printf("line is free\n");
+// 	}
+// 	else
+// 		ft_printf("line is NULL\n");
+// 	rl_on_new_line ();
+// 	rl_clear_history();
+// 	return (0);
+// }

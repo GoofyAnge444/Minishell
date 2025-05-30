@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 15:08:55 by ange              #+#    #+#             */
-/*   Updated: 2024/11/05 18:41:36 by eazard           ###   ########.fr       */
+/*   Updated: 2025/02/27 12:29:59 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,17 @@ void	ft_free_tab(char **tab)
 	size_t	i;
 
 	i = 0;
-	while (tab[i])
+	if (tab)
 	{
-		free(tab[i]);
-		i++;
+		while (tab[i])
+		{
+			free(tab[i]);
+			tab[i] = NULL;
+			i++;
+		}
 	}
-	free(tab);
+	if (tab)
+		free(tab);
 }
 
 static bool	ft_fill_tab(const char *src, char separator, char **tab)
