@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 09:58:35 by ange              #+#    #+#             */
-/*   Updated: 2024/11/04 15:52:19 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/30 12:59:03 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,32 @@ int	ft_atoi(const char *string)
 		index++;
 	}
 	while (ft_isdigit((int)(string[index])))
+	{
+		absolute_value = absolute_value * 10 + (string[index] - '0');
+		index++;
+	}
+	return (sign * absolute_value);
+}
+
+
+
+long long	ft_atoll(const char *string)
+{
+	size_t		index;
+	long long	absolute_value;
+	long long	sign;
+
+	sign = 1;
+	index = 0;
+	absolute_value = 0;
+	while (ft_is_white_space(string[index]))
+		index++;
+	if (ft_is_a_sign(string[index]))
+	{
+		sign = ft_sign_value(string[index]);
+		index++;
+	}
+	while (ft_isdigit((long)(string[index])))
 	{
 		absolute_value = absolute_value * 10 + (string[index] - '0');
 		index++;

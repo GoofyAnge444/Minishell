@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 09:56:49 by ange              #+#    #+#             */
-/*   Updated: 2025/05/26 17:21:52 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/30 12:59:15 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,7 @@ void		*ft_memchr(const void *memory_to_check,
 void		*ft_memrchr(const void *memory_to_check,
 				int octet_to_look_for, size_t number_of_octet_to_check);
 int			ft_atoi(const char *string);
+long long	ft_atoll(const char *string);
 void		*ft_calloc(size_t elementCount, size_t elementSize);
 char		*ft_strdup(const char *source);
 char		*ft_strtrim(char const *source, char const *pattern);

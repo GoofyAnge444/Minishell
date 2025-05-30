@@ -6,7 +6,7 @@
 /*   By: eazard <eazard@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 02:34:23 by cboma-ya          #+#    #+#             */
-/*   Updated: 2025/05/29 17:58:03 by eazard           ###   ########.fr       */
+/*   Updated: 2025/05/30 13:05:15 by eazard           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,21 +37,26 @@ void	free_exit(t_data *data)
 
 static void	exit_with_arg(t_data *data, char **str)
 {
-	int		code;
+	long long		code;
 
 	if (!ft_isnumber(str[1]))
 	{
 		ft_printf_fd(2,
 			"exit\nmishell: exit: %s: numeric argument required\n",
 			str[1]);
+		free_data(data, true);
 		exit(2);
 	}
 	if (str[2])
+	{
 		ft_printf_fd(2,
-			"exit\nmishell: exit: too many arguments");
+			"exit\nmishell: exit: too many arguments\n");
+		data -> last_exit_code = 1;
+	}
 	else
 	{
-		code = ft_atoi(str[1]); //TODO ft_atoll
+		ft_printf("exit\n");
+		code = ft_atoll(str[1]);
 		free_data(data, true);
 		exit((code) % 256);
 	}
